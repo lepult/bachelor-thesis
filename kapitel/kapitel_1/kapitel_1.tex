@@ -3,7 +3,7 @@
 Fehlender-Text
 
 \subsection{Service Roboter}
-In den letzten Jahren haben Service Roboter in verschiedenen Branchen an Bedeutung gewonnen. Ein Grund hierfür ist der technische Fortschritt der Robotik in kombination mit KI, Big Data, Kameras, Sensoren und Spracherkennung \cite[S.~424]{Paluch2020}. Dieser Abschnitt gibt einen kurzen Überblick über Service Roboter im allgemeinen und eine Einführung in die Funktionen der Roboter, die in dieser Arbeit eingesetzt werden. Auch wird das System beschrieben über das der Prototyp mit den Robotern kommunizieren wird.
+In den letzten Jahren haben Service Roboter in verschiedenen Branchen an Bedeutung gewonnen. Ein Grund hierfür ist der technische Fortschritt der Robotik in kombination mit KI, Big Data, Kameras, Sensoren und Spracherkennung \cite[S.~424]{Paluch2020}. Dieser Abschnitt gibt einen kurzen Überblick über Service Roboter im allgemeinen und eine Einführung in die Funktionen der Roboter, die in dieser Arbeit eingesetzt werden. Auch wird das System beschrieben, über das der Prototyp mit den Robotern kommunizieren wird.
 
 \subsubsection{Definition}
 In wissenschaftlichen Arbeiten werden viele verschiedene Definitionen für Service Roboter genutzt. In dieser Arbeit wird mit der Definition aus der ISO Norm 8373:2021 \cite[Kap.~3]{ISO2021} gearbeitet. Nach dieser handelt es sich bei Service Roboter um Roboter die im privaten oder professionellen Gebrauch nützliche Aufgaben für Menschen oder Equipment erledigen. Hierbei werden Service Roboter außerdem von Industrierobotern und Medizinrobotern abgegrenzt. Die \ac{IFR} \cite{IFR2024} ergänzt die Voraussetzung, dass Service Roboter voll- oder zumindest teilautonom handeln können. Unter dem professionellen Einsatz von Service Robotern versteht man solche, die kommerziell eingesetzt werden \cite[S.~4]{GonzalezAguirre2021}, beispielsweise in den Bereichen Gesundheitswesen, Landwirtschaft oder Tourismus \cite[S.~9]{GonzalezAguirre2021}.
@@ -11,18 +11,18 @@ In wissenschaftlichen Arbeiten werden viele verschiedene Definitionen für Servi
 \subsubsection{Einsatzmöglichkeiten}
 Service Roboter werden bereits in vielen Bereichen eingesetzt. So gibt es verschiedene Beispiele in denen Service Roboter in Hotels für den Gästeempfang, Check-in und Gepäcklieferung eingesetzt werden. Auch werden Sie an Flughäfen für die Beratung von Reisenden, Scannen von Boardingpässen, Check-in, Bodenreinigung und Patrouilliengänge genutzt. In der Pflege helfen Service Roboter den Pflegern beim Heben von Patienten und durchführen von Übungen mit Patientengruppen. Auch können Roboter in der Pflege angenehme Gespräche starten \cite[S.~425-427]{Paluch2020}. Aufgaben mit geringer kognitiver und emotionaler Komplexität können Service Roboter hierbei vollautonom und ohne Aufsicht durch einen Menschen durchführen \cite[S.~429]{Paluch2020}. Hierbei handelt es sich beispielsweise um Aufgaben wie Staubsaugen, Rasenmähen oder Gepäcklieferung. Für komplexere Aufgaben braucht es die Aufsicht oder Unterstützung von Menschen, wodurch diese nur teilautonom ausgeführt werden.
 
-Service Roboter die im Kontakt mit Kunden eingesetzt werden bieten verschiedene mögliche Vorteile, die aber immer abgewägt werden müssen. Beispielsweise können Roboter Emotionen vorspielen, die von Kunden aber als unauthentisch erkannt werden. Dafür können Roboter durchgängig freundlich sein und können nicht so wie Menschen unter emotionalem Burnout leiden \cite[S.~427]{Paluch2020}. 
+Service Roboter, die im Kontakt mit Kunden eingesetzt werden, bieten verschiedene mögliche Vorteile, die aber immer abgewägt werden müssen. Beispielsweise können Roboter Emotionen vorspielen, die von Kunden aber als unauthentisch erkannt werden. Dafür können Roboter durchgängig freundlich sein und können nicht so wie Menschen unter emotionalem Burnout leiden \cite[S.~427]{Paluch2020}. 
 
 \subsubsection{Pudu Roboter}
 
 Wie bereits erwähnt beschäftigt sich diese Arbeit mit Robotern von Pudu. Pudu stellt Service Roboter her, die in der Gastronomie für verschiedene Zwecke eingesetzt werden können. Die Roboter sind auf bestimmte Funktionen spezialisiert. Diese Funktionen sind das Begrüßen und Geleiten von Gästen, das Liefern bestellter Speisen und Getränke, das Zurückbringen dreckigen Geschirs und das Putzen des Bodens \cite{PUDU2024}.
 
-Damit die Roboter diese Funktionen ausführen können müssen sie eigenständig durch komplexe, sich ändernde Umgebungen navigieren. Diese Aufgabe lässt sich in die Positionierung, Wahrnehmung und Routenplanung aufteilen, wobei die Positionierung eine Schlüsselrolle spielt \cite{Nature2022}. Zur Positionierung wird eine eigen entwickelte Version von \ac{VSLAM} eingesetzt. Bevor die Roboter eingesetzt werden, müssen sie mithilfe von \ac{VSLAM} eine Karte ihrer Umgebung erstellen. Auf einer Fläche von 1000 Quadratmetern kann das eine Stunde dauern. Daraufhin kann sich der Roboter mithilfe einer nach oben gerichteten Kamera anhand der Zimmerdecke orientieren. Zur Orientierung brauchen Roboter normalerweise platzierte Markierungen. Diese werden mit der eingesetzten Implementierung von \ac{VSLAM} nicht gerbaucht.\cite{Pudu2023} Mit weiteren Kameras und Sensoren können die Roboter ihre Umgebung wahrnehmen. Mithilfe von KI können die Roboter hierbei Kinder und Senioren erkennen, um sich von ihnen fernzuhalten oder in ihrer Nähe langsamer zu fahren \cite{Nature2022}.
+Damit die Roboter diese Funktionen ausführen können, müssen sie eigenständig durch komplexe, sich ändernde Umgebungen navigieren. Diese Aufgabe lässt sich in die Positionierung, Wahrnehmung und Routenplanung aufteilen, wobei die Positionierung eine Schlüsselrolle spielt \cite{Nature2022}. Zur Positionierung wird eine eigen entwickelte Version von \ac{VSLAM} eingesetzt. Bevor die Roboter eingesetzt werden, müssen sie mithilfe von \ac{VSLAM} eine Karte ihrer Umgebung erstellen. Auf einer Fläche von 1000 Quadratmetern kann das eine Stunde dauern. Daraufhin kann sich der Roboter mithilfe einer nach oben gerichteten Kamera anhand der Zimmerdecke orientieren. Zur Orientierung brauchen Roboter normalerweise platzierte Markierungen. Diese werden mit der eingesetzten Implementierung von \ac{VSLAM} nicht gerbaucht.\cite{Pudu2023} Mit weiteren Kameras und Sensoren können die Roboter ihre Umgebung wahrnehmen. Mithilfe von KI können die Roboter hierbei Kinder und Senioren erkennen, um sich von ihnen fernzuhalten oder in ihrer Nähe langsamer zu fahren \cite{Nature2022}.
 
 \subsubsection{Bot Control Backend}
 Im Rahmen dieser Arbeit wird eine bereits existierende Schnittstelle zwischen den Pudu Robotern und der prototypischen Webanwendung genutzt. Diese Schnittstelle ist das sogenannte \ac{BCB}. In diesem Abschnitt wird die Verbindung zwischen dem \ac{BCB} und den Pudu Robotern erläutert. Im weiteren Verlauf dieser Arbeit wird nicht weiter auf diese Verbindung eingegangen, sondern stattdessen nur auf einzelnen Endpunkte des \ac{BCB}.
 
-Die folgende Abbildung veranschaulicht die Kommunikation zwischen dem Bot Control Backend und den Robotern. So wie die Abbildung, stammen die folgenden Informationen zum Service Framework von Pudu, das zur Kommunikation zwischen Robotern und \ac{BCB} genutzt wird, aus dem SDK Guidance Document von Pudu \cite{PuduSDK}. Das Dokument steht nicht im Internet zur Verfügung und bietet keine genaueren Information zur MQTT basierten Kommunikation zwischen Microservice, PUDU Cloud und Robotern.
+Die folgenden Informationen zum Service Framework von Pudu, das zur Kommunikation zwischen Robotern und \ac{BCB} genutzt wird, stammen aus dem SDK Guidance Document von Pudu \cite{PuduSDK}. Das Dokument steht nicht im Internet zur Verfügung und bietet keine genaueren Informationen zur MQTT basierten Kommunikation zwischen Microservice, PUDU Cloud und Robotern. Die folgende Abbildung veranschaulicht die Kommunikation zwischen dem Bot Control Backend und den Robotern.
 
 \begin{figure}[H]
 \caption{Kommunikation zwischen Bot Control Backend und Robotern}
@@ -42,31 +42,22 @@ Fehlender-Text
 
 \newpage
 \subsection{3D Modelle}
-Fehlender-Text
+In diesem Abschnitt wird eine kurze Einführung zu 3D-Modellen gegeben. Danach werden verschiedene Methoden vorgestellt, die sich zum Erzeugen von 3D-Gebäudemodellen eignen. Zuletzt wird erklärt wie 3D-Modelle im Web eingebunden werden können. Ein direkter Vergleich der Methoden folgt in einem späteren Kapitel.
 
-\subsubsection{Arten von 3D Modellen}
-Fehlender-Text
-% Punktwolke und Polygonnetz erklären
-% Erwähnen, dass bestimmte Scann/Photogrammetrie (?) Methoden Punktwolken ausgeben
-% Diese eignen sich allerdings nicht für die Einbindung zusätzlicher Daten
-% Daher Polygonnetze am besten geeignet
-% Methoden die Punktwolken erzeugen automatisch ungeeignet
+Unter 3D-Modellen fällt ein breites Spektrum von Methoden zur dreidimensonalen Modellierung. So gibt es unter anderem polygonale 3D-Modelle und Punktwolken. Polygonale 3D-Modelle stellen die Fläche von Objekten mithilfe von Konten und Kanten dar. Punktwolken haben keine Kanten, sondern nur eine Vielzahl an Farbpunkten, die das Modell in ihrer Menge ohne Flächen bilden. Punktwolken haben in der Regel eine höhere Genauigkeit und mehr Details. Dafür haben Punktwolken aber auch einen höheren Speicherverbrauch. Im folgenden Kapitel werden kurze Ladezeiten und geringer Speicherverbrauch als nicht-funktionale Anforderung genannt. Aus diesem Grund sind Punktwolken nicht weiter relevant für diese Arbeit. Es gibt insbesondere Fotogrammetriemethoden die Punktwolken erzeugen. Diese sind im folgenden auch nicht weiter relevant. Polygonale 3D-Modelle - im folgenden einfach zu 3D-Modellen abgekürzt - haben einen geringeren Speicherverbrauch, sind dafür aber auch nicht so präzise. Für die Zwecke dieser Arbeit ist die Präzision aber mehr als ausreichend.
 
 \subsubsection{Generierung}
-Fehlender-Text
+Es gibt verschiedene Methoden, mit denen 3D Gebäudemodelle erzeugt werden können.
 
 \paragraph{Fotogrammetrie}
-Fehlender-Text
+
+Die Fotogrammetrie beschäftigt sich damit Messungen aus einer Vielzahl an zweidimensonalen Bildern abzuleiten. So lassen sich präzise 3D-Modelle erzeugen.\cite[S.~19]{Aber2010} Die Kameras neuerer Handys sind so gut, dass sie sich für Fotogrammetrie eignen \cite{Cohrs2021}. Der Prozess der Fotogrammetrie kann in mehrere Schritte aufgeteilt werden. Zunächst muss man die Aufnahmen planen. Man sollte auf gleichmäßige Belichtung, das Vermeiden von reflektiven und transparenten Flächen und das Vermeiden von Bewegung innerhalb der Szene achten. Bei der Aufnahme sollte man darauf achten, dass man die richtigen Kameraeinstellungen nutzt. Relevante Kameraeinstellungen sind unter anderem ISO, Belichtungszeit und Weißabgleich. Während die Bilder aufgenommen werden sollten die Einstellungen nicht geändert werden. Außerdem muss darauf geachtet werden, dass sich aufeinander folgende Bilder immer überschneiden.\cite{Cohrs2021b} Zuletzt kann man die Aufnahmen Verarbeiten. Hierfür benötigt man spezialisierte Software, die in der Nutzung kompliziert sein kann. Auch benötigt man leistungsfähige Hardware in der Form einer guten Grafikkarte sowie ausreichend freien Speicherplatz.\cite{Cohrs2021c}
 
 \paragraph{LiDAR Scanning}
-Fehlender-Text
+Im Gegensatz zur Fotogrammetrie wird bei \ac{LiDAR} ein aktiver Sensor genutzt. Es wird Licht in Form eines puslierenden Lasers ausgestrahlt und mit einem Scanner wieder eingefangen. Mithilfe der Reflektion lassen sich so Distanzen zu Punkten berechnen. Zusammen mit zusätzlicher aufgenommenen Daten lassen sich 3D-Modelle erzeugen. Seit 2020 baut Apple \ac{LiDAR} in mobile Geräte ein. Hiervon wird sich unter anderem eine erhöhte Bildqualität erhofft. Gleichzeitig ermöglicht LiDAR aber auch das Scannen von Objekten.\cite{Fenstermaker2022} Für diesen Zweck gibt es mittlerweile verschiedene Apps, die den LiDAR Scanner an den Geräten einsetzen, wie Canvas \cite{Canvas2023}, Polycam \cite{Polycam2024} und Scaniverse \cite{Scaniverse2024}. Diese Apps versprechen die Generierung von 3D-Modellen mit geringem Aufwand.
 
-\paragraph{Scan2Scene}
-Fehlender-Text
-
-\paragraph{Modellierungs-Software}
-Fehlender-Text
-
+\paragraph{KI gestützte Methoden}
+Es gibt verschiedene KI-Modelle, die darauf trainiert sind mithilfe von wenigen Bildern ein 3D-Gebäudemodell zu generieren. Eines dieser Modelle ist Plan2Scene. Als Eingabe braucht es einen Raumplan eines Gebäudes und Bilder der einzelnen Räume die den Räumen im Raumplan zugeordnet sind. Mithilfe des Raumplans wird dann ein 3D Modell mit 3D-Objekten für bestimmte Möbel generiert. Aus den Bildern werden monotone Texturen für Wänden, Böden und Zimmerdecken der einzelnen Räume generiert.\cite[S.~10733]{Plan2Scene2021} Das Rent3D Modell funktioniert ähnlich, statt generierten Texturen bekommen Wände und Böden aber stattdessen einfach die Bildaufnahmen als Textur \cite[S.~3413]{Rent3D2015}.
 
 \subsubsection{Einbindung im Web}
 Fehlender-Text
