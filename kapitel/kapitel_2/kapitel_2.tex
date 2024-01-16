@@ -1,22 +1,46 @@
 \newpage
 \section{Anforderungen an den Prototyp}
-In diesem Kapitel werden die Anforderungen 
+In diesem Kapitel werden die Anforderungen an den Prototyp vorgestellt. Die Anforderungen wurden basierend auf der Wissensbasis aus der Literaturrecherche erstellt.
 
 \subsection{Abgrenzungen und Einschränkungen}
 
-Ein Schwerpunkt dieser Arbeit liegt darin eine Methode zu wählen mit denen 3D-Modelle für den Prototyp generiert werden können. Die gewählte Methode fällt nicht in den Rahmen des Prototyps und kann von potentiellen Nutzern durch beliebige andere Methoden ausgetauscht werden, die kompatible 3D-Modelle generieren.
+Ein Schwerpunkt dieser Arbeit liegt darin eine Methode zu wählen mit denen 3D-Modelle für den Prototyp generiert werden können. Die gewählte Methode fällt nicht in den Rahmen des Prototyps und kann von potenziellen Nutzern durch beliebige andere Methoden ausgetauscht werden, die kompatible 3D-Modelle generieren.
 
 \subsection{Funktionale Anforderungen}
 
-Wie bereits in der Einleitung beschrieben soll der Prototyp als Webanwendung implementiert werden. So wird eine Plattformunabhängigkeit garantiert. Diese wird gebraucht, da die Anwendung von Kellnern auf beliebigen Smartphones genutzt werden soll. Auch an Desktop Computern kann die Anwendung insbesondere zur Verwaltung der Roboter genutzt werden können. Entsprechend soll die Webanwendung Responsive sein um auf Gerätetypen mit verschiedenen Bildschirmgrößen zu funktionieren. 
+Wie bereits in der Einleitung beschrieben soll der Prototyp als Webanwendung implementiert werden. So wird eine Plattformunabhängigkeit garantiert. Diese wird gebraucht, damit Kellner die Anwendung auf beliebigen Smartphones nutzen können. Auch an Desktop Computern soll die Anwendung insbesondere zur Verwaltung der Roboter genutzt werden können. Entsprechend soll die Webanwendung Responsive sein, um auf Gerätetypen mit verschiedenen Bildschirmgrößen zu funktionieren.
 
+Die Anwendung lässt sich in drei Teile aufteilen: Übersicht, Steuerung und Verwaltung.
 
+\subsubsection{Übersicht}
 
-Es ergibt keinen Sinn die Offlinefähigkeit vorauszusetzen. Grund hierfür ist das die relevanten Funktionen eine Internetverbindung voraussetzen. Für die Steuerung und Verwaltung der Roboter braucht es eine Verbindung zum \ac{BCB} über das Internet. Für den Überblick über die Roboter werden Echtzeitinformationen dargestellt, die gecached werden könnten. Da es sich aber um Echtzeitinformationen handelt sind solche Daten schnell nicht mehr aktuell und somit nutzlos. Das kurzzeitige Cachen der Echtzeitinformationen kann aber trotzdem sinnvoll sein um initiale Ladezeiten zu reduzieren. So können bereits Daten angezeigt werden, während die aktuellen Daten noch geladen werden.
+In der Übersicht sollen möglichst alle Roboterdaten in einer 3-dimensionalen Ansicht zusammen mit dem Gebäudemodell abgebildet werden. Es soll die Möglichkeit geben zwischen verschiedenen Stockwerken zu navigieren. Es soll außerdem in Echtzeit angezeigt werden, wo sich die Roboter befinden. So sollen sich die Roboter dann auch bewegen. Auch sollen angezeigt werden, ob und womit die Roboter beschäftigt sind. Falls der Roboter einen Lieferauftrag ausführt, sollen auch die angegebenen Ausgabe- und Lieferpunkt angezeigt werden. Weitere Daten, die von den Robotern stammen, sind Positionen von allen möglichen Ausgabe- und Lieferpunkten, sowie Ladestationen. Auch haben die Roboter festgelegte Pfade, an denen sie sich beim Fahren  orientieren. Diese sollen auch angezeigt werden.
+
+\subsubsection{Steuerung}
+
+In der Steuerung sollen die Roboter beauftragt werden können. Da sich die Roboter von Pudu, die in dieser Arbeit eingesetzt werden, nicht autonom beladen können \cite{KettyBot2024}, braucht es hierfür nur die Angabe von Ausgabe- und Lieferpunkten. Am Ausgabepunkt wartet der Roboter dann bis er beladen wurde und fährt zum Lieferpunkt wo dann abgeladen wird. Außerdem soll es die Möglichkeit geben den Arbeitsmodus zu ändern, sodass der Roboter beispielsweise dann automatisch zufällige Stationen anfährt. Auch sollen die Roboter an ihre Ladestation geschickt werden können.
+
+\subsubsection{Verwaltung}
+
+In der Verwaltung sollen sowohl die Roboter als auch die Übersicht selbst verwaltet werden können. Das Hinzufügen, Entfernen und Umbenennen von Robotern soll möglich sein. Außerdem soll beispielsweise der Ausgabepunkt für Roboter geändert werden können. So kann bestimmt werden aus welchem Stockwerk ein Roboter arbeitet. 
+
+Es muss die Möglichkeit geben das 3D-Gebäudemodell zu importieren und dieses mit den Roboterdaten zu kombinieren. Das Problem hierbei ist, dass hier praktisch zwei Gebäudekarten Karten miteinander synchronisiert werden müssen: Das importierte 3D-Gebäudemodell und die mit \ac{VSLAM} erzeugte interne Karte der Roboter. Hier müssen die Maßstäbe und Positionen angeglichen werden, damit die Position der Roboter in der Übersicht mit der realität übereinstimmen.
+
+\subsubsection{Benutzer}
+
+Für die Anwendung gibt es drei verschiedene Nutzergruppen: Gäste, Kellner und Administratoren. Der Funktionsumfang erhöht sich in der angegebenen Reihenfolge. So sollen Gäste einen eingeschränkten Zugriff auf die Übersicht haben während Administratoren Zugriff auf alle Funktionen der Übersicht, Steuerung und Verwaltung haben.
+
+Der Wert von Service Robotern muss aktuell insbesondere aus der Sicht von Gäste noch bewiesen werden \cite[S.~429]{Paluch2020}. Deshalb sollen Gäste einen eingeschränkten Zugriff auf die Übersicht der Roboter bekommen, in der sie die Positionen und aktuellen Aufträge sehen können. Mithilfe dieser Transparenz sollen den Kunden die Vorteile von Servicerobotern veranschaulicht werden.
+
+Die Kellner sollen einen vollständigen Zugriff auf die Übersicht und Steuerung bekommen. So werden ihnen alle Funktionen zur Verfügung gestellt, die sie für den täglichen Betrieb brauchen. Einen Zugriff auf die Verwaltung der Roboter brauchen sie nicht.
+
+Auf die Verwaltung der Roboter und der Übersicht sollen nur Administrator Zugriff haben. Optimalerweise braucht man die Verwaltung der Übersicht nur zum Einrichten der Anwendung.
+
+Es ergibt keinen Sinn die Offlinefähigkeit vorauszusetzen. Grund hierfür ist das die relevanten Funktionen eine Internetverbindung voraussetzen. Für die Steuerung und Verwaltung der Roboter braucht es eine Verbindung zum \ac{BCB} über das Internet. Für den Überblick über die Roboter werden Echtzeitinformationen dargestellt, die gecacht werden könnten. Da es sich aber um Echtzeitinformationen handelt, sind solche Daten schnell nicht mehr aktuell und somit nutzlos. Das kurzzeitige Cachen der Echtzeitinformationen kann aber trotzdem sinnvoll sein, um initiale Ladezeiten zu reduzieren. So können bereits Daten angezeigt werden, während die aktuellsten Daten noch geladen werden.
 
 \subsection{Nicht-funktionale Anforderungen}
 
-Lange Ladezeiten können insbesondere zur Hauptgeschäftszeit den Stress der Kellner erhöhen und eine große Quelle von Frust sein. Deshalb ist die Reduzierung der Ladezeiten eine Anforderung an den Prototyp. Die Webanwendung soll Inhalte schnell laden und dem Nutzer darstellen. Normalerweise wird hierfür sowohl die Performance auf Server- und Client-Seite verbessert. Da die zu entwickelnde Webanwendung aber hauptsächlich auf das bereits existierende \ac{BCB} zurückgegriffen wird, werden sich Optimierungen auf das Frontend beschränken. Hierfür eignen sich insbesondere Caching und andere Client-seitige Optimierungen wie das Verzögern des Ladens nicht essentieller Ressourcen. Auch die Reduzierung des Datenverbrauchs ist hier relevant. Dies bietet auch den Vorteil, dass sich Kosten für Nutzer reduzieren, die einen teuren oder begrenzten Datenplan haben.
+Lange Ladezeiten können insbesondere zur Hauptgeschäftszeit den Stress der Kellner erhöhen und eine große Quelle von Frust sein. Deshalb ist die Reduzierung der Ladezeiten eine Anforderung an den Prototyp. Die Webanwendung soll Inhalte schnell laden und dem Nutzer darstellen. Normalerweise wird hierfür sowohl die Performance auf Server- und Client-Seite verbessert. Da die zu entwickelnde Webanwendung aber hauptsächlich auf das bereits existierende \ac{BCB} zurückgegriffen wird, werden sich Optimierungen auf das Frontend beschränken. Hierfür eignen sich insbesondere Caching und andere Client-seitige Optimierungen wie das Verzögern des Ladens nicht essenzieller Ressourcen. Auch die Reduzierung des Datenverbrauchs ist hier relevant. Dies bietet auch den Vorteil, dass sich Kosten für Nutzer reduzieren, die einen teuren oder begrenzten Datenplan haben.
 
 Unabhängig von Ladezeiten sollte die Anwendung 
 
