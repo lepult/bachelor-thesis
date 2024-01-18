@@ -5,10 +5,28 @@ Fehlender-Text
 \subsection{3D Modelle von Gebäuden}
 Fehlender-Text
 
-\newpage
 \subsection{3D Visualisierung im Web}
+Für die dreidimensonale Darstellung im Prototyp wurde \deckgl gewählt.
+% TODO Weiter erläutern warum deck.gl
+% deck.gl kurz vorstellen (inklusive Layers)
+
+\subsubsection{deck.gl}
 Fehlender-Text
 
-\newpage
+\subsubsection{Auswahl des Dateiformats}
+
+Für die Darstellung des 3D-Modells gibt es verschiedene Möglichkeiten. Zwei dieser Möglichkeiten sind das Einbinden des \ac{OBJ} Formats in der SimpleMeshLayer von \deckgl und das Einbinden des \ac{glTF} Dateiformats in der ScreengraphLayer. Beide Dateiformate werden in der Scaniverse App als Dateiexport angeboten. Beim \ac{OBJ} Format gibt es das Problem, dass das 3D-Modell mit \deckgl nur ohne Textur dargestellt werden kann. Das \ac{OBJ} Format besteht aus einer Datei mit der Endung \obj in der die dereidimensionalen geometrischen Formen kodiert sind und einer Datei mit der Endung \mtl in der die optische Materialeigenschaften und Texturierung kodiert sind. Die Materialdatei lässt sich nicht in \deckgl einbinden, da die \loadersgl Programmbibliothek nur das Parsen der \obj Datei ermöglicht. Das \ac{glTF} Format besteht im Gegensatz zu \ac{OBJ} nur aus einer Datei mit der Endung \gltf oder \glb, die auch die Materialeigenschaften und Texturierung enthält. Die Ersteller des Dateiformats beschreiben es als "JPEG of 3D", da es eine geringere Dateigröße bietet. Mithilfe der \loadersgl Programmbibliothek lassen sich 3D-Modelle des Dateiformats ohne großen Aufwand in der ScenegraphLayer von \deckgl einbinden. Da ein 3D-Modell mit einer passenden Texturierung eine bessere Übersichtlichkeit bietet und da \ac{glTF} Dateien eine geringe Dateigröße haben, wird im Rahmen des Prototyps weiter mit dem Dateityp und der ScenegraphLayer gearbeitet.
+
 \subsection{Synchronisierung des Gebäudemodells und der Roboterdaten}
+Die Roboter erzeugen sich eigenständig Karten mithilfe von \ac{VSLAM}. In diesen Karten sind verschiedene Informationen enhalten. Über das \ac{BCB} abrufbare Informationen sind die Positionen der Lieferpunkte, die Position des Roboters und die Pfade an denen sich die Roboter orientieren und nur zum Ausweichen verlassen. Diese Informationen sollen in der Übersicht des Prototyps angezeigt werden.
+
+Damit diese Daten korrekt innerhalb des 3D-Modells angezeigt werden können, müssen die Positionen und Maßstäbe synchronisiert sein. Glücklicherweise werden in den von Scaniverse erzeugten 3D Modellen und in den internen Karten der Roboter dieselben Maßstäbe genutzt. Währenddessen stimmen die Koordinaten und Rotation nicht miteinander überein. So sind die 3D-Modelle von Scaniverse immer um 90° um die z-Achse und einen zufälligen Wert um die y-Achse rotiert, der von der Ausgangsrotation beim Erstellen der Karte und des Modells abhängig ist. Aus diesem Grund braucht es eine Möglichkeit mit der die Position und Rotation angeglichen werden können. 
+
+Hier wurde sich für die Entwicklung eines Editors für Administratoren entschieden. In diesem können 3D-Modell und Roboterdaten manuell durch Ziehen positioniert werden, sodass diese möglichst synchron sind. Aufgrund der Ungenauigkeiten im 3D-Modell und in den Roboterdaten ist eine vollständige Synchronisierung gar nicht möglich. Auch erschwert das die Entwicklung eines potenziellen Algorithmus der diese automtisch synchronisiert.
+
+Der Editor nutzt so wie der Rest der Anwendung \deckgl für die Darstellung. Mithilfe der in \deckgl integrierten Events onDragStart, onDrag und onDragEnd konnte das Verschieben und Rotieren per Ziehen des Objekts implementiert werden. So kann man ein Objekt beim Drücken der Steuerungstaste mit der Maus verschieben und beim Drücken der Shift-Taste mit der Maus rotieren. Beim Drücken der Steuerungs- oder Shift-Taste werden die Objekte durchsichtigt um zu kommunizieren, dass diese bewegt werden können. Das Verschieben und Rotieren kann außerdem mithilfe der Tastenkombination Strg + Z rückgängig gemacht und mit Strg + Y wiederholt werden. Hierfür wurden zwei Stapel implementiert in denen vergangene Aktionen gespeichert werden.
+
+
+Hierfür wurde ein Editor in \deckgl entwickelt 
+
 Fehlender-Text
