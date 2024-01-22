@@ -5,6 +5,16 @@ Fehlender-Text
 \subsection{Implementierung des Prototyps}
 Fehlender-Text
 
+\subsubsection{Verwaltungsansicht}
+Die Verwaltungsansicht wurde am Mockup orientiert entwickelt. 
+
+\paragraph{Import der 3D-Modelle}
+
+
+Im vorherigen Kapitel wurde erläutert, warum die Synchronisierung der Roboterdaten mit den 3D-Modellen manuell durchgeführt werden muss. Hierfür wurde ein Werkzeug entwickelt, in dem der Nutzer die 3D-Modelle in Relation zu den Roboterdaten positionieren und rotieren kann.
+Das Werkzeug nutzt, so wie andere Teile der Anwendung \deckgl um die 3D-Modelle und Roboterdaten in einer Kartenansicht darzustellen. Mithilfe der in \deckgl integrierten Events onDragStart, onDrag und onDragEnd kann das angeklickte Objekt per Ziehen der Maus verschoben und rotiert werden. So kann ein Objekt beim Drücken der Steuerungstaste verschoben und beim Drücken der Shift-Taste rotiert werden. Beim Drücken der Steuerungs- oder Shift-Taste werden die Objekte durchsichtigt um zu kommunizieren, dass diese bewegt werden können. Das Verschieben und Rotieren kann außerdem mithilfe der Tastenkombination Strg + Z rückgängig gemacht und mit Strg + Y wiederholt werden. Hierfür existieren zwei Stapel in denen vergangene Aktionen gespeichert werden.
+% Initiale Ansicht Position kann eingestellt werden
+
 \newpage
 \subsection{Evaluierung des Prototyps}
 Fehlender-Text
