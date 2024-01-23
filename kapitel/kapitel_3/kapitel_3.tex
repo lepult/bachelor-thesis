@@ -1,6 +1,6 @@
 \newpage
 \section{Technische Herausforderungen}
-Fehlender-Text
+Während der Implementierung des Prototyps sind verschiedene größere technische Herausforderungen entstanden, die gelöst werden mussten. Die Herausforderungen mit den gewählten Lösungsansätzen in diesem Kapitel gruppiert. 
 
 \subsection{3D Modelle von Gebäuden}
 Fehlender-Text
@@ -13,21 +13,13 @@ Für die dreidimensonale Darstellung im Prototyp wurde \deckgl gewählt.
 \subsubsection{deck.gl}
 Fehlender-Text
 
-\subsubsection{Auswahl des Dateiformats}
+\subsubsection{Auswahl des Dateiformats der 3D-Modelle}
 
 Für die Darstellung des 3D-Modells gibt es verschiedene Möglichkeiten. Zwei dieser Möglichkeiten sind das Einbinden des \ac{OBJ} Formats in der SimpleMeshLayer von \deckgl und das Einbinden des \ac{glTF} Dateiformats in der ScreengraphLayer. Beide Dateiformate werden in der Scaniverse App als Dateiexport angeboten. Beim \ac{OBJ} Format gibt es das Problem, dass das 3D-Modell mit \deckgl nur ohne Textur dargestellt werden kann. Das \ac{OBJ} Format besteht aus einer Datei mit der Endung \obj in der die dereidimensionalen geometrischen Formen kodiert sind und einer Datei mit der Endung \mtl in der die optische Materialeigenschaften und Texturierung kodiert sind. Die Materialdatei lässt sich nicht in \deckgl einbinden, da die \loadersgl Programmbibliothek nur das Parsen der \obj Datei ermöglicht. Das \ac{glTF} Format besteht im Gegensatz zu \ac{OBJ} nur aus einer Datei mit der Endung \gltf oder \glb, die auch die Materialeigenschaften und Texturierung enthält. Die Ersteller des Dateiformats beschreiben es als "JPEG of 3D", da es eine geringere Dateigröße bietet. Mithilfe der \loadersgl Programmbibliothek lassen sich 3D-Modelle des Dateiformats ohne großen Aufwand in der ScenegraphLayer von \deckgl einbinden. Da ein 3D-Modell mit einer passenden Texturierung eine bessere Übersichtlichkeit bietet und da \ac{glTF} Dateien eine geringe Dateigröße haben, wird im Rahmen des Prototyps weiter mit dem Dateityp und der ScenegraphLayer gearbeitet.
 
 \subsection{Synchronisierung des Gebäudemodells und der Roboterdaten}
-Die Roboter erzeugen sich eigenständig Karten mithilfe von \ac{VSLAM}. In diesen Karten sind verschiedene Informationen enhalten. Über das \ac{BCB} sind die folgenden Informationen abrufbar: die Positionen der Lieferpunkte, die Position des Roboters und die Pfade an denen sich die Roboter orientieren und nur zum Ausweichen verlassen. Diese Informationen sollen in der Übersicht des Prototyps angezeigt werden.
+Im Prototyp sollen die Roboterdaten in den 3D-Modellen integriert dargestellt werden. Die Roboterdaten und 3D-Modelle haben den gleichen Maßstab, die Positionen und Rotationen der Datensätze stimmen allerdings nicht miteinander überein. Der Grund hierfür ist, dass zur Generierung der Datensätze unterschiedliche Scanning-Methoden eingesetzt werden. Auch die Positionen der 3D-Modelle stimmen nicht miteinander überein, da beim Scannen an verschiedenen Ausganspunkten angefangen wurde.
 
-Damit diese Daten korrekt innerhalb des 3D-Modells angezeigt werden können, müssen die Positionen und Maßstäbe synchronisiert sein. Glücklicherweise werden in den von Scaniverse erzeugten 3D Modellen und in den internen Karten der Roboter dieselben Maßstäbe genutzt. Allerdings stimmen die Positionen und Rotation nicht miteinander überein. So sind die 3D-Modelle von Scaniverse immer um 90° um die z-Achse und einen beliebigen Wert um die y-Achse rotiert, der von der Ausgangsrotation beim Erstellen der Karte und des Modells abhängig ist. Aus diesem Grund braucht es eine Möglichkeit mit der die Position und Rotation angeglichen werden können.
+Aus diesem Grund müssen die Positionen der Roboterdaten mit den 3D-Modellen synchronisiert werden. Auch müssen die Positionen der 3D-Modelle unterienander synchronisiert werden. Eine automatische Synchronisierung ist aus verschiedene Gründen zu komplex. Zum einen sind die Formate der Daten zu verschieden, denn während die 3D-Modelle aus komplexen dreidimensonalen Formen bestehen, setzen sich die Roboterdaten aus zweidimensonalen Linien und Punkten zusammen. Zum anderen gibt es in beiden Datensätzen unterschiedliche Ungenaugkeiten in Bezug auf die Realität. Sowohl \ac{VSLAM}, mit dem die Roboterdaten untereinander positioniert werden, \ac{LiDAR}-Scanning, mit dem die 3D-Modelle für den Prototyp generiert wurden, sind fehlerbehaftet. Da sich diese Scanning-Methoden unterscheiden und somit verschiedene Stärken und Schwächen beim Scannen haben, sind die Ungenauigkeiten zwischen den Roboterdaten und 3D-Modellen größer, während die Ungenauigkeiten zwischen den verschiedenen 3D-Modellen geringer sind.
 
-Während die Roboterdaten aus einfachen Punkte und Linien enthalten, bestehen die 3D-Modelle aus komplexen geometrischen Formen. Eine automatisierte Synchronisierung ist aufgrund dieser Komplexität schwierig. Sowohl die Roboterdaten als auch die 3D-Modelle enthalten außerdem Ungenauigkeiten, wodurch die letztendliche Visualisierung nicht vollständig die realität wiederspiegelt. Diese Ungenaugkeiten erhöht die Komplexität eines möglichen Algorithmus zur automatisierten Synchronisierung. Aus diesen Gründen ergibt die Implementierung eines Werkzeugs für den Nutzer am meisten Sinn. In diesem kann der Nutzer die Positionen und Rotationen der 3D-Modelle in Relation zu den Roboterdaten, manuell einstellen und somit die Daten synchronisieren. Die Implementierung dieses Werkzeugs wird im folgenden Kapitel beschrieben.
-
-
-
-
-
-Hierfür wurde ein Editor in \deckgl entwickelt 
-
-Fehlender-Text
+Da eine automatische Synchronisierung der Datensätze ausgeschlossen ist, muss diese manuell vorgenommen werden. Hierfür wurde ein Editor implementiert, mit dem der Administrator die 3D-Modelle und Roboterdaten durch Verschieben und Rotieren der 3D-Modelle synchronisieren kann. Die Implementierung dieses Editors wird im folgenden Kapitel beschrieben.
