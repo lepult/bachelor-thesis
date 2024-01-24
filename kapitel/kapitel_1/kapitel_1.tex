@@ -24,6 +24,8 @@ Im Rahmen dieser Arbeit wird eine bereits existierende Schnittstelle zwischen de
 
 Die folgenden Informationen zum Service Framework von Pudu, das zur Kommunikation zwischen Robotern und \ac{BCB} genutzt wird, stammen aus dem SDK Guidance Document von Pudu \cite{PuduSDK}. Das Dokument steht nicht im Internet zur Verfügung und bietet keine genaueren Informationen zur MQTT basierten Kommunikation zwischen Microservice, PUDU Cloud und Robotern. Die folgende Abbildung veranschaulicht die Kommunikation zwischen dem Bot Control Backend und den Robotern.
 
+Wie man in der Abbildung sieht hat das \ac{BCB} nur eine direkte Verbindung zum Node.js Microservice, welches wiederum über die PUDU Cloud mit den Robotern kommuniziert. Über \gls{HTTP}-Anfragen an den Node.js Microservice können Befehle verschickt und Daten abgefragt werden. Der Node.js Microservice leitet diese Anfragen via \gls{MQTT} an die PUDU Cloud weiter. Anfragen die nicht an die Roboter weitergeleitet werden müssen, weil die angefragten Daten in der PUDU Cloud liegen, werden auf dem gleichen Weg direkt beantwortet. Muss mit den Robotern kommuniziert werden, dann wird die Anfrage von der PUDU Cloud über \gls{MQTT} an die relevanten Roboter weitergeleitet, die diese dann beantworten. Die Roboter können auch unaufgefordert Ereignisse an das \ac{BCB} kommunizieren. Hierfür muss das \ac{BCB} eine Adresse für einen bestimmten Ereignistyp im Microservice als \gls{Webhook} registrieren. Tritt das entsprechende Ereignis auf, schickt der Roboter diese Information via \gls{MQTT} über die PUDU Cloud an den Microservice. Dieser schickt daraufhin eine HTTP-Anfrage an die registrierte Adresse.
+
 \begin{figure}[H]
 \caption{Kommunikation zwischen Bot Control Backend und Robotern}
 \includegraphics[width=0.9\textwidth]{BotControlBackend Diagramm}
@@ -31,13 +33,24 @@ Die folgenden Informationen zum Service Framework von Pudu, das zur Kommunikatio
 Quelle: In Anlehnung an Pudu \cite[S.~4]{PuduSDK}
 \end{figure}
 
-Wie man in der Abbildung sieht hat das \ac{BCB} nur eine direkte Verbindung zum Node.js Microservice, welches wiederum über die PUDU Cloud mit den Robotern kommuniziert. Über \gls{HTTP}-Anfragen an den Node.js Microservice können Befehle verschickt und Daten abgefragt werden. Der Node.js Microservice leitet diese Anfragen via \gls{MQTT} an die PUDU Cloud weiter. Anfragen die nicht an die Roboter weitergeleitet werden müssen, weil die angefragten Daten in der PUDU Cloud liegen, werden auf dem gleichen Weg direkt beantwortet. Muss mit den Robotern kommuniziert werden, dann wird die Anfrage von der PUDU Cloud über \gls{MQTT} an die relevanten Roboter weitergeleitet, die diese dann beantworten. Die Roboter können auch unaufgefordert Ereignisse an das \ac{BCB} kommunizieren. Hierfür muss das \ac{BCB} eine Adresse für einen bestimmten Ereignistyp im Microservice als \gls{Webhook} registrieren. Tritt das entsprechende Ereignis auf, schickt der Roboter diese Information via \gls{MQTT} über die PUDU Cloud an den Microservice. Dieser schickt daraufhin eine HTTP-Anfrage an die registrierte Adresse.
-
 Das \ac{BCB} dient nicht nur als Schnittstelle zu den Pudu Robotern, sondern abstraiert neue Funktionen aus denen die Pudu bietet. Zum einen bietet das \ac{BCB} die Möglichkeit einen Lieferroboter über einen Fahrstuhl zu einem Lieferpunkt in einem anderen Stockwerk zu schicken. Zum anderen kann der Roboter vor einer geschlossenen Tür halten, diese öffnen und dann weiter fahren. Diese beiden Funktionen bietet Pudu nicht.
 
 \subsection{Webanwendungen}
+% Plattformunabhängigkeit mit Quelle erwähnen
 Fehlender-Text
 
+\subsubsection{React}
+Fehlender-Text
+% Typescript kurz erwähnen
+% SCSS erwähnen
+% React Redux erwähnen
+
+\subsubsection{chayns}
+Fehlender-Text
+% chayns-Seite erläutern
+% chayns-Application erläutern
+% UAC-Gruppen erläutern
+% Admin-Modus erläutern
 
 \subsection{3D Modelle}
 In diesem Abschnitt wird eine kurze Einführung zu 3D-Modellen gegeben. Danach werden verschiedene Methoden vorgestellt, die sich zum Erzeugen von 3D-Gebäudemodellen eignen. Zuletzt wird erklärt wie 3D-Modelle im Web eingebunden werden können. Ein direkter Vergleich der Methoden folgt in einem späteren Kapitel.
