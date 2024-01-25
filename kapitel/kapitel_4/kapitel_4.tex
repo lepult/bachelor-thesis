@@ -16,7 +16,7 @@ Bis auf die Vorschau der Karte ist die Verwaltungsansicht nicht besonders komple
 
 \paragraph{Import der 3D-Modelle}
 
-\subsection{Synchronisierung des Gebäudemodells und der Roboterdaten}
+\paragraph{Synchronisierung des Gebäudemodells und der Roboterdaten}
 Im vorherigen Kapitel wurde erläutert, warum die Synchronisierung der Roboterdaten mit den 3D-Modellen manuell durchgeführt werden muss. Es wurde ein Editor implementiert und im Prototyp eingebunden, mit dem der Nutzer die 3D-Modelle in Relation zu den Roboterdaten positionieren und rotieren kann.
 
 Der Editor nutzt, so wie andere Teile der Anwendung \deckgl{} um 3D-Modelle und Roboterdaten dazustellen. In \deckgl{} bildet die x-Koordinate die Ost-West-Achse, die y-Koordinate die Nord-Süd-Achse und die z-Koordinate die Höhe ab. Mithilfe der in \deckgl{} integrierten Events onDragStart, onDrag und onDragEnd kann das angeklickte Objekt per Ziehen der Maus verschoben und rotiert werden. Beim Drücken der Steuerungstaste wird das angeklickte Modell verschoben und beim Drücken der Shift-Taste rotiert. Beim Drücken der Steuerungs- oder Shift-Taste werden die Objekte durchsichtigt um zu kommunizieren, dass diese nach dem anklicken bewegt werden können. Das Verschieben und Rotieren kann mithilfe der Tastenkombination Strg + Z rückgängig gemacht und mit Strg + Y wiederholt werden. Hierfür existieren zwei Stapel in denen vergangene Aktionen gespeichert werden.
@@ -24,13 +24,41 @@ Der Editor nutzt, so wie andere Teile der Anwendung \deckgl{} um 3D-Modelle und 
 
 Die 3D-Modelle können an der x- und y-Achse verschoben und an der y-Achse rotiert werde. Warum keine anderen Transformationen nötig sind, wird im folgenden Abschnitt erläutert.
 
-\subsubsection{Unnötige Transformationen}
+\paragraph{Unnötige Transformationen}
 
 Der Boden der 3D-Modelle liegt relativ konstant auf der z-Koordinate 0. Aufgrund der Ungenauigkeiten die durch den \ac{LiDAR}-Scan entstehen ist der Boden aber nicht vollständig eben. Da die Roboterdaten zweidimensional und somit keinen Höhenwert haben besteht die Gefahr, dass diese an manchen Stellen unter den 3D-Modellen verschwinden, wenn auf der z-Koordinate 0 positioniert werden. Aus diesem Grund werden die Roboterdaten stattdessen an der z-Koordinate 0,1 positioniert. Da der Boden bei allen 3D-Modellen an derselben z-Koordinate positioniert ist, müssen diese durch den Nutzer nicht weiter an der z-Achse verschoben werden.
 
 Im Vergleich zu den Roboterdaten sind die 3D-Modelle immer um 90° an der z-Achse und einen beliebigen Wert an der y-Achse rotiert. Die Rotation an der x-Achse ist bereits synchron. Die 3D-Modelle werden automatisch um -90° an der z-Achse rotiert und müssen vom Nutzer somit nur nach an der y-Achse rotiert werden.
 
 Da sich die Roboterdaten und 3D-Modelle denselben Maßstab teilen müssen diese durch den Nutzer nicht skaliert werden.
+
+\subsubsection{Übersicht}
+In der Übersicht werden die Roboterdaten in Kombination mit den Gebäudemodellen mithilfe von \deckgl{}  angezeigt. Hierfür werden verschiedene \deckgl{}-Layers eingesetzt.
+
+Die Gebäudemodelle werden aus bereits erläuterten Gründen im \ac{glTF}-Format geladen und in der ScenegraphLayer angezeigt. Da \deckgl{} für die Visualisierung großer Datenmengen ausgelegt ist, kann eine Instanz der Scenegraph-Layer nur dasselbe 3D-Modell mehrmals anzeigen. Aus diesem Grund wird für jedes 3D-Modell eine eigene Instanz der Scenegraph-Layer angelegt.
+% TODO Quelle Scenegraph Layer Doku
+Außerdem ist für die Layers das Backface Culling aktiviert, damit die Rückseite der Polygone durchsichtig ist.
+% TODO Quelle Backface Culling
+Dadurch werden die von der Kamera abgewandten Zimmerdecken und Wände durchsichtig, sodass der Nutzer den Inhalt der Räume von außerhalb sehen kann.
+% TODO Erwähnen falls 3D-Modelle gecached werden
+
+Für die Darstellung der Roboter wird ein 3D-Modell des Roboters angezeigt. Dieses 3D-Modell wird im Gegensatz zu den Gebäudemodellen im \ac{OBJ}-Format geladen und in der SimpleMeshLayer angezeigt. Mit der ScenegraphLayer gibt es bei der Anzeige der Roboter verschiedene Probleme, wodurch die SimpleMeshLayer brauchbarer ist. Um die Position der Roboter in Echtzeit anzuzeigen, soll der Übergang der Roboterpositionen animiert werden. Das ließ sich vermutlich wegen eines Bugs mit der ScenegraphLayer nicht umsetzen, obwohl es laut der Dokumentation möglich sein sollte. Außerdem gab es Probleme mit der erneuten Initialisierung der Layer, nachdem diese entfernt wurde. So werden die Roboter nicht angezeigt, nachdem man in ein anderes Stockwerk und dann wieder zurückwechselt. Da die SimpleMeshLayer wie bereits erwähnt nicht die Einbindung der Materialdatei des \ac{OBJ}-Formats erlaubt, werden die Roboter einfarbig angezeigt. Dadurch stechen die Roboter sogar besser heraus und sind somit auf der Karte leichter auffindbar. Mit der SimpleMeshLayer lassen sich zwar die Positionsänderungen, allerdings nicht die Rotationsänderungen der Roboter animieren. Daher ist diese Lösung auch nicht perfekt.
+
+Für die Anzeige der verschiedenen Standorte - Lieferpunkte, Ausgabepunkte und Ladestationen - wird die IconLayer eingesetzt. Diese erlaubt die Anzeige verschiedener Bilder in einer Ebene, wodurch alle Standorte mit einer Layer-Instanz angezeigt werden können. 
+% TODO Quelle IconLayer Doku
+Die Icons sind im \ac{SVG}-Format gespeichert und werden dann als eine Data-URL in die IconLayer eingebunden.
+% TODO eventuell Quellcode für Umwandlung hinzufügen?
+% TODO erwähnen dass ein Icon über ausgewähltem Roboter angezeigt wird.
+% TODO erwähnen dass Icons anklickbar sind.
+
+Die Pfade und virtuellen Wände werden über die PathLayer angezeigt. Diese erlaubt die Darstellung von Pfaden in unterschiedlichen Farben, wodurch die Pfade durch unterschiedliche Farben von den virtuellen Wänden differenziert werden können.
+% TODO Quelle PathLayer Doku
+So reicht eine Layer-Instanz aus, um die beiden anzuzeigen.
+% TODO Falls Virtuelle Wände mit Dashes angezeigt werden => Zwei Ebenen; Falls nicht => Eine Ebene
+
+\paragraph{Datenstrukturen}
+
+
 
 \newpage
 \subsection{Evaluierung des Prototyps}
