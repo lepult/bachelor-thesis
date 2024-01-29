@@ -42,13 +42,12 @@ Außerdem ist für die Layers das Backface Culling aktiviert, damit die Rücksei
 Dadurch werden die von der Kamera abgewandten Zimmerdecken und Wände durchsichtig, sodass der Nutzer den Inhalt der Räume von außerhalb sehen kann.
 % TODO Erwähnen falls 3D-Modelle gecached werden
 
-Für die Darstellung der Roboter wird ein 3D-Modell des Roboters angezeigt. Dieses 3D-Modell wird im Gegensatz zu den Gebäudemodellen im \ac{OBJ}-Format geladen und in der SimpleMeshLayer angezeigt. Mit der ScenegraphLayer gibt es bei der Anzeige der Roboter verschiedene Probleme, wodurch die SimpleMeshLayer brauchbarer ist. Um die Position der Roboter in Echtzeit anzuzeigen, soll der Übergang der Roboterpositionen animiert werden. Das ließ sich vermutlich wegen eines Bugs mit der ScenegraphLayer nicht umsetzen, obwohl es laut der Dokumentation möglich sein sollte. Außerdem gab es Probleme mit der erneuten Initialisierung der Layer, nachdem diese entfernt wurde. So werden die Roboter nicht angezeigt, nachdem man in ein anderes Stockwerk und dann wieder zurückwechselt. Da die SimpleMeshLayer wie bereits erwähnt nicht die Einbindung der Materialdatei des \ac{OBJ}-Formats erlaubt, werden die Roboter einfarbig angezeigt. Dadurch stechen die Roboter sogar besser heraus und sind somit auf der Karte leichter auffindbar. Mit der SimpleMeshLayer lassen sich zwar die Positionsänderungen, allerdings nicht die Rotationsänderungen der Roboter animieren. Daher ist diese Lösung auch nicht perfekt.
+Für die Darstellung der Roboter wird ein 3D-Modell des Roboters angezeigt. Dieses 3D-Modell wird im Gegensatz zu den Gebäudemodellen im \ac{OBJ}-Format geladen und in der SimpleMeshLayer angezeigt. Mit der ScenegraphLayer gibt es bei der Anzeige der Roboter verschiedene Probleme, wodurch die SimpleMeshLayer brauchbarer ist. Um die Position der Roboter in Echtzeit anzuzeigen, soll der Übergang der Roboterpositionen animiert werden. Das lässt sich vermutlich wegen eines Bugs mit der ScenegraphLayer nicht umsetzen, obwohl es laut der Dokumentation möglich sein sollte. Außerdem gab es Probleme mit der erneuten Initialisierung der Layer, nachdem diese entfernt wurde. So werden die Roboter nicht angezeigt, nachdem man in ein anderes Stockwerk und dann wieder zurückwechselt. Da die SimpleMeshLayer wie bereits erwähnt nicht die Einbindung der Materialdatei des \ac{OBJ}-Formats erlaubt, werden die Roboter einfarbig angezeigt. Dadurch stechen die Roboter sogar besser heraus und sind somit auf der Karte leichter auffindbar. Mit der SimpleMeshLayer lassen sich zwar die Positionsänderungen, allerdings nicht die Rotationsänderungen der Roboter animieren. Daher ist diese Lösung auch nicht perfekt.
 
 Für die Anzeige der verschiedenen Standorte - Lieferpunkte, Ausgabepunkte und Ladestationen - wird die IconLayer eingesetzt. Diese erlaubt die Anzeige verschiedener Bilder in einer Ebene, wodurch alle Standorte mit einer Layer-Instanz angezeigt werden können. 
 % TODO Quelle IconLayer Doku
 Die Icons sind im \ac{SVG}-Format gespeichert und werden dann als eine Data-URL in die IconLayer eingebunden.
 % TODO eventuell Quellcode für Umwandlung hinzufügen?
-% TODO erwähnen dass ein Icon über ausgewähltem Roboter angezeigt wird.
 % TODO erwähnen dass Icons anklickbar sind.
 
 Die Pfade und virtuellen Wände werden über die PathLayer angezeigt. Diese erlaubt die Darstellung von Pfaden in unterschiedlichen Farben, wodurch die Pfade durch unterschiedliche Farben von den virtuellen Wänden differenziert werden können.
@@ -56,9 +55,9 @@ Die Pfade und virtuellen Wände werden über die PathLayer angezeigt. Diese erla
 So reicht eine Layer-Instanz aus, um die beiden anzuzeigen.
 % TODO Falls Virtuelle Wände mit Dashes angezeigt werden => Zwei Ebenen; Falls nicht => Eine Ebene
 
+Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Diese Informationen werden zentral im Redux-Store aktualisiert, so dass die Änderungen über entsprechende Selektoren in Echzeit sichtbar gemacht werden können. Die Positonsänderungen der Roboter werden mithilfe des transitions Attribute der SimpleMeshLayer animiert. Wie bereits erwähnt lässt sich hierbei zwar die Position, aber nicht die Rotation animieren. So entsteht der Eindruck, dass die Roboter fahren.
+
 \paragraph{Datenstrukturen}
-
-
 
 \newpage
 \subsection{Evaluierung des Prototyps}

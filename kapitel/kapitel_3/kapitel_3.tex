@@ -33,12 +33,14 @@ Da ein 3D-Modell mit einer passenden Texturierung eine bessere Übersichtlichkei
 
 Die \ac{glTF} Dateien die für den Prototyp aus Scaniverse exportiert wurden, sind für den Einsatz in der Webanwendung zu groß. So sind die Dateien zwischen 14 und 21 \ac{mB} groß. 
 % Genauer auf Dateigröße eingehen.
-Diese Dateigröße beeinflusst die Ladezeit beim Herunterladen der Daten vom Webserver und auch beim Rendern der 3D-Modelle negativ. Aus diesem Grund müssen die Dateien komprimiert werden. In Kontext dieser Arbeit wird hierfür OptimizeGLB eingesetzt. Das Werkzeug basiert auf gltf-transform. Insbesondere durch den Einsatz des WebP Bildformats für Texturen werden Dateien effektiv komprimiert. 
-% gltf-transform
+Diese Dateigröße beeinflusst die Ladezeit beim Herunterladen der Daten vom Webserver und auch beim Rendern der 3D-Modelle negativ. Aus diesem Grund müssen die Dateien komprimiert werden. In Kontext dieser Arbeit wird hierfür OptimizeGLB eingesetzt. Das Werkzeug basiert auf gltf-transform. Insbesondere durch den Einsatz des \ac{WebP} Bildformats für Texturen werden Dateien effektiv komprimiert. 
+% gltf-transform Quelle
 % OptimizeGLB Quelle
-So sind die komprimierten Dateien 330 und 550 KB groß was einer Kompression von über 90\% entspricht.
+So sind die komprimierten Dateien 330 und 550 \ac{kB} groß was einer Kompression von über 90\% entspricht.
 % Genauer auf die genaue Kompression eingehen. Vllt Tabelle und/oder Schaubild erstellen.
-Die Qualität der komprimierten 3D-Modelle ist erkennbar geringer, reicht für den Zweck des Prototyp aber trotzdem aus, da größere Merkmale weiter erkennbar sind und somit die Übersichtlichkeit weiter garantiert wird.
+Die Qualität der komprimierten 3D-Modelle ist erkennbar geringer, reicht für den Zweck des Prototyp aber trotzdem aus, da größere Merkmale weiter erkennbar sind und somit die Übersichtlichkeit weiter garantiert wird. Die Einbindung des \ac{WebP} Bildformats wird im Webbrowser Safari noch nicht unterstützt. 
+% Quelle für Support
+Für den Prototyp ist das nebensächlich. Da die unkomprimierten 3D-Modelle für Mobilgeräte durch die großen Texturen zu komplex sind, wäre ein möglicher Workaround das anzeigen der untexturierten \ac{OBJ} Modelle.
 
 \subsection{Synchronisierung des Gebäudemodells und der Roboterdaten}
 Im Prototyp sollen die Roboterdaten in den 3D-Modellen integriert dargestellt werden. Die Roboterdaten und 3D-Modelle haben den gleichen Maßstab, die Positionen und Rotationen der Datensätze stimmen allerdings nicht miteinander überein. Der Grund hierfür ist, dass zur Generierung der Datensätze unterschiedliche Scanning-Methoden eingesetzt werden. Auch die Positionen der 3D-Modelle stimmen nicht miteinander überein, da beim Scannen an verschiedenen Ausganspunkten angefangen wurde.
