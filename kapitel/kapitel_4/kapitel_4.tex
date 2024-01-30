@@ -49,13 +49,15 @@ Für die Anzeige der verschiedenen Standorte - Lieferpunkte, Ausgabepunkte und L
 Die Icons sind im \ac{SVG}-Format gespeichert und werden dann als eine Data-URL in die IconLayer eingebunden.
 % TODO eventuell Quellcode für Umwandlung hinzufügen?
 % TODO erwähnen dass Icons anklickbar sind.
+Klickt man auf einen Roboter, dann wird der Status des Roboters über ein Icon angezeigt. Außerdem wird, falls der Roboter unterwegs ist, die Route des Roboters angezeigt. 
+% TODO Je nachdem wie Icons letztendlich dargestellt werden (versch. icons oder versch. farben) ergänzen
 
 Die Pfade und virtuellen Wände werden über die PathLayer angezeigt. Diese erlaubt die Darstellung von Pfaden in unterschiedlichen Farben, wodurch die Pfade durch unterschiedliche Farben von den virtuellen Wänden differenziert werden können.
 % TODO Quelle PathLayer Doku
 So reicht eine Layer-Instanz aus, um die beiden anzuzeigen.
 % TODO Falls Virtuelle Wände mit Dashes angezeigt werden => Zwei Ebenen; Falls nicht => Eine Ebene
 
-Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Diese Informationen werden zentral im Redux-Store aktualisiert, so dass die Änderungen über entsprechende Selektoren in Echzeit sichtbar gemacht werden können. Die Positonsänderungen der Roboter werden mithilfe des transitions Attribute der SimpleMeshLayer animiert. Wie bereits erwähnt lässt sich hierbei zwar die Position, aber nicht die Rotation animieren. So entsteht der Eindruck, dass die Roboter fahren.
+Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Diese Informationen werden zentral im Redux-Store aktualisiert, so die Informationen in der Anwendung in Echzeit aktualisiert werden können. Die Positonsänderungen der Roboter werden mithilfe des transitions Attribute der SimpleMeshLayer animiert. So entsteht der Eindruck, dass die Roboter fahren. Wie bereits erwähnt lässt sich hierbei allerdings nur die Position, aber nicht die Rotation animieren. 
 
 \paragraph{Datenstrukturen}
 
