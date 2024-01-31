@@ -35,31 +35,56 @@ Da sich die Roboterdaten und 3D-Modelle denselben Maßstab teilen müssen diese 
 \subsubsection{Übersicht}
 In der Übersicht werden die Roboterdaten in Kombination mit den Gebäudemodellen mithilfe von \deckgl{}  angezeigt. Hierfür werden verschiedene \deckgl{}-Layers eingesetzt.
 
-Die Gebäudemodelle werden aus bereits erläuterten Gründen im \ac{glTF}-Format geladen und in der ScenegraphLayer angezeigt. Da \deckgl{} für die Visualisierung großer Datenmengen ausgelegt ist, kann eine Instanz der Scenegraph-Layer nur dasselbe 3D-Modell mehrmals anzeigen. Aus diesem Grund wird für jedes 3D-Modell eine eigene Instanz der Scenegraph-Layer angelegt.
+\paragraph{Gebäudemodelle}
+% TODO Beschreiben von wo die 3D-Modelle geladen werden (chayns.space?)
+Die Gebäudemodelle werden aus bereits erläuterten Gründen im \ac{glTF}-Format geladen und in der ScenegraphLayer angezeigt. Die ScenegraphLayer ist dafür ausgelegt, ein bestimmtes 3D-Modell an verschiedenen Positionen anzuzeigen. Aus diesem Grund muss für jedes 3D-Modell eine eigene Instanz der ScenegraphLayer erzeugt werden. 
 % TODO Quelle Scenegraph Layer Doku
-Außerdem ist für die Layers das Backface Culling aktiviert, damit die Rückseite der Polygone durchsichtig ist.
+Hierdurch sind keine negativen Auswirkungen auf die Performance zu erwarten, da \deckgl{} auf die Nutzung vieler Ebenen ausgelegt ist.
+% TODO Quelle deckgl zu Layers
+Für die ScenegraphLayers ist das Backface Culling aktiviert.
+Dadurch werden wird die Rückseite der Polygone, und somit von der Kamera abgewandte Zimmerdecken und Wände durchsichtig, sodass der Nutzer von außen in die Räume hinein sehen kann. 
 % TODO Quelle Backface Culling
-Dadurch werden die von der Kamera abgewandten Zimmerdecken und Wände durchsichtig, sodass der Nutzer den Inhalt der Räume von außerhalb sehen kann.
+Außerdem ist für die ScenegraphLayers das \ac{PBR} Lighting aktiviert. \ac{PBR} ist bestimmt die Lichtverhältnisse, abhängig des Materials eines 3D-Modells. Hierdurch wird eine bessere Qualität erreicht.
 % TODO Erwähnen falls 3D-Modelle gecached werden
 
-Für die Darstellung der Roboter wird ein 3D-Modell des Roboters angezeigt. Dieses 3D-Modell wird im Gegensatz zu den Gebäudemodellen im \ac{OBJ}-Format geladen und in der SimpleMeshLayer angezeigt. Mit der ScenegraphLayer gibt es bei der Anzeige der Roboter verschiedene Probleme, wodurch die SimpleMeshLayer brauchbarer ist. Um die Position der Roboter in Echtzeit anzuzeigen, soll der Übergang der Roboterpositionen animiert werden. Das lässt sich vermutlich wegen eines Bugs mit der ScenegraphLayer nicht umsetzen, obwohl es laut der Dokumentation möglich sein sollte. Außerdem gab es Probleme mit der erneuten Initialisierung der Layer, nachdem diese entfernt wurde. So werden die Roboter nicht angezeigt, nachdem man in ein anderes Stockwerk und dann wieder zurückwechselt. Da die SimpleMeshLayer wie bereits erwähnt nicht die Einbindung der Materialdatei des \ac{OBJ}-Formats erlaubt, werden die Roboter einfarbig angezeigt. Dadurch stechen die Roboter sogar besser heraus und sind somit auf der Karte leichter auffindbar. Mit der SimpleMeshLayer lassen sich zwar die Positionsänderungen, allerdings nicht die Rotationsänderungen der Roboter animieren. Daher ist diese Lösung auch nicht perfekt.
+\paragraph{Roboterdaten}
+Im Gegensatz zu den Gebäuademodellen werden die Robotermodelle im \ac{OBJ}-Format und somit in der SimpleMeshLayer angezeigt. Mit der ScenegraphLayer gibt es verschiedene Probleme, wodurch die SimpleMeshLayer brauchbarer, aber auch nicht ideal, ist. So können die Positionen der Roboter in der ScenegraphLayer nicht animiert werden. Auch gibt es mit der ScenegraphLayer Probleme bei der erneuten Initialisierung einer Layer, wodurch die 3D-Modelle nicht erneut angezeigt werden könnne, nachdem diese ausgeblendet werden. Bei beiden Problemen handelt es sich wahrscheinlich um Bugs in \deckgl{}. Das Animieren der ScenegraphLayer sollte zumindest laut der Dokumentation möglich sein. 
+% Quelle ScenegraphLayer
+Wie bereits erwähnt, lässt sich die Materialdatei des \ac{OBJ} Formats nicht in der SimpleMeshLayer einbinden, weshalb die Roboter einfarbig angezeigt werden. Das ist nicht unbedingt ein Nachteil, denn so können die Roboter für den Nutzer besser sichtbar sein. Die Positionsänderungen der Roboter werden über die transitions Property animiert. Allerdings lässt sich die Rotation nicht animieren, was vermutlich auch auf einen Bug in \deckgl{} zurückzuführen ist.
 
-Für die Anzeige der verschiedenen Standorte - Lieferpunkte, Ausgabepunkte und Ladestationen - wird die IconLayer eingesetzt. Diese erlaubt die Anzeige verschiedener Bilder in einer Ebene, wodurch alle Standorte mit einer Layer-Instanz angezeigt werden können. 
-% TODO Quelle IconLayer Doku
-Die Icons sind im \ac{SVG}-Format gespeichert und werden dann als eine Data-URL in die IconLayer eingebunden.
+Über den Robotermodellen wird mithilfe der IconLayer außerdem der aktuelle Status der Roboter angezeigt. In einer IconLayer Instanz können im Gegensatz zur ScenegraphLayer verschiedene Icons angezeigt werden. 
+% Quelle IconLayer Doku
+Die Icons stammen aus Fontawesome und werden aus einem \ac{npm}-Paket als \ac{SVG} importiert. Da die IconLayer keine \ac{SVG}-Dateien anzeigen kann, werden die SVG-Dateien in Data-URLs umgewandelt.
+% Quelle IconLayer Doku.
 % TODO eventuell Quellcode für Umwandlung hinzufügen?
-% TODO erwähnen dass Icons anklickbar sind.
-Klickt man auf einen Roboter, dann wird der Status des Roboters über ein Icon angezeigt. Außerdem wird, falls der Roboter unterwegs ist, die Route des Roboters angezeigt. 
-% TODO Je nachdem wie Icons letztendlich dargestellt werden (versch. icons oder versch. farben) ergänzen
+Wurde ein Roboter ausgewählt und hat dieser einen Lieferauftrag, dann wird der Zielstandort farbig markiert.
 
-Die Pfade und virtuellen Wände werden über die PathLayer angezeigt. Diese erlaubt die Darstellung von Pfaden in unterschiedlichen Farben, wodurch die Pfade durch unterschiedliche Farben von den virtuellen Wänden differenziert werden können.
+Für die Roboter gibt es außerdem Buttons, die unabhängig vom ausgewählten Stockwerk ausgewählt werden können. So können Roboter ohne großes Suchen gefunden werden.
+
+Die verschiedenen Standorte - Lieferpunkte, Ausgabepunkte und Ladestationen - werden über die IconLayer angezeigt. Wie bei den Roboter-Zuständen werden hierfür verschiedene Fontawesome-Icons genutzt. Die Pfade und virtuellen Wände werden über die PathLayer angezeigt. Diese können durch unterschiedliche Farben voneinander differenziert werden. 
 % TODO Quelle PathLayer Doku
-So reicht eine Layer-Instanz aus, um die beiden anzuzeigen.
+Hier reicht eine PathLayer-Instanz aus, um diese anzuzeigen.
 % TODO Falls Virtuelle Wände mit Dashes angezeigt werden => Zwei Ebenen; Falls nicht => Eine Ebene
 
-Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Diese Informationen werden zentral im Redux-Store aktualisiert, so die Informationen in der Anwendung in Echzeit aktualisiert werden können. Die Positonsänderungen der Roboter werden mithilfe des transitions Attribute der SimpleMeshLayer animiert. So entsteht der Eindruck, dass die Roboter fahren. Wie bereits erwähnt lässt sich hierbei allerdings nur die Position, aber nicht die Rotation animieren. 
+\paragraph{Echtzeit-Aktualisierung}
+% TODO Websocket erwähnen
+Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Diese Informationen werden zentral im Redux-Store aktualisiert, sodass die aktualisierten Informationen direkt dem Nutzer angezeigt werden können. Damit die aktualisierten Informationen in den Ebenen angezeigt werden, wird die updateTriggers Property in diesen gesetzt.
 
-\paragraph{Datenstrukturen}
+Die Positonsänderungen der Roboter werden mithilfe des transitions Attribute der SimpleMeshLayer animiert. So entsteht der Eindruck, dass die Roboter fahren. Wie bereits erwähnt lässt sich hierbei allerdings nur die Position, aber nicht die Rotation animieren.
+
+\paragraph{Interaktion}
+Die Roboter, sowie die Standorte sind, mithilfe der onClick Property der entsprechenden Ebene, auswählbar. So werden ausgewählte Standorte und Roboter verfärbt angezeigt. Außerdem erscheint ein Button über den sich weitere Informationen wie beispielsweise die Akkuladung bei Robotern und der Name bei Standorten anzeigen lässt. Es gibt zudem die Möglichkeit einem Roboter zu Folgen. Die Kamera wird hierfür mithilfe des FlyToInterpolators zu dem Roboter bewegt. Bei Aktualisierung der Roboterposition wird die Kameraposition mithilfe der transitionDuration Property animiert.
+
+Über Buttons kann zwischen den verschiedenen Stockwerken navigiert werden. 
+
+\subsubsection{Steuerung}
+Es gibt drei verschiedene Aktionen zum Steuern der Roboter: Lieferauftrag, Laden und Abbrechen. Mit dem Laden und Abbrechen wird der aktuelle Lieferauftrag abgebrochen, worauf der Nutzer auch hingewiesen wird. Für beide Aktionen gibt es jeweils einen Button, der klickbar ist, sobald ein Roboter ausgewählt wurde. Für das Einstellen eines Lieferauftrags muss ein Ziel und ein Roboter ausgewählt werden. Hierfür gibt es zum einen Inputs, mit denen nach beidem gesucht werden kann. Auch lassen sich Ziel und Roboter mit der Auswahl über die Karte festlegen. Die Roboter können zudem über ihre Buttons ausgewählt werden.
+
+\subsubsection{Datenstrukturen}
+
+\subsubsection{Deployment}
+
+Die Webanwendung wird mithilfe der actions-gh-pages GitHub Action auf GitHub Pages veröffentlicht.
 
 \newpage
 \subsection{Evaluierung des Prototyps}
