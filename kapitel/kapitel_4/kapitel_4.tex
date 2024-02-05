@@ -1,91 +1,108 @@
 \newpage
-\section{Implementierung}
+\section{Umsetzung}
 Im Folgenden wird die Implementierung, sowie die Evaluierung des Prototyps beschrieben.
 
 Fehlender-Text
 
-\subsection{Implementierung des Prototyps}
+\subsection{Mockup}
+
+Für den Prototyp wurden Mockups skizziert an denen sich während der Implementierung orientiert werden konnte. Diese Mockups wurden zunächst auf Papier niedergeschrieben. Für die folgende Beschreibung wurden die Mockups mithilfe von Figma digitalisiert. Es gibt jeweils ein Mockup die Übersicht, Steuerung und Verwaltung.
+% Figma Quelle
+
+In der Übersicht werden die Gebäudemodelle in Kombination mit den Roboterdaten angezeigt. So werden die verschiedene Standorte mithilfe von Icons markiert, die Roboterpfade werden über Linien dargestellt und die Roboterpositionen werden mithilfe von 3D-Modellen der Roboter angezeigt. Es gibt Buttons mit denen zwischen den verschiedenen Stockwerken navigiert werden kann. Die Roboter können über das Anklicken des entsprechenden 3D-Modells und über Buttons markiert werden. Über einen weiteren Button kann dem markierten Roboter dann automatisch gefolgt werden. Über einen weiteren Button kann die Kameraposition wieder auf die Ausgansposition zurückgesetzt werden.
+
+Die Steuerung erweitert die Übersicht um weitere Funktionen. So kann man nach dem Markieren eines Roboters weitere Buttons nutzen. Über diese kann man Lieferrouten bestimmen, den Roboter zum Aufladen zur Ladestation schicken, oder den aktuellen Lieferauftrag abbrechen. Für die Routenbestimmung muss ein Ziel und ein Roboter ausgewählt werden. Auch können optional ein Ausgabepunkt und Zwischenstationen eingestellt werden. Um die Routenerstellung zu vereinfachen, können sowohl Roboter als auch Standorte über das Anklicken auf der Karte ausgewählt werden.
+
+In der Verwaltungsansicht gibt es eine Übersicht über die existierenden Roboter und Stockwerke. So gibt es zum einen eine Liste der existierenden Roboter, über die man Zugriff auf verschiedene Informationen hat. So sind hier unter anderem auch Informationen ersichtlich, auf die man wegen fehlender Berechtigungen in den anderen Anischten keinen Zugriff hat. Hierbei handelt es sich um Informationen wie die Systeminterne \ac{ID} und die Neustart-Zeit des Roboters. Über diese Liste lassen sich zusätzlich auch Einstellungen der Roboter ändern. So hat der Administrator hier beispielsweise die Möglichkeite den Namen, den Ausgabepunkt oder die Ladestation des Roboters zu ändern. Auch gibt es hier eine Vorschau der Gebäudekarte, in der die genaue Position des Roboters ersichtlich ist.
+
+In der Übersicht der Stockwerke gibt es für jedes Stockwerk eine Liste der Standorte. Außerdem gibt es wie bei den Robotern eine Vorschau der Karte. Zusätzlich gibt es ein Kontextmenü, über das in den Editiermodus des Stockwerks gewechselt werden kann. Da die Funktionalitäten und der Aufbau des Editiermodus stark von den verfügbaren Funktionen in \deckgl{} abhängig ist, wurde hierfür kein Mockup entwickelt. So existieren nur die Anforderungen, dass die Roboterdaten und 3D-Modelle durch Verschieben und Rotieren der Objekte synchronisiert werden können.  
+
+\subsection{Implementierung}
 % ggf. wird ein weiteres Prototyp-Backend erstellt in dem die Daten abgespeichert werden, die aktuell hard-coded sind. Falls dieses Backend erstellt wird, sollte das hier noch erwähnt werden
 Der Prototyp besteht aus dem Frontend, dass auf das \ac{BCB} zugreift, um die Roboterdaten anzufragen. Wie dieses mit den Robotern kommuniziert, wurde in einem vorherigen Kapitel erklärt. % Referenz auf dieses Kapitel?
 Bei dem Frontend handelt es sich um eine Webanwendung, die auf AWS gehostet ist und auf chayns-Seiten eingebunden werden kann. Für die Entwicklung wurde das Web-Framework React JS genutzt, welches auf HTML, CSS und Javascript basiert. Statt Javascript wurde Typescript eingesetzt, da es durch statische Typisierung eine frühzeitige Fehlererkennung und eine bessere Wartbarkeit des Codes bietet. Für eine bessere Übersichtlichkeit sind die Stylesheets in SCSS statt in CSS geschrieben. Die Zustandsinformationen der Anwendung werden zentral mithilfe von React Redux gespeichert. Die Grundstruktur des Frontend-Projekts wurde mihilfe des Shell Befehls "npx create-chayns-app" generiert. Mithilfe des npm-Pakets "chayns-toolkit" wurde die Kompilierung des Codes konfiguriert. Die eingesetzten GUI-Elemente wie Buttons und Aufklapper werden durch die Komponentenbibliothek "chayns-components" bereitgestellt. Die Typescript-Typen der Objekte, die aus dem \ac{BCB} empfangen werden, konnten aus einem anderen Frontend-Projekt kopiert werden.
 
-\subsubsection{Verwaltungsansicht}
-In der Verwaltungsansicht gibt es eine Übersicht über die existierenden Roboter und Stockwerke. So gibt es zum einen eine Liste der existierenden Roboter, über die man Zugriff auf verschiedene Informationen hat. So sind hier unter anderem auch Informationen ersichtlich, auf die man wegen fehlender Berechtigungen in den anderen Anischten keinen Zugriff hat. Hierbei handelt es sich um Informationen wie die Systeminterne \ac{ID} und die Neustart-Zeit des Roboters. Über diese Liste lassen sich zusätzlich auch Einstellungen der Roboter ändern. So hat der Administrator hier beispielsweise die Möglichkeite den Namen, den Ausgabepunkt oder die Homebase des Roboters zu ändern. Auch gibt es in dieser Ansicht eine mit \deckgl{} implementierte Vorschau der Karte, in der die Position des Roboters, sowie die Positionen der Roboterdaten ersichtlich sind. Da sich die Roboter in dieser Ansicht nicht steuern lassen, gibt es außerdem einen Button, über den zur Ansicht für Kellner navigiert wird.
-
-Bis auf die Vorschau der Karte ist die Verwaltungsansicht nicht besonders komplex. Da die Daten der Roboter und Stockwerke sauber strukturiert sind, lassen sich die Informationen mithilfe von React einfach mappen. Für die Vorschau der Karte wird die Kellneransicht wiederverwendet. Ein paar Features wie das Steuern der Roboter ist hierbei einfach deaktiviert.
-
-\paragraph{Import der 3D-Modelle}
-
-\paragraph{Synchronisierung des Gebäudemodells und der Roboterdaten}
-Im vorherigen Kapitel wurde erläutert, warum die Synchronisierung der Roboterdaten mit den 3D-Modellen manuell durchgeführt werden muss. Es wurde ein Editor implementiert und im Prototyp eingebunden, mit dem der Nutzer die 3D-Modelle in Relation zu den Roboterdaten positionieren und rotieren kann.
-
-Der Editor nutzt, so wie andere Teile der Anwendung \deckgl{} um 3D-Modelle und Roboterdaten dazustellen. In \deckgl{} bildet die x-Koordinate die Ost-West-Achse, die y-Koordinate die Nord-Süd-Achse und die z-Koordinate die Höhe ab. Mithilfe der in \deckgl{} integrierten Events onDragStart, onDrag und onDragEnd kann das angeklickte Objekt per Ziehen der Maus verschoben und rotiert werden. Beim Drücken der Steuerungstaste wird das angeklickte Modell verschoben und beim Drücken der Shift-Taste rotiert. Beim Drücken der Steuerungs- oder Shift-Taste werden die Objekte durchsichtigt um zu kommunizieren, dass diese nach dem anklicken bewegt werden können. Das Verschieben und Rotieren kann mithilfe der Tastenkombination Strg + Z rückgängig gemacht und mit Strg + Y wiederholt werden. Hierfür existieren zwei Stapel in denen vergangene Aktionen gespeichert werden.
-% Initiale Ansicht Position kann eingestellt werden
-
-Die 3D-Modelle können an der x- und y-Achse verschoben und an der y-Achse rotiert werde. Warum keine anderen Transformationen nötig sind, wird im folgenden Abschnitt erläutert.
-
-\paragraph{Unnötige Transformationen}
-
-Der Boden der 3D-Modelle liegt relativ konstant auf der z-Koordinate 0. Aufgrund der Ungenauigkeiten die durch den \ac{LiDAR}-Scan entstehen ist der Boden aber nicht vollständig eben. Da die Roboterdaten zweidimensional und somit keinen Höhenwert haben besteht die Gefahr, dass diese an manchen Stellen unter den 3D-Modellen verschwinden, wenn auf der z-Koordinate 0 positioniert werden. Aus diesem Grund werden die Roboterdaten stattdessen an der z-Koordinate 0,1 positioniert. Da der Boden bei allen 3D-Modellen an derselben z-Koordinate positioniert ist, müssen diese durch den Nutzer nicht weiter an der z-Achse verschoben werden.
-
-Im Vergleich zu den Roboterdaten sind die 3D-Modelle immer um 90° an der z-Achse und einen beliebigen Wert an der y-Achse rotiert. Die Rotation an der x-Achse ist bereits synchron. Die 3D-Modelle werden automatisch um -90° an der z-Achse rotiert und müssen vom Nutzer somit nur nach an der y-Achse rotiert werden.
-
-Da sich die Roboterdaten und 3D-Modelle denselben Maßstab teilen müssen diese durch den Nutzer nicht skaliert werden.
 
 \subsubsection{Übersicht}
-In der Übersicht werden die Roboterdaten in Kombination mit den Gebäudemodellen mithilfe von \deckgl{}  angezeigt. Hierfür werden verschiedene \deckgl{}-Layers eingesetzt.
+In der Übersicht werden die Roboterdaten in Kombination mit den Gebäudemodellen mithilfe von \deckgl{} angezeigt. Hierfür werden verschiedene \deckgl{}-Layers eingesetzt.
 
 \paragraph{Gebäudemodelle}
-% TODO Beschreiben von wo die 3D-Modelle geladen werden (chayns.space?)
-Die Gebäudemodelle werden aus bereits erläuterten Gründen im \ac{glTF}-Format geladen und in der ScenegraphLayer angezeigt. Die ScenegraphLayer ist dafür ausgelegt, ein bestimmtes 3D-Modell an verschiedenen Positionen anzuzeigen. Aus diesem Grund muss für jedes 3D-Modell eine eigene Instanz der ScenegraphLayer erzeugt werden. 
+Für den Prototyp sind die Referenzen auf die 3D-Modelle hartkodiert. Die hartkodierte Referenzen referenzieren hierbei auf den chayns.space in dem die Modelle abgespeichert sind. Die Gebäudemodelle werden aus bereits erläuterten Gründen im \ac{glTF}-Format geladen und in der ScenegraphLayer angezeigt. Die ScenegraphLayer ist dafür ausgelegt, ein bestimmtes 3D-Modell an verschiedenen Positionen anzuzeigen. Aus diesem Grund muss für jedes 3D-Modell eine eigene Instanz der ScenegraphLayer erzeugt werden. 
 % TODO Quelle Scenegraph Layer Doku
-Hierdurch sind keine negativen Auswirkungen auf die Performance zu erwarten, da \deckgl{} auf die Nutzung vieler Ebenen ausgelegt ist.
-% TODO Quelle deckgl zu Layers
-Für die ScenegraphLayers ist das Backface Culling aktiviert.
-Dadurch werden wird die Rückseite der Polygone, und somit von der Kamera abgewandte Zimmerdecken und Wände durchsichtig, sodass der Nutzer von außen in die Räume hinein sehen kann. 
+\deckgl{} ist für den Einsatz von über 100 Ebenen ausgelegt. Da nicht davon auszugehen ist, dass ein Stockwerk aus mehr als 10 3D-Modellen besteht, sind keine negativen Performance-Auswirkungen zu erwarten.
+% TODO Quelle deckgl zu Layers (https://deck.gl/docs/developer-guide/performance#number-of-layers)
+Für die Scenegraph-Layers ist das Backface Culling aktiviert. Dadurch werden die Rückseiten der Polygone, und somit die von der Kamera abgewandten Zimmerdecken und Wände durchsichtig, sodass der Nutzer von außen in die Räume hinein sehen kann. 
 % TODO Quelle Backface Culling
-Außerdem ist für die ScenegraphLayers das \ac{PBR} Lighting aktiviert. \ac{PBR} ist bestimmt die Lichtverhältnisse, abhängig des Materials eines 3D-Modells. Hierdurch wird eine bessere Qualität erreicht.
+% TODO Schaubild mit und ohne Backface Culling
+Außerdem ist für die ScenegraphLayers das \ac{PBR} Lighting aktiviert. \ac{PBR} bestimmt die Lichtverhältnisse, abhängig des Materials eines 3D-Modells. Hierdurch wird eine bessere Qualität erreicht.
 % TODO Erwähnen falls 3D-Modelle gecached werden
 
 \paragraph{Roboterdaten}
-Im Gegensatz zu den Gebäuademodellen werden die Robotermodelle im \ac{OBJ}-Format und somit in der SimpleMeshLayer angezeigt. Mit der ScenegraphLayer gibt es verschiedene Probleme, wodurch die SimpleMeshLayer brauchbarer, aber auch nicht ideal, ist. So können die Positionen der Roboter in der ScenegraphLayer nicht animiert werden. Auch gibt es mit der ScenegraphLayer Probleme bei der erneuten Initialisierung einer Layer, wodurch die 3D-Modelle nicht erneut angezeigt werden könnne, nachdem diese ausgeblendet werden. Bei beiden Problemen handelt es sich wahrscheinlich um Bugs in \deckgl{}. Das Animieren der ScenegraphLayer sollte zumindest laut der Dokumentation möglich sein. 
+Die Roboterdaten werden über verschiedene Endpunkte des \ac{BCB}s abgerufen. So gibt es einen Endpunkt für die Bezeichnungen der verschiedenen Standorte und einen Endpunkt für den Roboterstatus, Lieferautrag und die Roboterposition. Für die Positionen aller Standorte und der Roboterpfade gibt es keinen Endpunkt. Stattdessen können nur die Standorte und Pfade von Stockwerken angefragt werden, in denen sich Roboter zu dem Zeitpunkt befinden, da diese Daten direkt von den Robotern angefragt werden. Damit immer alle Daten aus allen Stockwerken abgerufen werden können, sind diese Daten im Prototyp für alle Stockwerke hartkodiert. Für eine potenzielle Live-Anwendung müssten diese Daten in der Datenbank des \ac{BCB}s gespeichert werden.
+
+Im Gegensatz zu den Gebäuademodellen werden die Robotermodelle im \ac{OBJ}-Format in der SimpleMeshLayer angezeigt. Mit der ScenegraphLayer gibt es verschiedene Probleme, wodurch die SimpleMeshLayer brauchbarer, aber auch nicht ideal, ist. So können die Positionen der Roboter in der ScenegraphLayer nicht animiert werden. Auch gibt es mit der ScenegraphLayer Probleme bei der erneuten Initialisierung einer Layer, wodurch die 3D-Modelle nicht erneut angezeigt werden können, nachdem diese ausgeblendet wurden. Bei beiden Problemen handelt es sich wahrscheinlich um Bugs in \deckgl{}. Das Animieren der ScenegraphLayer sollte zumindest laut der Dokumentation möglich sein. 
 % Quelle ScenegraphLayer
-Wie bereits erwähnt, lässt sich die Materialdatei des \ac{OBJ} Formats nicht in der SimpleMeshLayer einbinden, weshalb die Roboter einfarbig angezeigt werden. Das ist nicht unbedingt ein Nachteil, denn so können die Roboter für den Nutzer besser sichtbar sein. Die Positionsänderungen der Roboter werden über die transitions Property animiert. Allerdings lässt sich die Rotation nicht animieren, was vermutlich auch auf einen Bug in \deckgl{} zurückzuführen ist.
+Wie bereits erwähnt, lässt sich die Materialdatei des \ac{OBJ} Formats nicht in der SimpleMeshLayer einbinden, weshalb die Roboter einfarbig angezeigt werden. Das ist nicht unbedingt ein Nachteil, denn so können die Roboter mithilfe einer herausstechenden Farbe für den Nutzer besser sichtbarer gemacht werden. Die Positionsänderungen der Roboter werden über die transitions Property animiert. Allerdings lässt sich die Rotation nicht animieren, was vermutlich auch auf einen Bug in \deckgl{} zurückzuführen ist.
 
 Über den Robotermodellen wird mithilfe der IconLayer außerdem der aktuelle Status der Roboter angezeigt. In einer IconLayer Instanz können im Gegensatz zur ScenegraphLayer verschiedene Icons angezeigt werden. 
 % Quelle IconLayer Doku
 Die Icons stammen aus Fontawesome und werden aus einem \ac{npm}-Paket als \ac{SVG} importiert. Da die IconLayer keine \ac{SVG}-Dateien anzeigen kann, werden die SVG-Dateien in Data-URLs umgewandelt.
 % Quelle IconLayer Doku.
 % TODO eventuell Quellcode für Umwandlung hinzufügen?
-Wurde ein Roboter ausgewählt und hat dieser einen Lieferauftrag, dann wird der Zielstandort farbig markiert.
 
-Für die Roboter gibt es außerdem Buttons, die unabhängig vom ausgewählten Stockwerk ausgewählt werden können. So können Roboter ohne großes Suchen gefunden werden.
-
-Die verschiedenen Standorte - Lieferpunkte, Ausgabepunkte und Ladestationen - werden über die IconLayer angezeigt. Wie bei den Roboter-Zuständen werden hierfür verschiedene Fontawesome-Icons genutzt. Die Pfade und virtuellen Wände werden über die PathLayer angezeigt. Diese können durch unterschiedliche Farben voneinander differenziert werden. 
+Die verschiedenen Standorte - Lieferpunkte, Ausgabepunkte und Ladestationen - werden über die IconLayer angezeigt. Wie bei den Roboter-Zuständen werden hierfür verschiedene Fontawesome-Icons genutzt. Wurde ein Roboter ausgewählt und hat dieser einen Lieferauftrag, dann wird der Zielstandort farbig markiert. Die Pfade und virtuellen Wände werden über die PathLayer angezeigt. Diese können durch unterschiedliche Farben voneinander differenziert werden. 
 % TODO Quelle PathLayer Doku
-Hier reicht eine PathLayer-Instanz aus, um diese anzuzeigen.
+Es reicht eine PathLayer-Instanz aus, um diese anzuzeigen.
 % TODO Falls Virtuelle Wände mit Dashes angezeigt werden => Zwei Ebenen; Falls nicht => Eine Ebene
 
 \paragraph{Echtzeit-Aktualisierung}
 % TODO Websocket erwähnen
-Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Diese Informationen werden zentral im Redux-Store aktualisiert, sodass die aktualisierten Informationen direkt dem Nutzer angezeigt werden können. Damit die aktualisierten Informationen in den Ebenen angezeigt werden, wird die updateTriggers Property in diesen gesetzt.
-
-Die Positonsänderungen der Roboter werden mithilfe des transitions Attribute der SimpleMeshLayer animiert. So entsteht der Eindruck, dass die Roboter fahren. Wie bereits erwähnt lässt sich hierbei allerdings nur die Position, aber nicht die Rotation animieren.
+Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Diese Informationen werden zentral im Redux-Store aktualisiert, sodass die aktualisierten Informationen dem Nutzer direkt angezeigt werden können. Damit aktualisierte Informationen in den \deckgl{}-Layers angezeigt werden, wird in diesen die updateTriggers Property gesetzt.
+% TODO updateTriggers Doku
+Die Positonsänderungen der Roboter werden mithilfe des transitions Attribute der SimpleMeshLayer und der IconLayer animiert. So entsteht der Eindruck, dass die Roboter zusammen mit den Status-Icons fahren. Wie bereits erwähnt lässt sich für die Robotermodelle allerdings nur die Position, aber nicht die Rotation animieren.
 
 \paragraph{Interaktion}
-Die Roboter, sowie die Standorte sind, mithilfe der onClick Property der entsprechenden Ebene, auswählbar. So werden ausgewählte Standorte und Roboter verfärbt angezeigt. Außerdem erscheint ein Button über den sich weitere Informationen wie beispielsweise die Akkuladung bei Robotern und der Name bei Standorten anzeigen lässt. Es gibt zudem die Möglichkeit einem Roboter zu Folgen. Die Kamera wird hierfür mithilfe des FlyToInterpolators zu dem Roboter bewegt. Bei Aktualisierung der Roboterposition wird die Kameraposition mithilfe der transitionDuration Property animiert.
+Die Roboter, sowie die Standorte sind, mithilfe der onClick Property der entsprechenden Ebene, auswählbar. So werden ausgewählte Standorte und Roboter verfärbt angezeigt. Außerdem erscheint ein Button über den sich weitere Informationen wie beispielsweise die Akkuladung bei Robotern und der Name bei Standorten anzeigen lässt. Es gibt zudem die Möglichkeit einem Roboter zu Folgen. Die Kamera wird hierfür mithilfe des FlyToInterpolators zu dem Roboter bewegt. 
+% FlyToInterpolators Quelle
+Bei Aktualisierung der Roboterposition wird die Kameraposition mithilfe der transitionDuration Property animiert.
+% transitionDuration Quelle
 
-Über Buttons kann zwischen den verschiedenen Stockwerken navigiert werden. 
 
 \subsubsection{Steuerung}
-Es gibt drei verschiedene Aktionen zum Steuern der Roboter: Lieferauftrag, Laden und Abbrechen. Mit dem Laden und Abbrechen wird der aktuelle Lieferauftrag abgebrochen, worauf der Nutzer auch hingewiesen wird. Für beide Aktionen gibt es jeweils einen Button, der klickbar ist, sobald ein Roboter ausgewählt wurde. Für das Einstellen eines Lieferauftrags muss ein Ziel und ein Roboter ausgewählt werden. Hierfür gibt es zum einen Inputs, mit denen nach beidem gesucht werden kann. Auch lassen sich Ziel und Roboter mit der Auswahl über die Karte festlegen. Die Roboter können zudem über ihre Buttons ausgewählt werden.
+Es gibt drei verschiedene Aktionen zum Steuern der Roboter: Lieferauftrag, Laden und Abbrechen. Mit dem Laden und Abbrechen wird der aktuelle Lieferauftrag abgebrochen, worauf der Nutzer auch hingewiesen wird. Für beide Aktionen gibt es jeweils einen Button, der klickbar ist, sobald ein Roboter ausgewählt wurde. Zum entgültigen Ausführen der drei Aktionen wird der entsprechende Endpunkt im \ac{BCB} aufgerufen. Für das Einstellen eines Lieferauftrags muss ein Ziel und ein Roboter, sowie optional ein Ausgabepunkt und Zwischenstationen ausgewählt werden. Hierfür gibt es zum einen Inputs, mit denen nach Standorten und Robotern gesucht werden kann. Bei den Inputs handelt es sich um die PersonFinder-Komponente der chayns-components. Auch lassen sich Standorte und Roboter mit der Auswahl über die Karte festlegen. Die Roboter können zudem über ihre Buttons ausgewählt werden. Bei der Auswahl der entsprechenden Standorte sind ungültige Standorte auf der Karte ausgegraut und nicht auswählbar. So kann weder als Ausgabepunkt noch als Zielpunkt eine Tür oder ein Fahrstuhl angegeben werden. Als Ausgabepunkt kann währneddessen beispielsweise kein Zielpunkt ausgewählt werden.
 
-\subsubsection{Datenstrukturen}
 
-\subsubsection{Deployment}
+\subsubsection{Verwaltungsansicht}
+Die Verwaltungsansicht wurde orientiert am Mockup entwickelt. Da die Daten der Roboter und Stockwerke sauber strukturiert sind und dadurch leicht mithilfe von React gemappt werden können, ist diese Ansicht nicht besonders komplex.
 
-Die Webanwendung wird mithilfe der actions-gh-pages GitHub Action auf GitHub Pages veröffentlicht.
+In der Roboterliste werden im Gegensatz zum Mockup mehr Statusinformationen der Roboter angezeigt. Auch können mehr Einstellungen der Roboter geändert werden. Da die Übersicht über die verschiedenen Standorte auch über die Liste der Stockwerke ersichtlich ist und dadurch redundant ist, ist diese nicht in der Roboterliste vorhanden. Stattdessen gibt es einen Button, über den man vom Roboter zum entsprechenden Stockwerk in der Stockwerk-Liste navigieren kann.
 
-\newpage
+Die Stockwerkliste unterscheidet sich nur geringfügig vom Mockup. So werden die Standorte im Gegensatz zum Mockup gruppiert nach der Art des Standorts aufgelistet. Der Grund hierfür ist, dass die Art des Standortes nicht aus dem Namen ersichtlich sein muss. Entsprechend gibt es eine bessere Übersichtlichkeit über die verschiedenen Standorte als im Mockup.
+
+In beiden Listen gibt es eine Vorschau des entsprechenden Stockwerks, um die genaue Position des Roboters oder die genauen Positionen der Standorte zu zeigen. Diese ist im Mockup automatisch geöffnet. Das ist ein Problem, da die Vorschau - aufgrund des Verhaltens der genutzten Aufklapper-Komponente - beim Öffnen des Aufklappers initialisiert wird. Die Initialisierung der \deckgl{}-Karte ist rechnerisch aufwändig und verursacht dadurch beim ersten Öffnen des Aufklappers starke Ruckler. Um dieses Verhalten zu verbessern wird stattdessen ein Button angezeigt, über den die Karte manuell initialisiert werden kann. Dadurch gibt es die Ruckler erst beim Klicken des Buttons und nicht beim Öffnen des Aufklappers, was weniger störend ist.
+
+Da die Vorschau sowohl in der Roboterliste als auch in der Stockwerkliste eine reduzierte Funktionalität hat gibt es hier einen Button, mit dem in die Nutzeransicht navigiert werden kann, in der dann das entsprechende Stockwerk direkt ausgewählt ist.
+
+\subsubsection{Editiermodus}
+Wie bereits erwähnt müssen die Roboterdaten mit den 3D-Modellen manuell synchronisiert werden. Hierfür wurde ein Editiermodus entwickelt, in dem diese Synchronisierung durchgeführt werden kann. Hierbei handelt es sich um eine \deckgl{} Karteninstanz mit den entsprechenden Editiermöglichkeiten. Diese wird wie die Nutzeransicht im Vollbildmodus angezeigt. Da auf den Einsatz der Tasten CTRL und SHIFT zurückgegriffen wird, kann dieser Modus nicht an Mobilgeräten genutzt werden.
+% TODO folgendes irgendwo erwähnen: "In \deckgl{} bildet die x-Koordinate die Ost-West-Achse, die y-Koordinate die Nord-Süd-Achse und die z-Koordinate die Höhe ab."
+Während die Roboterdaten bereits im System existieren muss der Administrator die 3D-Modelle erst importieren. Hierfür gibt es einen einfachen Dateiinput der nur Dateien im \ac{glTF} Format erlaubt. Wie bereits erwähnt sind die 3D-Modelle im Prototyp hartkodiert. Entsprechend werden Änderungen sowie neu importierte 3D-Modelle nicht gespeichert und gehen verloren, wenn die Anwendung erneut geöffnet wird.
+Mithilfe der in \deckgl{} integrierten Events onDragStart, onDrag und onDragEnd kann das angeklickte Objekt per Ziehen der Maus verschoben und rotiert werden. So wird beim onDragStart Event geprüft, welches Modell ausgewählt ist und ob die CTRL oder SHIFT Tasten gedrückt sind. Außerdem werden noch weitere Informationen abgespeichert, die für das Verschieben oder Rotieren wichtig sind. Beim onDrag Event wird das ausgewählte Modell dann entweder verschoben oder rotiert, was davon abhängig ist, ob beim onDragStart Event STRG oder SHIFT gedrückt wurden. Das Verschieben und Rotieren kann mithilfe der Tastenkombination Strg + Z rückgängig gemacht und mit Strg + Y wiederholt werden. Hierfür wurden zwei Stapel implementiert. In dem einen werden die vergangenen Aktionen gespeichert. In dem anderen werden die rückgängig gemachten Aktionen gespeichert.
+% Initiale Ansicht Position kann eingestellt werden
+
+Der Boden der 3D-Modelle liegt relativ konstant auf der z-Koordinate 0. Aufgrund der Ungenauigkeiten die durch den \ac{LiDAR}-Scan entstehen ist der Boden aber nicht vollständig eben. Da die Roboterdaten zweidimensional und somit keinen Höhenwert haben besteht die Gefahr, dass diese an manchen Stellen unter den 3D-Modellen verschwinden, wenn auf der z-Koordinate 0 positioniert werden. Aus diesem Grund werden die Roboterdaten stattdessen an der z-Koordinate 0,1 positioniert. Da der Boden bei allen 3D-Modellen an derselben z-Koordinate positioniert ist, müssen diese durch den Nutzer nicht weiter an der z-Achse verschoben werden. Im Vergleich zu den Roboterdaten sind die 3D-Modelle immer um 90° an der z-Achse und einen beliebigen Wert an der y-Achse rotiert. Die Rotation an der x-Achse ist bereits synchron. Die 3D-Modelle werden automatisch um -90° an der z-Achse rotiert und müssen vom Nutzer somit nur nach an der y-Achse rotiert werden. Da sich die Roboterdaten und 3D-Modelle denselben Maßstab teilen braucht der Nutzer nicht die Möglichkeit diese zu skalieren.
+
+% TODO Maybe add this subsubsection: \subsubsection{Datenstrukturen}
+
+\subsection{Deployment}
+
+Die Webanwendung wird mithilfe der actions-gh-pages GitHub Action auf GitHub Pages veröffentlicht. So ist die Anwendung über die \ac{URL} "https://lepult.github.io/BotControl3D-Prototype/" erreichbar. Die Anwendung verwendet verschiedene Funktionen der chayns-api, wie beispielsweise das Anfordern eines Zugangstokens, ohne den bestimmte Funktionen des Backends nicht aufgerufen werden können. Aus diesem Grund funktioniert die Anwendung nur, wenn sie auf einer chayns Seite eingebunden ist. Der Zugriff auf die meisten Funktionen des Backends ist so eingeschränkt, dass diese nicht von beliebigen chayns Seiten aufgerufen können. Nur bestimmte GET-Endpunkte des Backends sind öffentlich zugänglich, sodass nur die Übersicht über die Roboter zugänglich ist.
+
 \subsection{Evaluierung des Prototyps}
-Fehlender-Text
+Die meisten definierten funktionalen Anforderungen konnten erfüllt werden. So handelt es sich bei dem Prototyp um eine responsive Webanwendung, die allerdings nicht auf allen Geräten vollständig funktioniert. So können die genutzten \ac{glTF}-Modelle nicht im Safari Browser angezeigt werden. Da es sich hierbei um eine Beschränkung des Safari-Browsers und nicht der Anwendung selbst handelt, die in Zukunft behoben werden könnte, ist das nebensächlich. Insbesondere weil die restlichen Funktionen des Prototyps trotzdem funktionieren. Während die Positionsänderungen der Roboter animiert werden, ist das bei den Rotationsänderungen aufgrund eines Bugs in \deckgl{} nicht der Fall. Aus diesem Grund ist die Anforderung, dass der Roboter fährt nur teilweise erfüllt. Die restlichen funktionalen Anforderungen sind vollständig erfüllt.
+
+
+
+% TODO Anforderungen an Benutzer Einschränkungen
+% TODO Anforderungen an Gebäudemodell Generierungs-Methode
+% TODO Analyse der nicht-funktionalen Anforderungen (vllt. mit Maßnahmen und Auswirkungen?)
