@@ -57,12 +57,22 @@ Es reicht eine PathLayer-Instanz aus, um diese anzuzeigen.
 
 \paragraph{Echtzeit-Aktualisierung}
 % TODO Websocket erwähnen
-Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Diese Informationen werden zentral im Redux-Store aktualisiert, sodass die aktualisierten Informationen dem Nutzer direkt angezeigt werden können. Damit aktualisierte Informationen in den \deckgl{}-Layers angezeigt werden, wird in diesen die updateTriggers Property gesetzt.
+Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer indirekten \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Hierfür wird der für chayns interne Websocket-Service genutzt. In der folgenden Abbildung ist die Struktur des Websocket-Services abgebildet. AKtualisiert ein Roboter seine Position, wird die entsprechende Information über \gls{MQTT} an das \ac{BCB} gesendet.
+% Passt das so? Funktioniert MQTT wie beschrieben?
+Das \ac{BCB} sendet daraufhin eine Nachricht an den Websocket-Service, der diese Information wiederum an alle Clients schickt, die mit diesem verbunden sind.
+% TODO Schaubild einfügen.
+
+Die über den Websocket-Service empfangenen aktualisieren Informationen werden zentral im Redux-Store aktualisiert, sodass die aktualisierten Informationen dem Nutzer direkt angezeigt werden können. Damit aktualisierte Informationen in den \deckgl{}-Layers angezeigt werden, wird in diesen die updateTriggers Property gesetzt.
 % TODO updateTriggers Doku
-Die Positonsänderungen der Roboter werden mithilfe des transitions Attribute der SimpleMeshLayer und der IconLayer animiert. So entsteht der Eindruck, dass die Roboter zusammen mit den Status-Icons fahren. Wie bereits erwähnt lässt sich für die Robotermodelle allerdings nur die Position, aber nicht die Rotation animieren.
+% TODO Auch erklären wie deck.gl die Layers updateded (shallow comparisson)
+Die Positonsänderungen der Roboter werden mithilfe des transitions Attributs der SimpleMeshLayer und der IconLayer animiert. So entsteht der Eindruck, dass die Roboter zusammen mit den Status-Icons fahren. Wie bereits erwähnt lässt sich für die Robotermodelle allerdings nur die Position und nicht die Rotation animieren.
 
 \paragraph{Interaktion}
-Die Roboter, sowie die Standorte sind, mithilfe der onClick Property der entsprechenden Ebene, auswählbar. So werden ausgewählte Standorte und Roboter verfärbt angezeigt. Außerdem erscheint ein Button über den sich weitere Informationen wie beispielsweise die Akkuladung bei Robotern und der Name bei Standorten anzeigen lässt. Es gibt zudem die Möglichkeit einem Roboter zu Folgen. Die Kamera wird hierfür mithilfe des FlyToInterpolators zu dem Roboter bewegt. 
+Die Roboter, sowie die Standorte sind, mithilfe der onClick Property der entsprechenden Ebene, auswählbar.
+% onClick Quelle
+So werden ausgewählte Standorte und Roboter verfärbt angezeigt. Außerdem erscheint ein Button über den sich weitere Informationen wie beispielsweise die Akkuladung bei Robotern und der Name bei Standorten anzeigen lässt. Schwebt die Maus über einem Standort oder Roboter, dann wird mithilfe der getTooltip Property ein Tooltip angezeigt, in dem der Name des entsprechenen Objekts steht.
+% getTooltip Quelle
+Es gibt zudem die Möglichkeit einem Roboter zu Folgen. Die Kamera wird hierfür mithilfe des FlyToInterpolators zu dem Roboter bewegt. 
 % FlyToInterpolators Quelle
 Bei Aktualisierung der Roboterposition wird die Kameraposition mithilfe der transitionDuration Property animiert.
 % transitionDuration Quelle
