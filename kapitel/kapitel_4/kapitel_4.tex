@@ -2,12 +2,18 @@
 \section{Umsetzung}
 Im Folgenden wird die Implementierung, sowie die Evaluierung des Prototyps beschrieben.
 
+Bei der Skizzierung der Mockups und auch später während der Implementierung wurde darauf geachtet eine gute Benutzerfreundlichkeit zu bieten. Hierfür wurde sich an den 1994 von Nielsen entwickelten 10 Usability Heuristics orientiert.
+% Quelle Nielsen https://www.nngroup.com/articles/ten-usability-heuristics/
+In der Evaluierung des Prototyps werden die Heuristics vorgestellt und es wird genauer geprüft wie gut diese eingehalten wurden.
+% Verweis auf Abschnitt
+
 Fehlender-Text
 
 \subsection{Mockup}
 
-Für den Prototyp wurden Mockups skizziert an denen sich während der Implementierung orientiert werden konnte. Diese Mockups wurden zunächst auf Papier niedergeschrieben. Für die folgende Beschreibung wurden die Mockups mithilfe von Figma digitalisiert. Es gibt jeweils ein Mockup die Übersicht, Steuerung und Verwaltung.
+Für den Prototyp wurden Mockups skizziert an denen sich während der Implementierung orientiert werden konnte. Diese Mockups wurden zunächst auf Papier niedergeschrieben. Für die folgende Beschreibung wurden die Mockups mithilfe von Figma digitalisiert.
 % Figma Quelle
+Es gibt jeweils ein Mockup für die Übersicht, Steuerung und Verwaltung. 
 
 In der Übersicht werden die Gebäudemodelle in Kombination mit den Roboterdaten angezeigt. So werden die verschiedene Standorte mithilfe von Icons markiert, die Roboterpfade werden über Linien dargestellt und die Roboterpositionen werden mithilfe von 3D-Modellen der Roboter angezeigt. Es gibt Buttons mit denen zwischen den verschiedenen Stockwerken navigiert werden kann. Die Roboter können über das Anklicken des entsprechenden 3D-Modells und über Buttons markiert werden. Über einen weiteren Button kann dem markierten Roboter dann automatisch gefolgt werden. Über einen weiteren Button kann die Kameraposition wieder auf die Ausgansposition zurückgesetzt werden.
 
@@ -116,8 +122,45 @@ Die Anwendung verwendet verschiedene Funktionen der chayns-api, wie beispielswei
 \subsection{Evaluierung des Prototyps}
 Die meisten definierten funktionalen Anforderungen konnten erfüllt werden. So handelt es sich bei dem Prototyp um eine responsive Webanwendung, die allerdings nicht auf allen Geräten vollständig funktioniert. So können die genutzten \ac{glTF}-Modelle nicht im Safari Browser angezeigt werden. Da es sich hierbei um eine Beschränkung des Safari-Browsers und nicht der Anwendung selbst handelt, die in Zukunft behoben werden könnte, ist das nebensächlich. Insbesondere weil die restlichen Funktionen des Prototyps trotzdem funktionieren. Während die Positionsänderungen der Roboter animiert werden, ist das bei den Rotationsänderungen aufgrund eines Bugs in \deckgl{} nicht der Fall. Aus diesem Grund ist die Anforderung, dass der Roboter fährt nur teilweise erfüllt. Die restlichen funktionalen Anforderungen sind vollständig erfüllt.
 
+\subsubsection{funktionale Anforderungen}
 % TODO Anforderungen an Benutzer Einschränkungen
 % TODO Anforderungen an Gebäudemodell Generierungs-Methode
+
+\subsubsection{Benutzerfreundlichkeit}
 % TODO Analyse der nicht-funktionalen Anforderungen
+
+\paragraph{Usability Heuristics}
+In der folgenden Abbildung werden die Usability Heuristics zusammengefasst. Im Folgenden werden diese basierend auf der Quelle erklärt.
+% Quelle Nielsen
+Bei der ersten Regel geht es darum, dass der Nutzer immer innerhalb einer angemssenen Zeispanne durch geeignete Rückmeldungen mitbekommt, was gerade passiert. Diese Regel ist durch verschiedene Features in der Übersicht und Steuerung erfüllt. Zum einen gibt es die schnellen Aktualisierungen des Roboterstandorts und -status über die \gls{Websocket}-Verbindung mit dem \ac{BCB}. Zum anderen werden Statusänderungen auch über die Farben der Buttons signalisiert. Auch gibt es Wait Cursor um Ladevorgänge anzuzeigen. In der Verwaltung werden Einstellungsänderungen direkt angezeigt.
+
+Die zweite Regel erwartet, dass der Nutzer die Sprache der Anwendung versteht und somit beispielsweise möglichst wenig Fachsprache verwendet wird. In der Steuerung und Verwaltung gibt es nur wenig Text, da vor allem Icons eigesetzt werden. In der Verwaltungsansicht werden möglicherweise unklare Begriffe wie Ladestation über Tooltips erklärt. Außerdem werden Einstellungsänderungen über Dialoge erklärt.
+
+Da Benutzer oft versehentlich Aktionen ausführen, gibt es die dritte Regel, mit der klar gekennzeichnete Abbruchoptionen gefordert werden, um unerwünschte Aktionen abbrechen oder rückgängig machen zu können. Um die Kamera wieder in die Ausgangsposition zu bringen, wenn diese versehentlich an eine ungewünschte Position bewegt wurde, gibt es in der Übersicht einen entsprechenden Button. In der Steuerung gibt es einen Button mit dem der aktuelle Lieferauftrag des Roboters abgebrochen werden kann. Auch gibt es sowohl in der Steuerung als auch in der Verwaltung Bestätigungsdialoge mit denen neue Aktionen und Einstellungsänderungen bestätigt werden müssen. Beim versehentlichen Anklicken eines Buttons, kann die folgende Aktion somit verhindert werden. Im Editiermodus gibt es die Möglichkeit das Verschieben und Rotieren von Objekten rückgängig zu machen oder zu wiederholen. Auch gibt es im Editiermodus einen Button mit dem das editieren ohne Speichern abgebrochen werden kann.
+
+Die vierte Regel sagt aus, dass die UI den Konventionen der Plattform folgen soll und die UI innerhalb der gesamten Anwendung einheitlich ist, damit die Funktion aller Elemente leicht verständlich ist. Diese Regel wird durch den Einsatz der chayns-components für alle GUI Elemente garantiert. So ist die Anwendung sowohl innerlich, als auch unter chayns-Anwendungen einheitlich. 
+% ggf. Schaubild in dem Einheitlichkeit zwischen Nutzerkarte und Editiermodus gezeigt wird.
+Die Navigation innerhalb der Karte ist nicht einheitlich mit anderen Kartenanwendungen im Web. So lässt sich die Karte in der Google Maps App mit zwei Fingern vertikal rotieren. Im Prototyp werden stattdessen drei Finger gebraucht. Dieser Umstand ist dem eingesetzten Framework \deckgl{} geschuldet.
+% deckgl controller doku
+
+In der fünften Regel geht es darum, dass Probleme die Fehler auslösen verhindert werden sollten. In der Steuerung ist es zum Beispiel nicht möglich ungültige Standorte in der Routenplanung einzugeben. In der Verwaltung wird diese Regel durch die bereits erwähnten Bestätigungsdialoge erfüllt. Im Editiermodus gibt es die bereits erwähnte rückgängig und wiederholen Funktion.
+
+Mit der sechsten Regel wird gefordert, dass sich der Nutzer Informationen zwischen verschiedenen Teilen der Benutzeroberfläche nicht merken muss. Die Anwendung ist so aufgeteilt, dass jeder Nutzer basierend auf seinen Berechtigungen Zugriff auf alle nötigen Informationen hat. In allen Ansichten sind die nötigen Informationen sichtbar, sodass sich Nutzer diese nicht zwischen verschiedenen Ansichten merken müssen.
+
+In der siebten Regel geht es um die Möglichkeit bestimmte, häufig genutzte Aktionen, schneller auszuführen. Diese Regel wird in der Steuerung durch die Möglichkeit ermöglicht, den Lieferstandort und Roboter sowohl über die Karte als auch über einen Input und eine Dropdownliste auswählen zu können. Im Editiermodus gibt es die Shortcuts zum rückgängig machen und wiederhohlen.
+
+Die achte Regel, die eine minimalistische Benutzeroberfläche erwartet, ist nur subjektiv bewertbar. Mithilfe der Usability Tests kann gut bewertet werden, welche Informationen und Elemente irrelevant sind oder selten gebraucht werden und dadurch überflüssig sind.
+
+Laut der neunten Regel sollten Fehlermeldungen in einfacher Sparche formuliert sei, das Problem präzise beschreiben und konstruktiv eine Lösung vorschlagen. Hierfür gibt es verschiedene Dialoge die bei Fehlermeldungen angezeigt werden.
+
+Die zehnte Regel sagt aus, dass es, wenn nötig eine Dokumentation geben sollte, mithilfe welcher die Benutzer ihre Aufgaben verstehen und Abschließen können. Die Anwendung wurde mit dem Ziel entwickelt selbsterklärend zu sein. 
+% Dieses Ziel noch irgendwo zu Beginn erwähnen
+Außerdem gibt es Tooltips für bestimmte Statusinformationen und beim Ändern von Einstellungen gibt es Bestätigungsdialoge mit Erklärungen. Mithilfe der Usability Tests kann geprüft werden, ob das Ziel erfüllt werden konnte oder ob weitere Erklärungen nötig sind.
+
+\paragraph{Usability Tests}
+Laut der Analyse wurden die 10 Usability Heuristics weitestgehend erfüllt, womit der Prototyp folglich Benutzerfreundlich ist. Diese Annahme wird mithilfe der folgenden Usability Tests geprüft.
+
 % => Usability Tests
+
+\subsubsection{Performance}
 % => Performance Tests (testen welche Maßnahmen welche Performance Auswirkungen haben)
