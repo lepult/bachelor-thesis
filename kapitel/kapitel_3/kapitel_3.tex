@@ -18,9 +18,9 @@ Fehlender-Text
 
 Für die Darstellung des 3D-Modells gibt es verschiedene Möglichkeiten. Zwei dieser Möglichkeiten sind das Einbinden des \ac{OBJ} Formats in der SimpleMeshLayer 
 % SimpleMeshLayer Quelle hinzufügen
-von \deckgl{} und das Einbinden des \ac{glTF} Dateiformats in der ScenegraphLayer
+von \deckgl{} und das Einbinden des \ac{glTF} Dateiformats in der ScenegraphLayer.
 % ScenegraphLayer Quelle hinzufügen
-. Beide Dateiformate werden in der Scaniverse App als Dateiexport angeboten. Beim \ac{OBJ} Format gibt es das Problem, dass das 3D-Modell mit \deckgl{} nur ohne Textur dargestellt werden kann. Das \ac{OBJ} Format besteht aus einer Datei mit der Endung \obj{} in der die dereidimensionalen geometrischen Formen kodiert sind und einer Datei mit der Endung \mtl{} in der die optische Materialeigenschaften und Texturierung kodiert sind. 
+Beide Dateiformate werden in der Scaniverse App als Dateiexport angeboten. Beim \ac{OBJ} Format gibt es das Problem, dass das 3D-Modell mit \deckgl{} nur ohne Textur dargestellt werden kann. Das \ac{OBJ} Format besteht aus einer Datei mit der Endung \obj{} in der die dereidimensionalen geometrischen Formen kodiert sind und einer Datei mit der Endung \mtl{} in der die optische Materialeigenschaften und Texturierung kodiert sind. 
 % Quelle für OBJ hinzufügen
 Die Materialdatei lässt sich nicht in \deckgl{} einbinden, da die \loadersgl{} Programmbibliothek nur das Parsen der \obj{} Datei ermöglicht. 
 % Quelle für LoadersGL hinzufügen
@@ -32,7 +32,7 @@ Mithilfe der \loadersgl{} Programmbibliothek lassen sich 3D-Modelle des Dateifor
 % Quelle für LoadersGL hinzufügen
 Da ein 3D-Modell mit einer passenden Texturierung eine bessere Übersichtlichkeit bietet und da \ac{glTF} Dateien eine geringe Dateigröße haben, wird im Rahmen des Prototyps weiter mit diesem Dateityp und der ScenegraphLayer gearbeitet.
 
-Die \ac{glTF} Dateien die für den Prototyp aus Scaniverse exportiert wurden, sind für den Einsatz in der Webanwendung zu groß. So sind die Dateien zwischen 14 und 21 \ac{mB} groß. 
+Die \ac{glTF} Dateien, die für den Prototyp aus Scaniverse exportiert wurden, sind für den Einsatz in der Webanwendung zu groß. So sind die Dateien zwischen 14 und 21 \ac{mB} groß. 
 % Genauer auf Dateigröße eingehen.
 Diese Dateigröße beeinflusst die Ladezeit beim Herunterladen der Daten vom Webserver und auch beim Rendern der 3D-Modelle negativ. Aus diesem Grund müssen die Dateien komprimiert werden. In Kontext dieser Arbeit wird hierfür OptimizeGLB eingesetzt. Das Werkzeug basiert auf gltf-transform. Insbesondere durch den Einsatz des \ac{WebP} Bildformats für Texturen werden Dateien effektiv komprimiert. 
 % gltf-transform Quelle
