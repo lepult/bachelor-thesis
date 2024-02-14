@@ -1,0 +1,55 @@
+1: Visibility of System Status
++ Websocket Updates um immer aktuellen Status und Standort der Roboter anzuzeigen
++ Farbliche Markierung der Buttons und Icons um anzuzeigen...
+	-> welcher Roboter und Standort ausgewählt ist
+	-> welches Stockwerk ausgewählt ist
+	-> welche Aktion des Nutzers gerade aktiv ist (Route, Laden, Abbrechen oder Roboter folgen)
++ Wait Cursor angezeigt, wenn Auftrag abgeschickt wird
+
+2: Match Between the System and the Real World
++ Icons um Funktionen darzustellen
+	-> Sehr wenig Text in Nutzeransicht
++ Tooltips im Adminmodus um Status Informationen genauer zu erklären
++ Dialoge im Adminmodus beim Ändern von Einstellungen, um diese zu erklären
+
+3: User Control and Freedom
++ Bestätigungsdialoge bei Einstellungsänderungen und Aktionen
++ Abbrechen Button um aktuellen Auftrag des Roboters abzubrechen
++ Undo und Redo (STRG+Z und STRG+Y) im Editiermodus
++ Abbrechen Button im Editiermodus
+
+4: Consistency and Standards
++ Einheitlichkeit von Elementen innerhalb der Anwendung
+	-> internal consistency
++ Einsatz von chayns-components und Folgen des chayns Design Guides um Einheitlich mit anderen chayns Anwendungen zu sein (automatisches Farbschema)
+	-> internal/external consistency
++ Undo und Redo im Editiermodus über bekannte Shortcuts
+	-> external consistency
+- deck.gl Touch Interaktionen etwas anders als Google Maps 
+	-> vertikale Rotation mit 3 Fingern statt mit 2 Fingern wie bei Google Maps
+
+5: Error Prevention
++ Undo und Redo im Editiermodus um Mistakes rückgängig zu machen
++ Mistakes durch Bestätigungsdialoge verhindern
++ Slips durch Auswahl unpassender Zielstandorte verhindert (ist ungültiger Standort ausgewählt, wird die Auswahl entfernt)
+(+ Auswahl nicht erreichbarer Standorte verhindern)
+
+6: Recognition Rather than Recall
++ Buttons werden ausgegraut, statt entfernt wenn diese nicht wählbar sind
+
+7: Flexibility and Efficiency of Use
++ Auswahl einer Route über Auswahl auf Karte und PersonFinder (Input und oder Auswahlliste)
+(+ Shortcuts und Buttons für Undo und Redo im Editiermodus)
+
+8: Aesthetic and Minimalist Design
++ selten gebrauchte Roboter Statusinformationen in Dialog versteckt
+- sehr viele Buttons in Nutzeransicht, insbesondere auf Mobilgeräten
+
+9: Help Users Recognize, Diagnose, and Recover from Errors
++ Fehlerdialoge, wenn API Anfragen fehlschlagen
+- Fehlerdialoge zeigen nicht den genauen aufgetretenen Fehler an
+	-> müsste im Backend angepasst  werden
+
+10: Help and Documentation
+(+ Dokumentation für das erstellen von 3D-Modellen)
+- keine Dokumentation vorhanden

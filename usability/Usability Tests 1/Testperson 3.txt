@@ -1,0 +1,18 @@
+Übersicht
+- Roboter Button schnell gefunden
+- umrandeten Stockwerk Button schnell gefunden
+- Probleme beim finden des Ladestands (weil "zur Ladestation" Button Akku als Icon hat)
+- Roboter im Stockwerk erst nicht gefunden, weil das Status-Icon nicht als Roboter erkannt wurde (und die Karte von oben betrachtet wurde)
+- Roboter Namen sind lang
+- Randfarbe des Stockwerk Buttons nicht einheitlich mit Roboter
+
+Steuerung
+- Lieferauftrag Button schnell gefunden weil vorher schon gesehen
+- Laden Button schnell gefunden weil schon gesehen
+- Lieferauftrag Fläche schlecht lesbar (blur hinter durchsichtiger Fläche? keine durchsichtige Fläche?)
+
+Verwaltung
+- Stockwerk bearbeiten Button schnell gefunden
+- Toast Dialog fehlt
+-> Shortcut Button schnell gefunden
+- Beta Button vor Stockwerk Buttons

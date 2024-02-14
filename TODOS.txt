@@ -1,0 +1,77 @@
+X prüfen ob Transformation Matrix für Rotieren der Modelle genutzt werden kann => vielleicht möglich aber k.A. wie das funktioniert
+✓ Virutelle Wände gestrichelt anzeigen
+✓ Für ausgewählte Standorte und Roboter weitere Informationen anzeigen
+✓ Nutzerrechte festlegen
+	✓ Gast		=> Übersicht
+	✓ Kellner	=> Übersicht und Steuerung
+	✓ Administrator	=> Übersicht, Steuerung und Verwaltung
+✓ Bei Auswahl der Routen-Standorte sollen ungültige Standorte auf der Karte ausgegraut und nicht wählbar gemacht werden
+✓ Anderer Cursor beim verschieben/rotieren von 3D-Modellen
+✓ In Karten Vorschau nur relevante Informationen anzeigen
+	✓ nur Roboterposition in Roboter Vorschau anzeigen
+	✓ nur Standorte in Stockwerk Vorschau anzeigen
+	-> alle Informationen in Editormodus anzeigen
+✓ MapElements am Anfang einmal auf Destinations mappen, damit das nicht die ganze Zeit wärend der Laufzeit gemacht werden muss
+=> Code aufräumen
+✓ Editor-Karte und Übersichtskarte zusammenführen
+✓ selectors aufräumen
+	✓ PersonFinder Sortierung anpassen
+
+- 3D Modelle cachen
+✓ PersonFinder fixen
+✓ Tooltips um Statusinfromationen zu erklären (Adminmodus)
+✓ Dialoge mit Erklärtext um Einstellungsänderungen zu erklären
+	-> Einstellungsänderungen funktional machen
+✓ Abbrechen Button im Editiermodus (Seite neu laden, damit Änderungen zurückgesetzt werden)
+- Undo und Redo Buttons im Editiermodus
+✓ Toast Dialog im Editiermodus in dem Hinweis steht wie man Objekte verschiebt und rotiert
+	✓ Toast schließen, wenn Nutzer Modell bewegt
+	-> Button mit dem Toast wieder geöffnet werden kann
+
+Feedback von Max (direkt umgesetzt)
+✓ Tooltips für alle Buttons
+✓ Farben von Button Umrandung und Pfade an Farbmodus der Site anpassen
+✓ Farben von Tooltips an Farbmodus anpassen
+✓ Bei numerischen Standorten in PersonFinder Liste auch den Stockwerknamen anzeigen, weil Nummern doppelt vergeben sein können
+✓ bessere Fehlermeldungen anzeigen
+✓ Stockwerk bearbeiten Button im Nutzermodus hinzufügen (nur für Admins)
+✓ Toast Dialog Erklärung verbessern
+	✓ Button hinzufügen der Shortcuts zeigt
+✓ Button für Undo und Redo hizufügen (tooltip mit shortcut)
+
+
+Nach Usability Tests
+✓ Zur Ladestation mit Akkustand verwechselbar
+- Zum bearbeiten wird erst noch im Nutzermodus versucht zu bearbeiten
+- Route mit mehreren Zielen einstellbar
+- in Routenplaner einstellbar machen, dass zum Schluss zur Ladestation gefahren wird
+- Stockwerk Button durch Beta Button verdeckt
+- Roboter Icon erkennbarer machen (wird nicht unbedingt als Roboter erkannt)
+✓ Lieferauftrag Fläche nicht durchsichtig
+✓ Route Planen neben Buttons anzeigen (außer mobil)
+✓ Nach Editieren automatisch in den Nutzermodus zurück wechseln (wenn editieren über Nutzermodus geöffnet wurde) (vllt. beim Editieren gar nicht erst in Adminmodus wechseln)
+✓ Nutzermodus Buttons auch im Editiermodus an gleicher Position anzeigen
+- PathLayer Farbe an Farbmodus anpassen
+✓ Randfarbe von Stockwerkbutton einheitlich mit Roboterfarbe machen
+✓ Stockwerk bei Auswahl des Roboters öffnen (vllt auch zu Position bewegen)
+✓ Routenplaner öffnen wenn Standort angezeigt wird
+- Kartenicons in top down Ansicht höher positionieren, damit sie immer über gesamten 3D-Modell sind
+✓ Roboter Informationen Buttons von Roboter Steuerung Buttons trennen
+- Shortcuts im Editiermodus permanent anzeigen
+
+
+
+Feedback von Max (erstmal abwarten)
+- Feedback anzeigen, dass aktuell verschoben oder rotiert wird
+- Wechsel zwischen Verschieben und Rotieren auch erlauben wenn Maus gedrückt bleibt
+
+
+WICHTIG: Tests schreiben
+-> deck.gl Tests
+	-> Integration tests
+	-> 
+
+- Ausgabepunkt und Zwischenstationen bei Routen einstellbar machen
+	-> Auch Ausgabepunkte und Zwischenstationen über Klicken in der Karte einstellbar
+- für den Roboter nicht erreichbare Standorte ausblenden und Roboter die den ausgewählten Standort nicht erreichen können ausblenden
+- Arbeitsmodus änderbar machen

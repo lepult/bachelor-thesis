@@ -1,0 +1,48 @@
+Übersicht
+- Roboter in Roboterliste schnell gefunden
+- dann versucht den Akkustand zu finden
+	- "Zur Ladestation fahren" Button mit Akkustand verwechselt
+	- Versucht über Buttons zu Hovern um mehr Informationen über Button Funktionen zu bekommen
+		-> Tooltips beim Hovern über Buttons anzeigen, damit man diese nicht anklicken muss um die Funktion herauszufinden
+	- Dann über den Informationen Button den Akkustand gefunden
+- dann versucht den Roboter zu finden
+	- "Route Planen" Button angeklickt um Roboter zu finden
+	- dann bei den anderen Buttons gesucht bis der folgen Button gefunden wurde
+	- Lokalisierung über weißen Rand um Stockwerk Button nicht gesehen, weil Hintergrund auch weiß war
+
+=> Tooltips beim Hovern anzeigen
+=> Farben an Farbmodus der Seite anpassen
+
+Steuerung
+- Direkt auf den Route Button geklickt, weil der Button bereits versehentlich geklickt wurde und somit bekannt war was man mit diesem macht
+	- Nummern in PersonFinder Liste suggerieren, dass dort keine Namen stehen
+		=> Deshalb kurz durch die Liste der Nummern geschaut, um dann stattdessen eine andere Möglichkeit zu finden
+	- Es wurde kurz versucht den entsprechenden Tisch auf der Karte zu finden => gescheitert, wegen schlecht lesbaren Tooltips
+	- Danach wurde die Suchfunktion im PersonFinder genutzt und Roboter wurde gesendet
+- Versucht den zweiten Teil der Route zu starten
+	- Fehlermeldung beim Senden
+	- Fehlermeldung hatte keine Beschreibung um das Problem zu erkennen
+	- Roboter hat die Route nicht beendet und deshalb musste der Abbrechen Button gedrückt werden
+		=> wegen ungenauer Fehlermeldung kam Testperson nicht von selbst darauf die Route abzubrechen
+
+=> Nummern nicht in PersonFinder Liste oder hinter den Namen anzeigen
+=> bessere Fehlermeldungen anzeigen
+
+Verwaltung
+- Erst Buttons und herumklicken im Nutzermodus probiert
+	-> viele Buttons könnten suggerieren, dass es irgendwo einen Bearbeiten Button gibt
+- Schließlich nach externer Hilfe in den Adminmodus gewechselt
+- Bearbeiten Button für Stockwerk recht schnell im Kontextmenü gefunden, allerdings erst im Aufklapper nach unten gescrollt
+- Nicht gewusst dass SHIFT zum drehen genutzt wird
+	-> uneindeutiger Text im Toast Dialog
+- Probleme beim wechsel zwischen Verschieben und Rotieren weil die Maus losgelassen werden muss
+- Rückgängig machen und Wiederholen wurde nicht genutzt
+
+=> Button zum Bearbeiten der Karte im Nutzermodus anzeigen
+=> Verschieben und Rotieren so anpassen, dass auch während die Maus gedrückt gehalten bleibt zwischen beidem gewechselt werden kann
+=> Button zum Undo und Redo hinzufügen (Mit tooltip in denen Shortcuts stehen)
+
+Folgefragen
+- Probleme mit Verschieben und Rotieren erklärt
+- Fehlende Button Tooltips erwähnt
+- beim Verschieben und Rotieren hat Feedback gefehlt, dass man aktuell verschiebt oder rotiert

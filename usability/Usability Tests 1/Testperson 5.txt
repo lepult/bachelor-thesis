@@ -1,0 +1,23 @@
+Übersicht
+- Roboter Button gefunden
+- passendes Stockwerk mit Umrandung ausgewählt
+-> Verwirrung warum Stockwerk nicht direkt ausgewählt wird
+- Roboter über Karte gefunden
+- Akkustand schnell gefunden
+
+Steuerung
+- Verwirrung darüber wie man wieder aus gedrehter Kameraposition heraus kommt
+-> relativ schnell dann Button zum zurücksetzen der Kamera gefunden
+- Routebutton schnell gefunden und Roboter geschickt
+-> Warum Route nicht öffnen wenn Standort angeklickt wird
+- Problem dass andere Buttons werden nicht mehr angezeigt wenn Route geplant wird
+- Icons werden unter Teilen der 3D Modelle angezeigt (insbesondere schlecht wenn man top down ansicht hat)
+- Ladenbutton schnell gefunden
+
+Verwaltung
+- Stockwerk bearbeiten Button in Nutzeransicht gefunden
+- Shortcuts Button schnell gefunden
+- erfolgreich Modell positioniert
+- Verwirrend dass man nach Speichern nicht wieder in Nutzeransicht landet
+- Kamera zurücksetzen Button nicht gefunden da der an einer anderen Position ist
+- andere Buttons aus Nutzeransicht vermisst (Stockwerke und Roboter)

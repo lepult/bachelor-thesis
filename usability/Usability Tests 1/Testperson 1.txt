@@ -1,0 +1,20 @@
+Übersicht
+- Roboter Button schnell gefunden
+- Akkustand schnell gefunden
+- Folgen Button schnell gefunden
+- Umrandung am Stockwerkbutton nicht bemerkt oder ignoriert
+
+Steuerung
+- Eigenen Standort über Karte gefunden (weil der Standort keinen Namen hat, konnte er nicht im PersonFinder gefunden werden)
+- Schnell "Lieferauftrag" Button gefunden
+- Verwirrung darüber dass man nicht mehrere Ziele einstellen kann
+- Button zum Laden gefunden (mit Erwartung dass das auch über Lieferauftrag Button geht)
+
+=> Lieferauftrag mit mehreren Zielen + zurück zur Ladestation am Schluss
+
+Verwaltung
+- Karte bearbeiten Button schnell gefunden bzw. schon vorher bemerkt
+- Toast Dialog hat gefehlt
+-> Shortcut Button wurde schnell gefunden weshalb das kein großes Problem war
+- Verwirrung darüber wo das Modell hin muss
+- Pfade auf dem Hintergrund nicht sichrbar

@@ -1,0 +1,18 @@
+Übersicht
+- Roboter Auswahl Button schnell gefunden
+- Button für Roboter-Informationen schnell gefunden
+- Roboter Folgen Button schnell gefunden
+- Anmerkung: Darstellung der Karte sieht kaputt aus
+
+Steuerung
+- Lieferauftrag Button schnell gefunden
+- farbliche Markierung des Ziels bemerkt
+-> eigenes Icon vllt. besser?
+
+Übersicht
+- Beta Button vor Stockwerk Button
+- Erst auf User Karte versucht zu verschieben und erst dann den Button dafür gefunden
+- Toast Dialog fehlt
+-> erst nach hilfe den Shortcuts Button genutzt um Shortcuts zu finden
+- Schwierigkeiten beim richtigen Positionieren
+-> unter anderem auch weil Modelle etwas kaputt aussehen

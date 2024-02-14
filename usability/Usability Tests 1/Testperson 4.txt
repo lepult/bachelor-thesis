@@ -1,0 +1,17 @@
+Übersicht
+- Button für Bot schnell gefunden
+- Versehentlich Auswahl wieder entfernt und dann verwirrt darüber, dass Buttons ausgegraut waren
+- Button für Stockwerk gefunden
+-> Batteriestand nicht direkt gefunden
+
+Steuerung
+- Standort über Karte gefunden
+- Dann Lieferauftrag Button ausgewählt und Personfinder ausprobiert
+- Laden Button schnell gefunden
+
+Verwaltung
+- Button zum bearbeiten schnell gefunden
+- versucht über klicken zu verschieben
+- Shortcuts Button gefunden
+- Verwirrung beim wechsel von Verschieben zu Rotieren weil Maus nicht losgelassen wurde
+Vorschlag: Shortcuts dauerhaft anzeigen

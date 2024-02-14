@@ -1,0 +1,34 @@
+Fragenkatalog (Usability Test)
+
+Übersicht
+Forschungsziel: Wie gut ist die Übersicht zu bedienen?
+Fragen:
+- Du willst wissen wo Roboter B ist und wie sein Akkustand ist. Finde es heraus.
+- Findest du noch einen anderen Weg um den Roboter zu finden?
+- Probiere den Roboter auf der Karte zu finden
+- Probiere den Roboter über die Buttons zu finden
+
+Steuerung
+Forschungsziel: Wie leicht ist es die Auswahl von Robotern und Standorten zur Routenplanung zu nutzen
+- Du willst einen Gegenstand zu Person B schicken. Lass das durch einen Roboter erledigen.
+- Findest du noch einen anderen Weg um Roboter und Standorte auszuwählen?
+- Wähle Roboter und Standorte über die Inputs aus
+- Wähle Roboter und Standorte über die Karte aus
+
+Editiermodus
+Forschungsziel: Wie gut lässt sich der Editiermodus finden und bedienen
+- Ein 3D-Modell im Stockwerk A ist an der falschen Position. Kannst du das korrigieren?
+- Es gibt im Adminmodus einen Weg um die Position zu korrigieren. Kannst du das probieren?
+- Ich navigiere für dich zu dem Editiermodus. Versuche die Position zu korrigieren.
+
+Folgefragen (nach einer Aufgabe)
+- Hast du Gedanken zu der letzten Aktivität oder ist dir etwas besonderes aufgefallen?
+- Waren Teile der Aufgabe besonders leicht oder schwer?
+
+
+Testpersonen (Tobit; Erfahrung mit Chayns)
+- System (chayns Entwickler) => Lukas H.
+- QA => Andreas
+- Software Design => Corinna
+- App Entwickler => Antonio
+
