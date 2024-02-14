@@ -161,7 +161,7 @@ Die zehnte Regel sagt aus, dass es, wenn nötig eine Dokumentation geben sollte,
 Außerdem gibt es Tooltips für bestimmte Statusinformationen und beim Ändern von Einstellungen gibt es Bestätigungsdialoge mit Erklärungen. Mithilfe der Usability Tests kann geprüft werden, ob das Ziel erfüllt werden konnte oder ob weitere Erklärungen nötig sind.
 
 \paragraph{Usability Tests}
-Laut der Analyse wurden die 10 Usability Heuristics weitestgehend erfüllt, was nicht direkt bedeutet, dass der Prototyp auch wirklich benutzerfreundlich ist. Dies wurde stattdessen mithilfe von Usability Tests geprüft.
+Laut der Analyse wurden die 10 Usability Heuristics weitestgehend erfüllt, was nicht direkt bedeutet, dass der Prototyp auch wirklich benutzerfreundlich ist. Dies wurde stattdessen mithilfe von Usability Tests geprüft. Diese wurden in zwei Runden mit jeweils fünf Personen durchgeführt. So konnten die gefundenen Probleme der ersten Runde behoben werden, bevor die zweite Runde durchgeführt wurde. Mit den Ergebnissen der zweiten Runde wurde dann eine Verbesserung der Benutzerfreundlich demonstriert. Für die Usability Tests wurden drei Aktivitäten vorbereitet, die die Testpersonen nacheinander durchgeführt haben. Die Aktivitäten decken verschiedene Funktionen des Prototyps ab. Konkret beschäftigen sich die Aktivitäten mit der Übersicht, der Steuerung und dem Editiermodus. So soll in der ersten Aktivität die Position und der Akkustand eines bestimmten Roboters gefunden werden. Daraufhin soll der Roboter in der zweiten Aktivität zu einem oder mehreren Standorten und dann zurück zur Ladestation geschickt werden. In der dritten Aktivität soll dann ein 3D-Modell im Editiermodus richtig positioniert werden. In der dritten Aktivtiät wird beispielsweise nicht nur geprüft wie Benutzerfreundlich das Editieren ist, sondern wie leicht der Editiermodus überhaupt gefunden werden kann. Um die geplanten Aktivitäten zu prüfen wurde ein Pilottest (Test 0) durchgeführt. Mithilfe des Tests konnten die Aktivitäten optimiert werden. Außerdem wurden die Ergebnisse des Tests ausgewertet und gefundene Probleme mit der Benutzerfreundlich wurden direkt behoben.
 
 % Kleiner Personenkrei der befragt wird (normalerweise 5 Personen oder bei verschiedenen Nutzerkreisen 3-4 pro Nutzerkreis) [https://www.nngroup.com/articles/how-many-test-users/]
 % Zwei Nutzergruppen: Nutzer die mit chayns vertraut sind und Nutzer die nicht/wenig mit chayns vertraut sind
@@ -176,6 +176,64 @@ Laut der Analyse wurden die 10 Usability Heuristics weitestgehend erfüllt, was 
 % Folgefrage Beispiel
 
 % Ergebnisse zusammenfassen
+
+In den beiden folgenden Tabellen werden die Ergebnisse des ersten Usability Test durchlaufs zusammengefasst. In der ersten Tabelle wird dargestellt, welche Probleme bei welcher Testperson aufgefallen sind. So sieht man, dass die meisten Probleme die im Pilottest aufgefallen sind, danach nicht mehr aufgetreten sind, was darauf zurückzuführen ist, dass diese direkt behoben wurden. Man kann zudem sehen, dass mit den meisten Testpersonen Probleme aufgefallen sind, die keiner anderen Testperson aufgefallen sind.
+
+\begin{table}[H]
+\caption{Gefundene Probleme in erster Usability Test Runde}
+    \begin{tabular}{l||l|l|l|l|l|l}
+                & Test 0 & Test 1 & Test 2 & Test 3 & Test 4 & Test 5 \\ \hline
+    Problem 1   & X      &        &        & X      &        &        \\
+    Problem 2   & X      &        &        &        &        &        \\
+    Problem 3   & X      &        &        &        &        &        \\
+    Problem 4   & X      &        &        &        &        &        \\
+    Problem 5   & X      &        &        &        &        &        \\
+    Problem 6   & X      &        & X      &        &        &        \\
+    Problem 7   & X      &        &        &        &        &        \\
+    Problem 8   & X      &        &        &        & X      &        \\
+    Problem 9   &        & X      &        &        &        &        \\
+    Problem 10  &        & X      &        &        &        &        \\
+    Problem 11  &        & X      & X      & X      & X      &        \\
+    Problem 12  & X      & X      & X      &        &        &        \\
+    Problem 13  &        &        & X      &        &        &        \\
+    Problem 14  &        &        & X      & X      &        &        \\
+    Problem 15  & X      &        & X      &        &        &        \\
+    Problem 16  &        &        &        & X      &        &        \\
+    Problem 17  &        &        &        & X      &        &        \\ \hline
+    \end{tabular}    
+\end{table}
+
+In der zweiten Tabelle sind die Aktivitäten in verschiedene Schritte aufgeteilt, die bei der Ausführung der Aktivität vorkommen können. Es ist zu beachten, dass nicht alle Schritte ausgeführt werden müssen, um eine Aktivität auszuführen. Die Fragestellung unterscheidet sich außerdem zwischen dem Pilottest und den anderen Tests, wodurch sich die Schirtte hier unterscheiden können. Man sieht, dass die meisten Schritte nach dem Pilottest deutlich besser bearbeitet werden konnten, was auf die Anpassungen des Prototyps nach dem Pilottest zurückzuführen ist. Die Tabelle zeigt aber auch, dass die Benutzerfreundlichkeit an einigen Stellen noch ausbaufähig ist. Insbesondere der Editiermodus kann verbessert werden, aber auch in der Übersicht und Steuerung gibt es kleinere Probleme
+
+\begin{table}[H]
+    \caption{Durchgeführte Aktionen in erster Usability Test Runde}
+        \begin{tabular}{l||llllll}
+        durchgeführte Aktion                & Test 0    & Test 1    & Test 2    & Test 3    & Test 4    & Test 5    \\ \hline
+        \textbf{Aktivität 1 (Übersicht)}    &           &           &           &           &           &           \\
+        Roboter mit Button ausgewählt       & \green    & \green    & \green    & \green    & \green    &           \\
+        Roboter mit Karte ausgewäht         &           &           &           &           &           &           \\
+        Akkustand gefunden                  & \yellow   & \green    & \green    & \yellow   & \yellow   &           \\
+        Roboter mit Folgen-Button gefunden  & \yellow   & \green    & \green    &           &           &           \\
+        Roboter mit Karte gefunden          &           &           &           & \yellow   & \green    &           \\ \hline
+
+        \textbf{Aktivtiät 2 (Steuerung)}    &           &           &           &           &           &           \\
+        Lieferauftrag-Button gefunden       & \green    & \green    & \green    & \green    & \green    &           \\
+        Standort mit Personfinder ausgewählt& \yellow   &           & \green    & \green    & \green    &           \\
+        Standort mit Karte ausgewählt       &           & \green    &           &           & \green    &           \\
+        Lieferauftrag gestartet             & \red      & \yellow   & \green    & \green    & \green    &           \\
+        Roboter zur Ladestation geschickt   &           & \green    & \green    & \green    & \green    &           \\ \hline
+
+        \textbf{Aktivität 3 (Editiermodus)} &           &           &           &           &           &           \\
+        Editormodus über Adminansicht       & \red      &           &           &           &           &           \\
+        Editormodus über Nutzeransicht      &           & \green    & \green    & \green    & \green    &           \\
+        Steuerung verstanden                &           & \green    & \red      & \green    & \yellow   &           \\
+        Undo/Redo genutzt                   &           &           &           &           &           &           \\
+        Modell positioniert                 & \yellow   & \green    & \yellow   & \green    & \green    &           \\ \hline
+        \end{tabular}
+        Legende: \colorbox{green!25}{ohne Probleme durchgeführt} \colorbox{yellow!25}{mit Problemen durchgeführt} \colorbox{red!25}{mithilfe des Moderators durchgeführt} \colorbox{white!25}{nicht versucht}
+    \end{table}
+
+Test
 
 \subsubsection{Performance}
 % => Performance Tests (testen welche Maßnahmen welche Performance Auswirkungen haben)
