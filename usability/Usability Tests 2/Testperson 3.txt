@@ -1,0 +1,15 @@
+Übersicht
+- Roboter per Button gewählt
+- Batterieleistung per Tooltip auf Karte
+
+Steuerung
+- Suchfunktion gesucht
+-> deshalb Standort auf Karte gefunden
+- Senden Button geklickt
+- Ladestation Button gefunden
+
+Verwaltung
+- Stockwerk bearbeiten Button gefunden
+- Steuerung über Shortcuts Button gefunden
+- versehentliches Verschieben rückgängig gemacht
+- erfolgreich positioniert

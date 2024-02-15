@@ -1,0 +1,19 @@
+Übersicht
+- Roboter Button geklickt
+- Roboter und Batterie auf Karte gefunden
+
+Steuerung
+- Lieferauftrag Button genutzt
+- Standort im Personfinder gefunden
+-> Status nicht übersetzt
+- Senden button geklickt
+- Ladestation Button genutzt
+
+Verwaltung
+- versucht in Nutzeransicht zu verschieben
+- in Adminansicht nach Editiermodus gesucht und nicht gefunden
+- Stockwerk bearbeiten im Nutzermodus gefunden
+- Steuerung verstanden
+- erfolgreich positioniert
+- besseres Icon für Stockwerk bearbeiten
+-> Buttons an Karte außen fallen nicht so auf

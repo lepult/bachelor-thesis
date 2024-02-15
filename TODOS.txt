@@ -40,27 +40,41 @@ Feedback von Max (direkt umgesetzt)
 ✓ Button für Undo und Redo hizufügen (tooltip mit shortcut)
 
 
-Nach Usability Tests
+Nach Usability Tests (Runde 1)
 ✓ Zur Ladestation mit Akkustand verwechselbar
 - Zum bearbeiten wird erst noch im Nutzermodus versucht zu bearbeiten
 - Route mit mehreren Zielen einstellbar
 - in Routenplaner einstellbar machen, dass zum Schluss zur Ladestation gefahren wird
-- Stockwerk Button durch Beta Button verdeckt
-- Roboter Icon erkennbarer machen (wird nicht unbedingt als Roboter erkannt)
+X Stockwerk Button durch Beta Button verdeckt
+X Roboter Icon erkennbarer machen (wird nicht unbedingt als Roboter erkannt)
 ✓ Lieferauftrag Fläche nicht durchsichtig
 ✓ Route Planen neben Buttons anzeigen (außer mobil)
 ✓ Nach Editieren automatisch in den Nutzermodus zurück wechseln (wenn editieren über Nutzermodus geöffnet wurde) (vllt. beim Editieren gar nicht erst in Adminmodus wechseln)
 ✓ Nutzermodus Buttons auch im Editiermodus an gleicher Position anzeigen
-- PathLayer Farbe an Farbmodus anpassen
+✓ PathLayer Farbe an Farbmodus anpassen
 ✓ Randfarbe von Stockwerkbutton einheitlich mit Roboterfarbe machen
 ✓ Stockwerk bei Auswahl des Roboters öffnen (vllt auch zu Position bewegen)
 ✓ Routenplaner öffnen wenn Standort angezeigt wird
-- Kartenicons in top down Ansicht höher positionieren, damit sie immer über gesamten 3D-Modell sind
+X Kartenicons in top down Ansicht höher positionieren, damit sie immer über gesamten 3D-Modell sind => würde nur mit Orthographischer Ansicht gut aussehen (geht mit deckgl nicht)
 ✓ Roboter Informationen Buttons von Roboter Steuerung Buttons trennen
-- Shortcuts im Editiermodus permanent anzeigen
-- Tooltip für 3D-Modelle im Editiermodus
+✓ Tooltip für 3D-Modelle im Editiermodus
 - Ladedauer bei wechsel zwischen Edit und User Mode verringern
 
+Nach Usability Tests (Runde 2)
+- Kameraposition zurücksetzen mit Animation?
+- Batterieleistung zu Batterie umbenennen
+- Bei Roboter Auswahl entfernen wird fälschlicherweise in das Stockwerk gewechselt
+- Stockwerk Buttons haben falsche Reihenfolge
+- Komma im Ladebutton Dialog entfernen
+- Steuerungsbuttons müssen nicht immer aktiv sein (Abbrechen, wenn kein Lieferauftrag existiert; Laden, wenn bereits geladen wird)
+- zur Ladestation auch über Karte möglich machen? (Roboter kann nur zur zugeordneten Ladestation fahren)
+- Suchfunktion von Standorten auch außerhalb der Routenfunktion?
+- Route Button nicht hervorheben, wenn Roboter zur Ladestation fährt
+- Irritierend dass Steuerung im Tooltip und nicht auf permanente angezeigter Fläche erklärt steht
+- ? fehlt bei Abbrechen Dialog
+- Status und Standort Typ übersetzen
+- Stockwerk bearbeiten Button auch in Adminansicht in Vorschau anzeigen
+- Stockwerk bearbeiten Icon ändern (layer)
 
 Feedback von Max (erstmal abwarten)
 - Feedback anzeigen, dass aktuell verschoben oder rotiert wird

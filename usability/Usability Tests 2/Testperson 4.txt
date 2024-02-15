@@ -1,0 +1,17 @@
+Übersicht
+- Roboter über Button gefunden
+- Batteriestand über Tooltip
+
+Steuerung
+- Standort auf Karte gefunden
+- Roboter auf Karte gewählt
+- Senden Button geklickt
+- zur Ladestation Button geklickt
+=> Route Button nicht hervorheben, wenn Roboter zur Ladestation fährt
+
+Verwaltung
+- Stockwerk bearbeiten gefunden
+- Steuerung schnell verstanden
+- erfolgreich positioniert
+=> Irritierend dass Steuerung im Tooltip und nicht auf permanente angezeigter Fläche erklärt steht
+=> ? fehlt bei Abbrechen Dialog

@@ -1,0 +1,18 @@
+Übersicht
+- Roboter Button gewählt
+- Roboter auf Karte gefundne
+- Batterieleistung per Tooltip gefunden
+
+Steuerung
+- Nach Suchen Funktion gesucht
+- Heiner auf Karte gefunden
+- Senden geklickt
+- versucht Ladestation auf Karte zu finden
+- Laden Button geklickt
+=> zur Ladestation auch über Karte möglich machen?
+
+Verwaltung
+- kleinen Moment gebraucht um Stockwerke zu finden
+- Bearbeiten Button gefunden
+- Steuerung schnell verstanden
+- erfolgreich positioniert

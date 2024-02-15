@@ -1,0 +1,24 @@
+Übersicht
+- Roboter Button gefunden
+- Roboter über Karte gefunden
+- Batteriestand über Tooltip gefunden
+
+=> Kameraposition zurücksetzen mit Animation
+=> ? Icon in Übersicht hinzufügen in dem Erklärt wird wie man Ansicht dreht (STRG, SHIFT oder Rechtsklick)
+=> Batterieleistung zu Batterie umbenennen
+=> Bei Roboter Auswahl entfernen wird fälschlicherweise in das Stockwerk gewechselt
+=> Stockwerk Buttons haben falsche Reihenfolge
+
+Steuerung
+- Lieferauftrag gefunden
+- Standort per Personfinder gefunden
+- Lieferauftrag gestartet
+- Ladebutton genutzt
+
+=> Komma im Ladebutton Dialog entfernen
+=> Steuerungsbuttons müssen nicht immer aktiv sein (Abbrechen, wenn kein Lieferauftrag existiert; Laden, wenn bereits geladen wird)
+
+Verwaltung
+- Karte bearbeiten Button schnell gefunden
+- Steuerung schnell verstanden
+- erfolgreich positioniert
