@@ -24,11 +24,3 @@ Forschungsziel: Wie gut lässt sich der Editiermodus finden und bedienen
 Folgefragen (nach einer Aufgabe)
 - Hast du Gedanken zu der letzten Aktivität oder ist dir etwas besonderes aufgefallen?
 - Waren Teile der Aufgabe besonders leicht oder schwer?
-
-
-Testpersonen (Tobit; Erfahrung mit Chayns)
-- System (chayns Entwickler) => Lukas H.
-- QA => Andreas
-- Software Design => Corinna
-- App Entwickler => Antonio
-

@@ -180,7 +180,7 @@ Mithilfe des Pilottests konnten die Aktivitäten optimiert werden. Außerdem kon
 In den beiden folgenden Tabellen werden die Ergebnisse des ersten Usability Test durchlaufs zusammengefasst. In der ersten Tabelle wird dargestellt, welche Probleme bei welcher Testperson aufgefallen sind. So sieht man, dass die meisten Probleme die im Pilottest aufgefallen sind, danach nicht mehr aufgetreten sind, was darauf zurückzuführen ist, dass diese vor der Durchführung der restlichen Tests behoben wurden. Man kann zudem sehen, dass den meisten Testpersonen neue Probleme aufgefallen sind, die keiner anderen Testperson aufgefallen sind. Hierdurch zeigt sich, dass durch weniger Testpersonen wahrscheinlich weniger Probleme gefunden worden wären. Bei der Korrektur der Probleme wurde die Probleme priorisiert, die besonders vielen Testpersonen aufgefallen sind. Bei den Usability Tests gab es außerdem Feedback von den Testpersonen, welches nützlich ist, aber nicht als Probleme eingestuft werden kann.
 
 \begin{table}[H]
-\caption{Gefundene Probleme in erster Usability Test Runde}
+    \caption{Gefundene Probleme in erster Usability Test Runde}
     \begin{tabular}{l||l|l|l|l|l|l}
                 & T0    & T1    & T2    & T3    & T4    & T5    \\ \hline
     Problem 1   & X     &       &       & X     &       &       \\
@@ -210,7 +210,7 @@ In der zweiten Tabelle sind die Aktivitäten in verschiedene Aktionen aufgeteilt
 
 \begin{table}[H]
     \caption{Bewertung der durchgeführten Aktionen in erster Usability Test Runde}
-        \begin{tabular}{l||llllll}
+    \begin{tabular}{l||llllll}
         Aktion                              & T0        & T1        & T2        & T3        & T4        & T5        \\ \hline
         \textbf{Aktivität 1 (Übersicht)}    &           &           &           &           &           &           \\
         Roboter mit Button ausgewählt       &         1 &         1 &         1 &         1 &         1 &         1 \\
@@ -220,7 +220,7 @@ In der zweiten Tabelle sind die Aktivitäten in verschiedene Aktionen aufgeteilt
 
         \textbf{Aktivtiät 2 (Steuerung)}    &           &           &           &           &           &           \\
         Lieferauftrag-Button gefunden       &         1 &         1 &         1 &         1 &         1 &         1 \\
-        Roboter mit Karte ausgewäht         &         - &         - &         - &         - &         - &         1 \\
+%       Roboter mit Karte ausgewäht         &         - &         - &         - &         - &         - &         1 \\
         Standort mit Personfinder ausgewählt&         2 &         - &         1 &         1 &         1 &         1 \\
         Standort mit Karte ausgewählt       &         - &         1 &         - &         - &         1 &         1 \\
         Lieferauftrag gestartet             &         3 &         2 &         1 &         1 &         1 &         1 \\
@@ -232,13 +232,61 @@ In der zweiten Tabelle sind die Aktivitäten in verschiedene Aktionen aufgeteilt
         Steuerung verstanden                &         - &         1 &         3 &         1 &         2 &         1 \\
         Undo/Redo genutzt                   &         - &         - &         - &         - &         - &         - \\
         Modell positioniert                 &         2 &         1 &         2 &         1 &         1 &         1 \\
-        \end{tabular}
-    \end{table}
+    \end{tabular}
+\end{table}
 
 
 \paragraph{Zweite Usability Tests Runde}
 
-Die Ergebnisse der ersten Usability Tests Runde wurden in der darauffolgenden Implementierungsphase einbezogen. Verschiedene Probleme wurden behoben und Feedback wurde umgesetzt. Daraufhin wurde eine neue Runde an Usability Tests mit fünf neuen Testpersonen durchgeführt. Die Ergebnisse sind in den folgenden zwei Tabellen abgebildet. Die Tabellen folgen der Struktur der vorherigen Tabellen. So zeigt die erste Tabelle, welche Testperson welche Probleme hatte. In der zweiten Tabelle sieht man wie gut Aktionen durchgeführt werden konnten.
+Die Ergebnisse der ersten Usability Tests Runde wurden in der darauffolgenden Implementierungsphase einbezogen. Verschiedene Probleme wurden behoben und Feedback wurde umgesetzt. Daraufhin wurde eine neue Runde an Usability Tests mit fünf neuen Testpersonen durchgeführt. Die Ergebnisse sind in den folgenden zwei Tabellen abgebildet. Die Tabellen folgen der Struktur der vorherigen Tabellen. So zeigt die erste Tabelle, welche Testperson welche Probleme hatte und die zweite Tabelle wie gut Aktionen durchgeführt werden konnten. Man sieht in der ersten Tabelle, dass deutlich weniger Probleme aufgefallen sind. Neben den Problemen gab es auch noch weiteres Feedback, dass sich aber vor allem auf Rechtschreibung, Zeichensetzung und Benennung beschränkt. Außerdem ist aus dem Feedback erkenntlich, dass das erste Auffinden von bestimmten Funktion etwas dauern kann, die Bedienung dieser Funktionen dann aber einwandfrei funktioniert. Es ist zu erwarten, dass die Bedienung des Prototyps bei einer erneuten Nutzung deutlich schneller wäre, da die Funktionen nicht mehr lange gesucht werden müssten. Auch in der zweiten Tabelle fällt auf, dass deutlich weniger Probleme aufgetreten sind. So können gab es nur bei der zweiten und fünften Testperson geringfügige bis erhebliche Probleme. Bei der zweiten Testperson wurde erst versucht den Roboter direkt über eine Auswahl auf der Karte zur Ladestation zu schicken, während die fünfte Testperson Probleme damit hatte den Editiermodus zu finden hierfür ohne Erfolg in der Verwaltungsansicht gesucht hat, bevor der Editiermodus in der Nutzeransicht gefunden wurde. Nachdem die Tests ausgewertet wurden, wurde der Prototyp angepasst, sodass die beiden genannten Probleme nicht mehr auftreten sollten. Auch die in der ersten Tabelle aufgelisteten Probleme wurden behoben.
+
+\begin{table}[H]
+    \caption{Gefundene Probleme in zweiter Usability Test Runde}
+    \begin{tabular}{l||l|l|l|l|l|l}
+                    & T1    & T2    & T3    & T4    & T5    \\ \hline
+        % Beim entfernen der Roboter Auswahl wird fälschlicherweise in das Stockwerk des Roboters gewechselt bei dem die Auswahl entfernt wurde
+        Problem 1   & X     &       &       &       &       \\
+        % Steuerungsbuttons müssen nicht immer aktiv sein (Abbrechen, wenn kein Lieferauftrag existiert; Laden, wenn bereits geladen wird)
+        Problem 2   & X     &       &       &       &       \\
+        % Roboter kann nicht über die Karte (ohne den "zur Ladestation" Button) zur Ladestation geschickt werden
+        Problem 3   &       & X     &       &       &       \\
+        % Suchfunktion von Standorten wurde nicht gefunden, weil diese im Lieferauftrag versteckt ist
+        Problem 4   &       &       & X     &       &       \\
+        % Irritation, dass Erklärung der Steuerung im Tooltip steht und nicht einfach permanent angezeigt an einer anderen Position angezeigt wird
+        Problem 5   &       &       &       & X     &       \\
+        % Editiermodus im Adminmodus nicht gefunden
+        Problem 6   &       &       &       &       & X     \\
+        % Editiermodus im Nutzermodus nicht gefunden
+        Problem 7   &       &       &       &       & X     \\
+    \end{tabular}    
+\end{table}
+
+\begin{table}[H]
+    \caption{Bewertung der durchgeführten Aktionen in zweiter Usability Test Runde}
+    \begin{tabular}{l||llllll}
+        Aktion                              & T1    & T2    & T3    & T4    & T5    \\ \hline
+        \textbf{Aktivität 1 (Übersicht)}    &       &       &       &       &       \\
+        Roboter mit Button ausgewählt       & 1     & 1     & 1     & 1     & 1     \\
+        Akkustand gefunden                  & 1     & 1     & 1     & 1     & 1     \\
+        Roboter mit Folgen-Button gefunden  & -     & -     & -     & -     & -     \\
+        Roboter mit Karte gefunden          & 1     & 1     & 1     & 1     & 1     \\ \hline
+        \textbf{Aktivtiät - (Steuerung)}    &       &       &       &       &       \\
+        Lieferauftrag-Button gefunden       & 1     & -     & -     & -     & 1     \\
+%       Roboter mit Karte ausgewäht         & -     & -     & -     & -     & -     \\
+        Standort mit Personfinder ausgewählt& 1     & -     & -     & -     & 1     \\
+        Standort mit Karte ausgewählt       & -     & 1     & 1     & 1     & -     \\
+        Lieferauftrag gestartet             & 1     & 1     & 1     & 1     & 1     \\
+        Roboter zur Ladestation geschickt   & 1     & 2     & 1     & 1     & 1     \\ \hline
+        \textbf{Aktivität 3 (Editiermodus)} &       &       &       &       &       \\
+        Editormodus über Adminansicht       & -     & -     & -     & -     & 3     \\
+        Editormodus über Nutzeransicht      & 1     & 1     & 1     & 1     & 2     \\
+        Steuerung verstanden                & 1     & 1     & 1     & 1     & 1     \\
+        Undo/Redo genutzt                   & -     & -     & 1     & -     & 1     \\
+        Modell positioniert                 & 1     & 1     & 1     & 1     & 1     \\
+    \end{tabular}
+\end{table}
+
+Da die Menge der gefundenen Probleme mit dem zweiten Durchlauf der Tests stark abgenommen hat, wurde auf einen dritten Durchlauf verzichtet. Es ist nicht zu erwarten, dass diese den Aufwand Wert sind, da aufgrund der durchgeführten Tests angenommen wird, dass nur noch wenige Probleme bestehen, die auch mit einem erneuten Durchlauf nicht unbedingt gefunden werden können. Somit ist davon auszugehen, dass das Ziel der Benutzerfreundlichkeit ausreichend erfüllt wurde. Es ist wichtig zu beachten, dass mit den Usability Tests nicht alle Funktionen des Prototyps getestet wurden. Stattdessen wurden nur die wichtigsten Funktionen getestet die mit \deckgl in Verbindung stehen und somit für die Forschungsfrage große relevanz haben. Ob die Liste der Roboter und Stockwerke in der Verwaltungsansicht besonders Benutzerfreundlich ist, ist nicht so relevant, da diese Liste sehr simpel ist und keine besonderen Technologien nutzt.
 
 \subsubsection{Performance}
 % => Performance Tests (testen welche Maßnahmen welche Performance Auswirkungen haben)
