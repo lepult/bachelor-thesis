@@ -58,7 +58,8 @@ Nach Usability Tests
 - Kartenicons in top down Ansicht höher positionieren, damit sie immer über gesamten 3D-Modell sind
 ✓ Roboter Informationen Buttons von Roboter Steuerung Buttons trennen
 - Shortcuts im Editiermodus permanent anzeigen
-
+- Tooltip für 3D-Modelle im Editiermodus
+- Ladedauer bei wechsel zwischen Edit und User Mode verringern
 
 
 Feedback von Max (erstmal abwarten)
