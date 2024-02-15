@@ -160,21 +160,23 @@ Die zehnte Regel sagt aus, dass es, wenn nötig eine Dokumentation geben sollte,
 % Dieses Ziel noch irgendwo zu Beginn erwähnen
 Außerdem gibt es Tooltips für bestimmte Statusinformationen und beim Ändern von Einstellungen gibt es Bestätigungsdialoge mit Erklärungen. Mithilfe der Usability Tests kann geprüft werden, ob das Ziel erfüllt werden konnte oder ob weitere Erklärungen nötig sind.
 
+Zusammengefasst wurden die zehn Usability Entscheidungsregeln weitestgehend erfüllt, was nicht automatisch bedeutet, dass der Prototyp auch wirklich benutzerfreundlich ist. Um das zu überprüfen, folgen die Usability Tests.
+
 \paragraph{Usability Tests}
-% Kleiner Personenkrei der befragt wird (normalerweise 5 Personen oder bei verschiedenen Nutzerkreisen 3-4 pro Nutzerkreis) [https://www.nngroup.com/articles/how-many-test-users/]
-% Zwei Nutzergruppen: Nutzer die mit chayns vertraut sind und Nutzer die nicht/wenig mit chayns vertraut sind
-    % 6-8 Testpersonen
-% nur Testpersonen die den Prototyp noch nicht gesehen haben
-% Normalerweise sind Mitarbeiter nicht geeignet [https://www.nngroup.com/articles/employees-user-test/] in diesem Fall aber schon
-    % Weil Mitarbeiter bereits mit chayns vertraut sind
-    % Weil Anwendung zum Teil auch für Mitarbeiter gemacht ist
-% Fragenkatalog Beispiele
+% Normalerweise sind Mitarbeiter nicht geeignet [https://www.nngroup.com/articles/employees-user-test/] in diesem % Fragenkatalog Beispiele
     % Fragen zu einer Aktivität erst breit und dann genauer (wenn z.B. gefragtes Element nicht gefunden wird) [https://www.nngroup.com/articles/user-testing-stepped-tasks/]
-% Thinking Aloud durch Nutzer [https://www.nngroup.com/articles/thinking-aloud-the-1-usability-tool/]
-% Folgefrage Beispiel
-Laut der Analyse wurden die 10 Usability Heuristics weitestgehend erfüllt, was nicht direkt bedeutet, dass der Prototyp auch wirklich benutzerfreundlich ist. Dies wurde stattdessen mithilfe von Usability Tests geprüft. Während eines Großteils der Implementierung wurden die Usability Tests nur sehr oberflächig durch den Entwickler durchgeführt. Ausführlichere Usability Tests mit anderen Testpersonen wurden erst durchgeführt, als alle Funktionen des Prototyps umgesetzt waren und auch die Performance bereits stark optimiert wurde. Hierdurch wurde während der Entwicklung Zeit gespart und Probleme nur mit einem sehr groben Filter gefunden. Die ausführlicheren Tests wurden in zwei Runden mit jeweils fünf Personen durchgeführt. So konnten die gefundenen Probleme nach der ersten Runde behoben werden, bevor die zweite Runde durchgeführt wurde. Mit den Ergebnissen der zweiten Runde sollte dann eine Verbesserung der Benutzerfreundlich demonstriert werden. Für die Usability Tests wurden drei Aktivitäten vorbereitet, die die Testpersonen nacheinander durchgeführt haben. Die Aktivitäten decken verschiedene Funktionen des Prototyps ab. Konkret beschäftigen sich die Aktivitäten mit der Übersicht, der Steuerung und dem Editiermodus. So muss in der ersten Aktivität die Position und der Akkustand eines bestimmten Roboters gefunden werden. Daraufhin muss der Roboter in der zweiten Aktivität zu einem oder mehreren Standorten und dann zurück zur Ladestation geschickt werden. In der dritten Aktivität muss ein 3D-Modell dann mithilfe des Editiermodus richtig positioniert werden. In der dritten Aktivtiät wird beispielsweise nicht nur geprüft wie Benutzerfreundlich das Editieren ist, sondern wie leicht der Editiermodus überhaupt gefunden werden kann. Eine genauere Beschreibung der Aktivitäten ist im Anhang.
+
+
+Während eines Großteils der Implementierung wurden die Usability Tests nur sehr oberflächig durch den Entwickler durchgeführt. Ausführlichere Usability Tests mit anderen Testpersonen wurden erst durchgeführt, als alle Funktionen des Prototyps umgesetzt waren und auch die Performance bereits stark optimiert wurde. Hierdurch wurde während der Entwicklung Zeit gespart und Probleme nur mit einem sehr groben Filter gefunden. 
+Der Aufbau der ausführlicheren Usability Tests ist maßgeblich durch verschiedene Artikel der Nielsen Norman Group beeinflusst. So wurde die Aktivitäten nach dem Stepped User Tasks System strukturiert und während der Durchführung der Tests wurde darauf geachtet, dass die Testpersonen die Thinking Aloud Technik einsetzen.
+% Quelle https://www.nngroup.com/articles/user-testing-stepped-tasks/
+% Quelle https://www.nngroup.com/articles/thinking-aloud-the-1-usability-tool/
+Die ausführlicheren Tests wurden in zwei Runden mit jeweils fünf Personen durchgeführt. So konnten die gefundenen Probleme nach der ersten Runde behoben werden, bevor die zweite Runde durchgeführt wurde. Mit den Ergebnissen der zweiten Runde wurde dann eine Reduktion der identifizierten Probleme erwartet. Für die Usability Tests wurden drei Aktivitäten vorbereitet, die die Testpersonen nacheinander durchführen sollten. Die Aktivitäten decken direkt oder indirekt einen großen Teil der Funktionen des Prototyps ab. Konkret beschäftigen sich die Aktivitäten mit der Übersicht, der Steuerung und dem Editiermodus. So muss in der ersten Aktivität die Position und der Akkustand eines bestimmten Roboters gefunden werden. Daraufhin muss der Roboter in der zweiten Aktivität zu einem oder mehreren Standorten und dann zurück zur Ladestation geschickt werden. In der dritten Aktivität muss ein 3D-Modell dann mithilfe des Editiermodus richtig positioniert werden. In der dritten Aktivtiät wird beispielsweise nicht nur geprüft wie Benutzerfreundlich das Editieren ist, sondern wie leicht der Editiermodus überhaupt gefunden werden kann. Eine genauere Beschreibung der Aktivitäten ist im Anhang aufgelistet.
 % TODO Anhang hinzufügen
-Um die geplanten Aktivitäten zu prüfen wurde zunächst ein Pilottest (Test 0) durchgeführt. Mithilfe des Tests konnten die Aktivitäten optimiert werden. Außerdem wurden die Ergebnisse des Tests ausgewertet Probleme mit der Benutzerfreundlich konnten direkt behoben, bevor die restlichen Tests durchgeführt wurden.
+Um die geplanten Aktivitäten zu prüfen wurde zunächst ein Pilottest (Test 0) durchgeführt.
+Mithilfe von Pilottests können Probleme mit den geplanten Aktivitäten gefunden werden, sodass diese vor der Durchführung der richtigen Tests aus dem Weg geschaffen werden können.
+% Quelle https://www.nngroup.com/articles/pilot-testing/
+Mithilfe des Pilottests konnten die Aktivitäten optimiert werden. Außerdem konnten die Ergebnisse des Pilottests bezüglich der Usability des Prototyps ausgewertet werden, sodass viele Probleme behoben werden konnten, bevor die restlichen richtigen Tests durchgeführt wurden.
 
 \paragraph{Erste Usability Tests Runde}
 
