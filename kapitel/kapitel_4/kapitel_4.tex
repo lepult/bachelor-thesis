@@ -133,6 +133,10 @@ Die Qualität der erzeugten Modelle variiert zum einen dadurch wie gut der Scann
 % TODO Analyse der nicht-funktionalen Anforderungen
 
 \paragraph{Usability Heuristics}
+% TODO kürzen
+% Erklären dass anhand der Usability Heuristics entwickelt wurde
+% 3-4 Regeln erwähnen und erklären wie diese erfüllt werden
+% restlichen Regeln nicht erwähnen, weil unnötig
 In der folgenden Abbildung werden die Usability Heuristics zusammengefasst. Im Folgenden werden diese basierend auf der Quelle erklärt.
 % Quelle Nielsen
 Bei der ersten Regel geht es darum, dass der Nutzer immer innerhalb einer angemssenen Zeispanne durch geeignete Rückmeldungen mitbekommt, was gerade passiert. Diese Regel ist durch verschiedene Features in der Übersicht und Steuerung erfüllt. Zum einen gibt es die schnellen Aktualisierungen des Roboterstandorts und -status über die \gls{Websocket}-Verbindung mit dem \ac{BCB}. Zum anderen werden Statusänderungen auch über die Farben der Buttons signalisiert. Auch gibt es Wait Cursor um Ladevorgänge anzuzeigen. In der Verwaltung werden Einstellungsänderungen direkt angezeigt.
@@ -163,19 +167,12 @@ Außerdem gibt es Tooltips für bestimmte Statusinformationen und beim Ändern v
 Zusammengefasst wurden die zehn Usability Entscheidungsregeln weitestgehend erfüllt, was nicht automatisch bedeutet, dass der Prototyp auch wirklich benutzerfreundlich ist. Um das zu überprüfen, folgen die Usability Tests.
 
 \paragraph{Usability Tests}
-% Normalerweise sind Mitarbeiter nicht geeignet [https://www.nngroup.com/articles/employees-user-test/] in diesem % Fragenkatalog Beispiele
-    % Fragen zu einer Aktivität erst breit und dann genauer (wenn z.B. gefragtes Element nicht gefunden wird) [https://www.nngroup.com/articles/user-testing-stepped-tasks/]
-
-
 Während eines Großteils der Implementierung wurden die Usability Tests nur sehr oberflächig durch den Entwickler durchgeführt. Ausführlichere Usability Tests mit anderen Testpersonen wurden erst durchgeführt, als alle Funktionen des Prototyps umgesetzt waren und auch die Performance bereits stark optimiert wurde. Hierdurch wurde während der Entwicklung Zeit gespart und Probleme nur mit einem sehr groben Filter gefunden. 
-Der Aufbau der ausführlicheren Usability Tests ist maßgeblich durch verschiedene Artikel der Nielsen Norman Group beeinflusst. So wurde die Aktivitäten nach dem Stepped User Tasks System strukturiert und während der Durchführung der Tests wurde darauf geachtet, dass die Testpersonen die Thinking Aloud Technik einsetzen.
-% Quelle https://www.nngroup.com/articles/user-testing-stepped-tasks/
-% Quelle https://www.nngroup.com/articles/thinking-aloud-the-1-usability-tool/
+Der Aufbau der ausführlicheren Usability Tests basiert maßgeblich auf verschiedenen Artikeln der Nielsen Norman Group. So wurden die Aktivitäten nach dem Stepped User Tasks System \cite{Pernice.2020} strukturiert und während der Durchführung der Tests wurde darauf geachtet, dass die Testpersonen die Thinking Aloud Technik \cite{Nielsen.2012b} einsetzen.
 Die ausführlicheren Tests wurden in zwei Runden mit jeweils fünf Personen durchgeführt. So konnten die gefundenen Probleme nach der ersten Runde behoben werden, bevor die zweite Runde durchgeführt wurde. Mit den Ergebnissen der zweiten Runde wurde dann eine Reduktion der identifizierten Probleme erwartet. Für die Usability Tests wurden drei Aktivitäten vorbereitet, die die Testpersonen nacheinander durchführen sollten. Die Aktivitäten decken direkt oder indirekt einen großen Teil der Funktionen des Prototyps ab. Konkret beschäftigen sich die Aktivitäten mit der Übersicht, der Steuerung und dem Editiermodus. So muss in der ersten Aktivität die Position und der Akkustand eines bestimmten Roboters gefunden werden. Daraufhin muss der Roboter in der zweiten Aktivität zu einem oder mehreren Standorten und dann zurück zur Ladestation geschickt werden. In der dritten Aktivität muss ein 3D-Modell dann mithilfe des Editiermodus richtig positioniert werden. In der dritten Aktivtiät wird beispielsweise nicht nur geprüft wie Benutzerfreundlich das Editieren ist, sondern wie leicht der Editiermodus überhaupt gefunden werden kann. Eine genauere Beschreibung der Aktivitäten ist im Anhang aufgelistet.
 % TODO Anhang hinzufügen
 Um die geplanten Aktivitäten zu prüfen wurde zunächst ein Pilottest (Test 0) durchgeführt.
-Mithilfe von Pilottests können Probleme mit den geplanten Aktivitäten gefunden werden, sodass diese vor der Durchführung der richtigen Tests aus dem Weg geschaffen werden können.
-% Quelle https://www.nngroup.com/articles/pilot-testing/
+Mithilfe von Pilottests können Probleme mit den geplanten Aktivitäten gefunden werden, sodass diese vor der Durchführung der richtigen Tests aus dem Weg geschaffen werden können \cite{Schade.2015}.
 Mithilfe des Pilottests konnten die Aktivitäten optimiert werden. Außerdem konnten die Ergebnisse des Pilottests bezüglich der Usability des Prototyps ausgewertet werden, sodass viele Probleme behoben werden konnten, bevor die restlichen richtigen Tests durchgeführt wurden.
 
 \paragraph{Erste Usability Tests Runde}
@@ -185,58 +182,57 @@ In den beiden folgenden Tabellen werden die Ergebnisse des ersten Usability Test
 \begin{table}[H]
 \caption{Gefundene Probleme in erster Usability Test Runde}
     \begin{tabular}{l||l|l|l|l|l|l}
-                & Test 0 & Test 1 & Test 2 & Test 3 & Test 4 & Test 5 \\ \hline
-    Problem 1   & X      &        &        & X      &        &        \\
-    Problem 2   & X      &        &        &        &        &        \\
-    Problem 3   & X      &        &        &        &        &        \\
-    Problem 4   & X      &        &        &        &        &        \\
-    Problem 5   & X      &        &        &        &        &        \\
-    Problem 6   & X      &        & X      &        &        &        \\
-    Problem 7   & X      &        &        &        &        &        \\
-    Problem 8   & X      &        &        &        & X      &        \\
-    Problem 9   &        & X      &        &        &        &        \\
-    Problem 10  &        & X      &        &        &        &        \\
-    Problem 11  &        & X      & X      & X      & X      &        \\
-    Problem 12  & X      & X      & X      &        &        &        \\
-    Problem 13  &        &        & X      &        &        &        \\
-    Problem 14  &        &        & X      & X      &        &        \\
-    Problem 15  & X      &        & X      &        &        &        \\
-    Problem 16  &        &        &        & X      &        &        \\
-    Problem 17  &        &        &        & X      &        &        \\
-    Problem 18  &        &        &        &        &        & X      \\
-    Problem 19  &        &        &        &        &        & X      \\
-    Problem 20  &        &        &        &        &        & X      \\ \hline
+                & T0    & T1    & T2    & T3    & T4    & T5    \\ \hline
+    Problem 1   & X     &       &       & X     &       &       \\
+    Problem 2   & X     &       &       &       &       &       \\
+    Problem 3   & X     &       &       &       &       &       \\
+    Problem 4   & X     &       &       &       &       &       \\
+    Problem 5   & X     &       &       &       &       &       \\
+    Problem 6   & X     &       & X     &       &       &       \\
+    Problem 7   & X     &       &       &       &       &       \\
+    Problem 8   & X     &       &       &       & X     &       \\
+    Problem 9   &       & X     &       &       &       &       \\
+    Problem 10  &       & X     &       &       &       &       \\
+    Problem 11  &       & X     & X     & X     & X     &       \\
+    Problem 12  & X     & X     & X     &       &       &       \\
+    Problem 13  &       &       & X     &       &       &       \\
+    Problem 14  &       &       & X     & X     &       &       \\
+    Problem 15  & X     &       & X     &       &       &       \\
+    Problem 16  &       &       &       & X     &       &       \\
+    Problem 17  &       &       &       & X     &       &       \\
+    Problem 18  &       &       &       &       &       & X     \\
+    Problem 19  &       &       &       &       &       & X     \\
+    Problem 20  &       &       &       &       &       & X     \\
     \end{tabular}    
 \end{table}
 
-In der zweiten Tabelle sind die Aktivitäten in verschiedene Aktionen aufgeteilt, die bei der Ausführung der Aktivität vorkommen können, aber nicht unbedingt müssen. Man sieht, dass die meisten Aktionen nach dem Pilottest deutlich besser durchgeführt werden konnten, was auf die Anpassungen des Prototyps nach dem Pilottest zurückzuführen ist. Dass sich die Fragestellungen der Aktivitäten zwischen Pilottest und den anderen Tests unterscheiden spielt da auch mit rein. Die Tabelle zeigt aber auch, dass die Benutzerfreundlichkeit an einigen Stellen noch ausbaufähig ist. Insbesondere der Editiermodus kann verbessert werden, aber auch in der Übersicht und Steuerung gibt es kleinere Probleme
+In der zweiten Tabelle sind die Aktivitäten in verschiedene Aktionen aufgeteilt, die bei der Ausführung der Aktivität vorkommen können, aber nicht unbedingt müssen. Die Werte zeigen, wie gut eine Aktion von einer Testperson durchgeführt werden konnte. Je niedriger der Wert, desto weniger Probleme sind aufgetreten. Kein Wert bedeutet, dass die Testperson die Aktion nicht durchgeführt hat, da die Aktion nicht benötigt wurde. Man sieht, dass die meisten Aktionen nach dem Pilottest deutlich besser durchgeführt werden konnten, was auf die Anpassungen des Prototyps nach dem Pilottest zurückzuführen ist. Dass sich die Fragestellungen der Aktivitäten zwischen Pilottest und den anderen Tests unterscheiden spielt auch eine signifikante Rolle. Die Tabelle zeigt, dass die meisten Probleme durchgeführt werden können, sie zeigt aber auch, dass die Benutzerfreundlichkeit an einigen Stellen noch ausbaufähig ist. Insbesondere der Editiermodus hat Mängel, aber auch in der Übersicht und Steuerung gibt es kleinere Probleme.
 
 \begin{table}[H]
-    \caption{Durchgeführte Aktionen in erster Usability Test Runde}
+    \caption{Bewertung der durchgeführten Aktionen in erster Usability Test Runde}
         \begin{tabular}{l||llllll}
-        durchgeführte Aktion                & Test 0    & Test 1    & Test 2    & Test 3    & Test 4    & Test 5    \\ \hline
+        Aktion                              & T0        & T1        & T2        & T3        & T4        & T5        \\ \hline
         \textbf{Aktivität 1 (Übersicht)}    &           &           &           &           &           &           \\
-        Roboter mit Button ausgewählt       & \green    & \green    & \green    & \green    & \green    & \green    \\
-        Akkustand gefunden                  & \yellow   & \green    & \green    & \yellow   & \yellow   & \green    \\
-        Roboter mit Folgen-Button gefunden  & \yellow   & \green    & \green    &           &           &           \\
-        Roboter mit Karte gefunden          &           &           &           & \yellow   & \green    & \green    \\ \hline
+        Roboter mit Button ausgewählt       &         1 &         1 &         1 &         1 &         1 &         1 \\
+        Akkustand gefunden                  &         2 &         1 &         1 &         2 &         2 &         1 \\
+        Roboter mit Folgen-Button gefunden  &         2 &         1 &         1 &         - &         - &         - \\
+        Roboter mit Karte gefunden          &         - &         - &         - &         2 &         1 &         1 \\ \hline
 
         \textbf{Aktivtiät 2 (Steuerung)}    &           &           &           &           &           &           \\
-        Lieferauftrag-Button gefunden       & \green    & \green    & \green    & \green    & \green    & \green    \\
-        Roboter mit Karte ausgewäht         &           &           &           &           &           & \green    \\
-        Standort mit Personfinder ausgewählt& \yellow   &           & \green    & \green    & \green    & \green    \\
-        Standort mit Karte ausgewählt       &           & \green    &           &           & \green    & \green    \\
-        Lieferauftrag gestartet             & \red      & \yellow   & \green    & \green    & \green    & \green    \\
-        Roboter zur Ladestation geschickt   &           & \green    & \green    & \green    & \green    & \green    \\ \hline
+        Lieferauftrag-Button gefunden       &         1 &         1 &         1 &         1 &         1 &         1 \\
+        Roboter mit Karte ausgewäht         &         - &         - &         - &         - &         - &         1 \\
+        Standort mit Personfinder ausgewählt&         2 &         - &         1 &         1 &         1 &         1 \\
+        Standort mit Karte ausgewählt       &         - &         1 &         - &         - &         1 &         1 \\
+        Lieferauftrag gestartet             &         3 &         2 &         1 &         1 &         1 &         1 \\
+        Roboter zur Ladestation geschickt   &         - &         1 &         1 &         1 &         1 &         1 \\ \hline
 
         \textbf{Aktivität 3 (Editiermodus)} &           &           &           &           &           &           \\
-        Editormodus über Adminansicht       & \red      &           &           &           &           &           \\
-        Editormodus über Nutzeransicht      &           & \green    & \green    & \green    & \green    & \green    \\
-        Steuerung verstanden                &           & \green    & \red      & \green    & \yellow   & \green    \\
-        Undo/Redo genutzt                   &           &           &           &           &           &           \\
-        Modell positioniert                 & \yellow   & \green    & \yellow   & \green    & \green    & \green    \\ \hline
+        Editormodus über Adminansicht       &         3 &         - &         - &         - &         - &         - \\
+        Editormodus über Nutzeransicht      &         - &         1 &         1 &         1 &         1 &         1 \\
+        Steuerung verstanden                &         - &         1 &         3 &         1 &         2 &         1 \\
+        Undo/Redo genutzt                   &         - &         - &         - &         - &         - &         - \\
+        Modell positioniert                 &         2 &         1 &         2 &         1 &         1 &         1 \\
         \end{tabular}
-        Legende: \colorbox{green!25}{ohne Probleme durchgeführt} \colorbox{yellow!25}{trotz Problemen durchgeführt} \colorbox{red!25}{mithilfe des Moderators durchgeführt} \colorbox{white!25}{nicht versucht}
     \end{table}
 
 
