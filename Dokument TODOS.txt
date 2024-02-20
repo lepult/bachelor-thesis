@@ -76,5 +76,5 @@ TODOS
 - Tabellen ergänzen
 - Prüfen ob irgendwo erwähnt wird, was es genau für Roboterdaten gibt die auf Karte dargestellt werden (Standorte und Pfade)
 - Übersicht, Steuerung und Verwaltung oder Übersichts-, Steuerungs- und Verwaltungsansicht? => Vereinheitlichen!
-
+- Bezeichnung der deck.gl Ebenen vereinheitlichen (z.B. ScenegraphLayer, Scenegraph-Layer etc.) => Bezeichnung in deck.gl Doku nehmen?
 
