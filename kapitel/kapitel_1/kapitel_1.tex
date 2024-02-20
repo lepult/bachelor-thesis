@@ -1,5 +1,5 @@
 \newpage
-\section{Grundlagen} \label{Grundlagen}
+\section{Grundlagen}\label{Grundlagen}
 Fehlender-Text
 
 \subsection{Service Roboter}
@@ -19,7 +19,7 @@ Wie bereits erwähnt beschäftigt sich diese Arbeit mit Robotern von Pudu. Pudu 
 
 Damit die Roboter diese Funktionen ausführen können, müssen sie eigenständig durch komplexe, sich ändernde Umgebungen navigieren. Diese Aufgabe lässt sich in die Positionierung, Wahrnehmung und Routenplanung aufteilen, wobei die Positionierung eine Schlüsselrolle spielt \cite{Nature2022}. Zur Positionierung wird eine eigen entwickelte Version von \ac{VSLAM} eingesetzt. Bevor die Roboter eingesetzt werden, müssen sie mithilfe von \ac{VSLAM} eine Karte ihrer Umgebung erstellen. Auf einer Fläche von 1000 Quadratmetern kann das eine Stunde dauern. Daraufhin kann sich der Roboter mithilfe einer nach oben gerichteten Kamera anhand der Zimmerdecke orientieren. Zur Orientierung brauchen Roboter normalerweise platzierte Markierungen. Diese werden mit der eingesetzten Implementierung von \ac{VSLAM} nicht gerbaucht.\cite{Pudu2023} Mit weiteren Kameras und Sensoren können die Roboter ihre Umgebung wahrnehmen. Mithilfe von KI können die Roboter hierbei Kinder und Senioren erkennen, um sich von ihnen fernzuhalten oder in ihrer Nähe langsamer zu fahren \cite{Nature2022}.
 
-\subsubsection{Bot Control Backend}
+\subsubsection{Bot Control Backend}\label{sec:BotControlBackend}
 Im Rahmen dieser Arbeit wird eine bereits existierende Schnittstelle zwischen den Pudu Robotern und der prototypischen Webanwendung genutzt. Diese Schnittstelle ist das sogenannte \ac{BCB}. In diesem Abschnitt wird die Verbindung zwischen dem \ac{BCB} und den Pudu Robotern erläutert. Im weiteren Verlauf dieser Arbeit wird nicht weiter auf diese Verbindung eingegangen, sondern stattdessen nur auf einzelnen Endpunkte des \ac{BCB}.
 
 Die folgenden Informationen zum Service Framework von Pudu, das zur Kommunikation zwischen Robotern und \ac{BCB} genutzt wird, stammen aus dem SDK Guidance Document von Pudu \cite{PuduSDK}. Das Dokument steht nicht im Internet zur Verfügung und bietet keine genaueren Informationen zur MQTT basierten Kommunikation zwischen Microservice, PUDU Cloud und Robotern. Die folgende Abbildung veranschaulicht die Kommunikation zwischen dem Bot Control Backend und den Robotern.
@@ -42,7 +42,7 @@ Das \ac{BCB} dient nicht nur als Schnittstelle zu den Pudu Robotern, sondern abs
 % Plattformunabhängigkeit mit Quelle erwähnen
 Fehlender-Text
 
-\subsubsection{Technologien und Softwarebibliotheken}
+\subsubsection{Technologien und Softwarebibliotheken}\label{sec:WebTechnologies}
 Fehlender-Text
 % HTML erklären
 % Typescript erklären => Javascript
@@ -50,7 +50,7 @@ Fehlender-Text
 % React erklären
 % React Redux erwähnen
 
-\subsubsection{chayns}
+\subsubsection{chayns} \label{Chayns}
 Fehlender-Text
 % chayns-Seite erläutern
 % chayns-Application erläutern
@@ -59,6 +59,8 @@ Fehlender-Text
 % npx create-chayns-app
 % chayns-components
 % chayns-api
+% chayns.space erläutern
+% websocket-service erwähnen
 
 \subsection{3D Modelle}
 In diesem Abschnitt wird eine kurze Einführung zu 3D-Modellen gegeben. Danach werden verschiedene Methoden vorgestellt, die sich zum Erzeugen von 3D-Gebäudemodellen eignen. Zuletzt wird erklärt wie 3D-Modelle im Web eingebunden werden können. Ein direkter Vergleich der Methoden folgt in einem späteren Kapitel.

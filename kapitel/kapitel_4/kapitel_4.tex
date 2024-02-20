@@ -1,94 +1,67 @@
+% TODO textcommand für Scenegraph-Ebene, SimpleMesh-Ebene, Icon-Ebene
+
 \newpage
 \section{Umsetzung}
-Im Folgenden wird die Implementierung, sowie die Evaluierung des Prototyps beschrieben.
-
-Bei der Skizzierung der Mockups und auch später während der Implementierung wurde darauf geachtet eine gute Benutzerfreundlichkeit zu bieten. Hierfür wurde sich an den 1994 von Nielsen entwickelten 10 Usability Heuristics orientiert.
-% Quelle Nielsen https://www.nngroup.com/articles/ten-usability-heuristics/
-In der Evaluierung des Prototyps werden die Heuristics vorgestellt und es wird genauer geprüft wie gut diese eingehalten wurden.
-% Verweis auf Abschnitt
-
-Fehlender-Text
+Im Folgenden wird die Implementierung, sowie die Evaluierung des Prototyps beschrieben. Bei der Skizzierung der Mockups und auch später während der Implementierung wurde darauf geachtet eine gute Benutzerfreundlichkeit zu bieten. Hierfür wurde sich an den 1994 von Nielsen entwickelten 10 Usability Entscheidungsregeln \cite{Nielsen.1994} orientiert. Im kommenden Kapitel \ref{sec:UsabilityHeuristics} wird genauer geprüft wie gut diese eingehalten wurden.
 
 \subsection{Mockup}
+Für den Prototyp wurden Mockups skizziert an denen sich während der Implementierung orientiert werden konnte. Diese Mockups wurden zunächst auf Papier niedergeschrieben. Für die folgende Beschreibung wurden die Mockups mithilfe von Figma \cite{Figma} digitalisiert. Es gibt jeweils ein Mockup für die Übersicht, Steuerung und Verwaltung.
 
-Für den Prototyp wurden Mockups skizziert an denen sich während der Implementierung orientiert werden konnte. Diese Mockups wurden zunächst auf Papier niedergeschrieben. Für die folgende Beschreibung wurden die Mockups mithilfe von Figma digitalisiert.
-% Figma Quelle
-Es gibt jeweils ein Mockup für die Übersicht, Steuerung und Verwaltung. 
+In der Übersicht werden die Gebäudemodelle in Kombination mit den Roboterdaten angezeigt. So werden die verschiedene Standorte mithilfe von Icons markiert, die Roboterpfade werden über Linien dargestellt und die Roboterpositionen werden mithilfe von 3D-Modellen der Roboter angezeigt. Es gibt Buttons mit denen zwischen den verschiedenen Stockwerken navigiert werden kann. Die Roboter können über das Anklicken des entsprechenden 3D-Modells und über Buttons markiert werden. Über zwei weitere Buttons kann dem markierten Roboter mit der Kamera automatisch gefolgt werden und die Kameraposition auf die Ausgangsposition zurückgesetzt werden.
+% TODO Auf Anhang verweisen
 
-In der Übersicht werden die Gebäudemodelle in Kombination mit den Roboterdaten angezeigt. So werden die verschiedene Standorte mithilfe von Icons markiert, die Roboterpfade werden über Linien dargestellt und die Roboterpositionen werden mithilfe von 3D-Modellen der Roboter angezeigt. Es gibt Buttons mit denen zwischen den verschiedenen Stockwerken navigiert werden kann. Die Roboter können über das Anklicken des entsprechenden 3D-Modells und über Buttons markiert werden. Über einen weiteren Button kann dem markierten Roboter dann automatisch gefolgt werden. Über einen weiteren Button kann die Kameraposition wieder auf die Ausgansposition zurückgesetzt werden.
+Die Steuerung erweitert die Übersicht um weitere Funktionen. So kann man nach dem Markieren eines Roboters weitere Buttons nutzen, mit denen man Lieferrouten bestimmen, den Roboter zum Aufladen zur Ladestation schicken, oder den aktuellen Lieferauftrag abbrechen kann. Für die Routenbestimmung muss ein Ziel und ein Roboter ausgewählt werden. Auch können optional ein Ausgabepunkt und Zwischenstationen eingestellt werden. Um die Routenerstellung zu vereinfachen, können sowohl Roboter als auch Standorte über das Anklicken auf der Karte ausgewählt werden.
+% TODO Auf Anhang verweisen
 
-Die Steuerung erweitert die Übersicht um weitere Funktionen. So kann man nach dem Markieren eines Roboters weitere Buttons nutzen. Über diese kann man Lieferrouten bestimmen, den Roboter zum Aufladen zur Ladestation schicken, oder den aktuellen Lieferauftrag abbrechen. Für die Routenbestimmung muss ein Ziel und ein Roboter ausgewählt werden. Auch können optional ein Ausgabepunkt und Zwischenstationen eingestellt werden. Um die Routenerstellung zu vereinfachen, können sowohl Roboter als auch Standorte über das Anklicken auf der Karte ausgewählt werden.
-
-In der Verwaltungsansicht gibt es eine Übersicht über die existierenden Roboter und Stockwerke. So gibt es zum einen eine Liste der existierenden Roboter, über die man Zugriff auf verschiedene Informationen hat. So sind hier unter anderem auch Informationen ersichtlich, auf die man wegen fehlender Berechtigungen in den anderen Anischten keinen Zugriff hat. Hierbei handelt es sich um Informationen wie die Systeminterne \ac{ID} und die Neustart-Zeit des Roboters. Über diese Liste lassen sich zusätzlich auch Einstellungen der Roboter ändern. So hat der Administrator hier beispielsweise die Möglichkeite den Namen, den Ausgabepunkt oder die Ladestation des Roboters zu ändern. Auch gibt es hier eine Vorschau der Gebäudekarte, in der die genaue Position des Roboters ersichtlich ist.
-
-In der Übersicht der Stockwerke gibt es für jedes Stockwerk eine Liste der Standorte. Außerdem gibt es wie bei den Robotern eine Vorschau der Karte. Zusätzlich gibt es ein Kontextmenü, über das in den Editiermodus des Stockwerks gewechselt werden kann. Da die Funktionalitäten und der Aufbau des Editiermodus stark von den verfügbaren Funktionen in \deckgl{} abhängig ist, wurde hierfür kein Mockup entwickelt. So existieren nur die Anforderungen, dass die Roboterdaten und 3D-Modelle durch Verschieben und Rotieren der Objekte synchronisiert werden können.  
+In der Verwaltungsansicht gibt es eine Übersicht über die existierenden Roboter und Stockwerke. So gibt es zum einen eine Liste der existierenden Roboter, mit der man Zugriff auf verschiedene Informationen der Roboter hat. Es sind unter anderem auch Informationen ersichtlich, auf die man wegen fehlender Berechtigungen in den anderen Anischten keinen Zugriff hat. Hierbei handelt es sich beispielsweise die Systeminterne \ac{ID} und die Neustart-Zeit des Roboters. Über die Liste lassen sich zusätzlich auch Einstellungen der Roboter ändern. So hat der Administrator hier beispielsweise die Möglichkeite den Namen, den Ausgabepunkt oder die Ladestation des Roboters zu ändern. Auch gibt es eine Vorschau der Gebäudekarte, in der die genaue Position des Roboters ersichtlich ist.
+% TODO Auf Anhang verweisen
+In der Übersicht der Stockwerke gibt es für jedes Stockwerk eine Liste der jeweiligen Standorte. Außerdem gibt es wie bei den Robotern eine Vorschau der Karte eines Stockwerks. Zusätzlich gibt es ein Kontextmenü, über das in den Editiermodus des Stockwerks gewechselt werden kann. Da die Funktionalitäten und der Aufbau des Editiermodus stark von den verfügbaren Funktionen in \deckgl{} abhängig ist, gibt es hierfür kein Mockup. So existieren nur die bekannte Anforderung, dass die Roboterdaten und 3D-Modelle durch Verschieben und Rotieren der Objekte synchronisiert werden können.
 
 \subsection{Implementierung}
-% ggf. wird ein weiteres Prototyp-Backend erstellt in dem die Daten abgespeichert werden, die aktuell hard-coded sind. Falls dieses Backend erstellt wird, sollte das hier noch erwähnt werden
-Es wurde ein Frontend entwickelt, dass auf das \ac{BCB} zugreift, um die Roboterdaten anzufragen. Wie das \ac{BCB} mit den Robotern kommuniziert, wurde in einem vorherigen Kapitel erklärt. % Referenz auf dieses Kapitel?
-Das Frontend nutzt das Web-Framework React JS in Kombination mit HTML, SCSS und Typescript. Typscript wurde aufgrund der statischen Typisierung, frühzeitigen Fehlererkennung und besseren Wartbarkeit gegenüber Javascript gewählt. Da SCSS eine bessere Übersichtlichkeit der Stylesheets ermöglicht, wurde es statt CSS eingesetzt. Zustandsinformationen die Komponentenübergreifend abgerufen werden, werden zentral mithilfe von React-Redux gespeichert. Die Grundstruktur des Frontend-Projekts wurde mihilfe des Shell Befehls "npx create-chayns-app" generiert. Die Kompilierung ist mithile des npm-Pakets "chayns-toolkit" konfiguriert. GUI-Elemente wie Buttons und Aufklapper werden durch die Komponentenbibliothek "chayns-components" bereitgestellt. Ein großer Teil der Typscript Type-Definitionen konnte aus einem anderen Frontend-Projekt kopiert werden. Hierbei handelt es sich um Types für Objekte, die aus dem \ac{BCB} stammen werden. Außerdem werden die npm-Pakete "clsx" und "fortawesome" eingesetzt.
-% TODO Acronyme und Glossar Einträge ergänzen
-% TODO genauer auf Pakete eingehen die nicht in den Grundlagen erläutert werden
+Es wurde ein Frontend entwickelt, dass auf das \ac{BCB} zugreift, um die Roboterdaten anzufragen. Wie das \ac{BCB} hierbei mit den Robotern kommuniziert, wird im Kapitel \ref{sec:BotControlBackend} erklärt. Das Frontend nutzt das Web-Framework React in Kombination mit \ac{HTML}, \ac{SCSS} und Typescript. Die Vorteile von Typescript und \ac{SCSS} gegenüber Javascript und \ac{CSS} wird im Kapitel \ref{sec:WebTechnologies} erläutert. Auch React wird dort erklärt. 
+% Typscript wurde aufgrund der statischen Typisierung, frühzeitigen Fehlererkennung und besseren Wartbarkeit gegenüber Javascript. Da SCSS eine bessere Übersichtlichkeit der Stylesheets ermöglicht, wurde es statt CSS eingesetzt.
+Zustandsinformationen die Komponentenübergreifend abgerufen werden, werden zentral mithilfe von React-Redux gespeichert. Die Grundstruktur des Frontend-Projekts wurde mihilfe des Shell Befehls "npx create-chayns-app" \cite{CreateChaynsApp} generiert. Die Kompilierung ist mithile des \ac{npm}-Pakets "chayns-toolkit" \cite{ChaynsToolkit} konfiguriert. \ac{GUI}-Elemente wie Buttons und Aufklapper werden durch die Komponentenbibliothek "chayns-components" \cite{ChaynsComponents} bereitgestellt. Außerdem werden die \ac{npm}-Pakete clsx \cite{clsx} und fortawesome \cite{fontawesome} eingesetzt. Mithilfe von clsx lassen sich HTML Klassennamen Kompackt unter Bedingungen anwenden. Das fortawesome \ac{npm}-Paket wird genutzt, um \ac{SVG} Icons als Zeichenkette zu importieren. Ein großer Teil der Typescript Type-Definitionen konnte aus einem anderen Frontend-Projekt kopiert werden. Hierbei handelt es sich um Types für Objekte, die aus dem \ac{BCB} stammen.
 
 \subsubsection{Übersicht}
 In der Übersicht werden die Roboterdaten in Kombination mit den Gebäudemodellen mithilfe von \deckgl{} angezeigt. Hierfür werden verschiedene \deckgl{}-Layers eingesetzt.
 
 \paragraph{Gebäudemodelle}
-Für den Prototyp sind die \ac{URL} der 3D-Modelle hartkodiert und verweisen auf den chayns.space in dem die Modelle abgespeichert sind. Die Gebäudemodelle werden aus bereits erläuterten Gründen im \ac{glTF}-Format geladen und in der ScenegraphLayer angezeigt. Die ScenegraphLayer ist dafür ausgelegt, ein bestimmtes 3D-Modell beliebig oft an verschiedenen Positionen anzuzeigen. Diese Verwendung der ScenegraphLayer ist auf die eigentliche Aufgabe von \deckgl{} - die Visualisierung riesiger Geodaten Mengen - zurückzuführen. Aus diesem Grund muss für jedes 3D-Modell eine eigene Instanz der ScenegraphLayer erzeugt werden. 
-% TODO Quelle Scenegraph Layer Doku
-\deckgl{} ist für den Einsatz von über 100 Ebenen gleichzeitig ausgelegt, wobei wahrscheinlich sogar der einsatz von bis zu 1000 Ebenen ohne große Performance Einbußen möglich ist. Da nicht davon auszugehen ist, dass ein angezeigtes Stockwerk aus mehr als 10 3D-Modellen und somit 10 ScenegraphLayers besteht, sind keine relevanten negativen Performance-Auswirkungen zu erwarten.
-% TODO Quelle deckgl zu Layers (https://deck.gl/docs/developer-guide/performance#number-of-layers)
-Für die Scenegraph-Layers ist das Backface Culling aktiviert. Hierdurch werden die Rückseiten der Polygone - und somit die von der Kamera abgewandten Zimmerdecken und Wände - durchsichtig, sodass der Nutzer von außen in die Räume hinein sehen kann. 
-% TODO Quelle Backface Culling
-% TODO Schaubild mit und ohne Backface Culling => Schaubild erwähnen
-Außerdem ist für die ScenegraphLayers das \ac{PBR} Lighting aktiviert. \ac{PBR} bestimmt die Lichtverhältnisse, abhängig des Materials eines 3D-Modells. Hierdurch wird die Qualität des angezeigten Modells erhöht.
+Für den Prototyp sind die \ac{URL}-Verweise der 3D-Modelle hartkodiert, also in den Quelltext der Webanwendung eingebettet. Für ein potenzielles Produktivsystem müssten die \ac{URL}-Verweise in der Datenbank des \ac{BCB}s abgespeichert werden. Die Modelle sind im chanys.space gespeichert und werden aus Gründen, die in Kapitel \ref{sec:ModelFileFormat} bereits erläutert wurden, im \ac{glTF}-Format geladen und in der ScenegraphLayer angezeigt. Diese Ebene ist dafür ausgelegt, ein bestimmtes 3D-Modell beliebig oft an verschiedenen Positionen anzuzeigen \cite{DeckglScenegraphLayer}, was auf die Hauptfunktion von \deckgl{} - die Visualisierung riesiger Geodaten Mengen \cite{Deckgl} - zurückzuführen ist. Aus diesem Grund muss für jedes 3D-Modell eine eigene Instanz der ScenegraphLayer erzeugt werden. \deckgl{} ist für den Einsatz von über 100 Ebenen gleichzeitig ausgelegt, wobei wahrscheinlich sogar der einsatz von bis zu 1000 Ebenen ohne große Performance Einbußen möglich ist \cite{DeckglPerformance}. Im Prototyp besteht ein Stockwerk aus bis zu sechs 3D-Modellen und somit auch aus sechs ScenegraphLayers. Da nicht davon auszugehen ist, dass jemals mehr als 15-mal so viele Modelle für ein Stockwerk nötig sind, sind keine negativen Performance-Auswirkungen durch den Einsatz einer Ebene für ein einzelnes Modell zu erwarten.
+% TODO Zahl anpassen, falls mehr Modelle genutzt werden
+Für die Scenegraph-Layers ist das Backface Culling aktiviert. Mithilfe vom Backface Culling werden die von der Kamera weggerichteten Polygone ausgeblendet \cite{BackfaceCulling}. Meist wird Backface Culling genutzt, um Polygone auszublenden, die sowieso hinter anderen Polygonen versteckt sind, um die Darstellungsgeschwindigkeit zu erhöhen. Im Fall der Gebäudemodelle sind die Polygone in den Raum hineingerichtet. Somit bewirkt das Backface Culling, dass die Wände und Decken ausgeblendet werden, die dem Nutzer die Sicht in den Raum verdecken würden. In der Abbildung \ref{fig:BackfaceCulling} wird dieser Effekt verdeutlicht. So sieht man auf der linken Seite, dass ohne das Backface Culling nicht in den Raum hineingesehen werden kann, während es auf der rechten Seite mit Backface Culling möglich ist.
+
+\begin{figure}[H]\label{fig:BackfaceCulling}
+    \caption{Raummodell ohne und mit Backface Culling}
+    \includegraphics[width=0.9\textwidth]{Backface Culling Vergleich.png}
+    \\
+    Quelle: Eigene Darstellung
+\end{figure}
+% TODO Ist "Quelle: Eigene Darstellung" richtig?
 % TODO Erwähnen falls 3D-Modelle gecached werden
 
-\paragraph{Roboterdaten}
-Die Roboterdaten werden über verschiedene Endpunkte des \ac{BCB}s abgerufen. So gibt es einen Endpunkt für die Bezeichnungen der verschiedenen Standorte und einen Endpunkt für den Roboterstatus, Lieferautrag und die Roboterposition.
-% TODO Quelle zur Swagger Doku
-Für die Positionen aller Standorte und der Roboterpfade gibt es keinen Endpunkt. Stattdessen können die Standorte und Pfade nur von Stockwerken angefragt werden, in denen sich Roboter zu dem Zeitpunkt befinden, da diese Daten direkt von den Robotern angefragt werden. Damit immer alle Daten aus allen Stockwerken abgerufen werden können, sind diese im Prototyp für alle Stockwerke hartkodiert. Für eine potenzielle Live-Anwendung müssten diese Daten in der Datenbank des \ac{BCB}s gespeichert und regelmäßig mit den Robotern synchronisiert werden.
-% TODO Schaubild in dem Datenbankstruktur um die entsprechende Tabelle erweitert wird => genauer darauf eingehen.
+\paragraph{Roboterdaten}\label{sec:RobotData}
+Die Roboterdaten werden über verschiedene Endpunkte des \ac{BCB}s abgerufen. So gibt es einen Endpunkt für die Bezeichnungen der verschiedenen Standorte und einen Endpunkt für den Roboterstatus, Lieferautrag und die Roboterposition \cite{BCBSwagger}. Für die Positionen aller Standorte und der Roboterpfade gibt es keinen Endpunkt. Stattdessen können die Standorte und Pfade nur von Stockwerken angefragt werden, in denen sich Roboter zu dem Zeitpunkt befinden, da diese Daten direkt von den Robotern angefragt werden. Damit immer alle Daten aus allen Stockwerken abgerufen werden können, sind diese Daten im Prototyp für alle Stockwerke hartkodiert. Für ein potenzielles Produktivsystem müssten diese Daten in der Datenbank des \ac{BCB}s gespeichert und regelmäßig mit den Robotern synchronisiert werden.
+% Braucht es ein Schaubild in dem die erweiterte Datenbankstrukur dargestellt wird?
 
-Im Gegensatz zu den Gebäuademodellen werden die Robotermodelle im \ac{OBJ}-Format mit der SimpleMeshLayer angezeigt. Mit der ScenegraphLayer gibt es verschiedene Probleme, wodurch die SimpleMeshLayer brauchbarer, aber auch nicht ideal, ist. So können die Positionen der Roboter in der ScenegraphLayer nicht animiert werden. Auch gibt es mit der ScenegraphLayer Probleme bei der erneuten Initialisierung einer Layer, wodurch die 3D-Modelle nicht erneut angezeigt werden können, nachdem diese ausgeblendet wurden. Bei beiden Problemen handelt es sich wahrscheinlich um Bugs in \deckgl{}, denn zumindest das Animieren der ScenegraphLayer sollte laut der Dokumentation möglich sein. 
-% Quelle ScenegraphLayer
-Wie bereits erwähnt, lässt sich die Materialdatei des \ac{OBJ} Formats nicht in der SimpleMeshLayer einbinden, weshalb die Roboter einfarbig angezeigt werden müssen. Das ist nicht unbedingt ein Nachteil, denn so können die Roboter mithilfe einer herausstechenden Farbe für den Nutzer besser sichtbarer gemacht werden. Die Positionsänderungen der Roboter werden über die transitions Property animiert. Allerdings lässt sich die Rotation nicht animieren, was vermutlich auch auf einen Bug in \deckgl{} zurückzuführen ist.
+Im Gegensatz zu den Gebäuademodellen werden die Robotermodelle im \ac{OBJ}-Format mit der SimpleMeshLayer \cite{DeckglSimpleMeshLayer} angezeigt. Mit der ScenegraphLayer gibt es das Problem, dass die Positionen der Modelle nicht animiert werden können, wodurch die SimpleMeshLayer brauchbarer, aber auch nicht ideal, ist. Laut der Dokumentation voj \deckgl{} sollte das Animieren über die transition Property in allen Ebenen möglich sein \cite{DeckglLayerClass}. Deshalb handelt es sich bei dem Problem mit der ScenegraphLayer vermutlich um einen Bug in \deckgl{}. Wie im Kapitel \ref{sec:ModelFileFormat} erwähnt, lässt sich die Materialdatei des \ac{OBJ} Formats nicht in der SimpleMeshLayer einbinden, weshalb die Roboter einfarbig angezeigt werden müssen. Das ist nicht unbedingt ein Nachteil, denn so können die Roboter mithilfe einer herausstechenden Farbe für den Nutzer besser sichtbar gemacht werden. Die Positionsänderungen der Roboter werden über die transitions Property animiert. Allerdings lässt sich die Rotation nicht animieren, was vermutlich auch auf einen Bug in \deckgl{} zurückzuführen ist.
 
-Über den Robotermodellen wird mithilfe der IconLayer der aktuelle Status der Roboter angezeigt. In einer IconLayer Instanz können im Gegensatz zur ScenegraphLayer verschiedene Icons angezeigt werden, weshalb hierfür eine Layer-Instanz ausreicht. 
-% Quelle IconLayer Doku
-So schwebt über jedem Roboter ein eigenes Icon. Die genutzten Icons stammen aus der Icon-Bibliothek Fontawesome und werden aus dem "fortawesome" npm-Paket als \ac{SVG} importiert.
-% TODO Quelle für genutzte Funktion.
-Da die IconLayer keine \ac{SVG}-Dateien anzeigen kann, werden die SVG-Dateien in Data-URLs umgewandelt.
-% Quelle IconLayer Doku.
+Über den Robotermodellen wird mithilfe der IconLayer der aktuelle Status der Roboter angezeigt. Während in einer ScenehraphLayer-Instanz nur ein bestimmtes 3D-Modell angezeigt werden kann, können in einer IconLayer-Instanz verschiedene Bilder mithilfe der getIcon Zugriffsfunktion angezeigt werden \cite{DeckglIconLayer}, weshalb hierfür im Gegensatz zur ScenegraphLayer eine Layer-Instanz ausreicht. Die genutzten Icons stammen aus der Icon-Bibliothek Fontawesome und werden aus dem fortawesome \ac{npm}-Paket als \ac{SVG}-Zeichenkette importiert. Da die IconLayer das \ac{SVG} Format nicht unterstützt, werden die \ac{SVG}-Zeichenketten in das Data-\ac{URL} Format umgewandelt. Das Data-\ac{URL} Format bettet Daten als \gls{Base64}-Zeichenkette innerhalb einer \ac{URL} ein \cite{DataUrl}.
 
-Die verschiedenen Standorte - Lieferpunkte, Ausgabepunkte und Ladestationen - werden auch über die IconLayer angezeigt. Wie bei den Roboter-Zuständen werden hierfür verschiedene Fontawesome-Icons genutzt. Wurde ein Roboter ausgewählt und hat dieser einen Lieferauftrag, dann wird der Zielstandort farbig markiert. Die Pfade und virtuellen Wände werden über die PathLayer angezeigt. 
-% TODO Quelle PathLayer Doku
-Die virtuellen Wände werden gestrichelt angezeigt, um diese von den Roboterpfaden zu unterscheiden. Hierfür wird die PathStyleExtension genutzt.
-% TODO Quelle (https://deck.gl/docs/api-reference/extensions/path-style-extension)
-Es reicht eine PathLayer-Instanz aus, um sowohl Roboterpfade als auch virtuelle Wände anzuzeigen.
+Die verschiedenen Standorte werden über die IconLayer angezeigt. Wie bei den Roboter-Zuständen werden hierfür verschiedene Fontawesome-Icons genutzt. Wurde ein Roboter ausgewählt und hat dieser einen Lieferauftrag, dann wird der Zielstandort farbig markiert. Die Pfade und virtuellen Wände werden über eine Instanz der PathLayer \cite{DeckglPathLayer} dargestellt. Die virtuellen Wände werden gestrichelt und in einer anderen Farbe angezeigt, um diese von den Roboterpfaden zu unterscheiden. Für die gestrichelte Darstellung wird die PathStyleExtension \cite{DeckglPathStyleExtension} genutzt.
 
-Bei der folgenden Anwendung handelt es sich um einen Screenshot des Prototyps. Man sieht alle erwähnten Ebenen. So sieht man ein Gebäudemodell, ein Roboter mit einem Icon, das den Status repräsentiert, verschiedene Pfade und verschiedene Standorte.
-% TODO Screenshot hinzufügen 
+Bei der folgenden Abbildung handelt es sich um einen Screenshot des Prototyps. Man sieht alle erwähnten Ebenen. So sieht man ein Gebäudemodell, ein Roboter mit einem Icon, das den Status repräsentiert, verschiedene Pfade und verschiedene Standorte.
+% TODO Screenshot hinzufügen
 
 \paragraph{Echtzeit-Aktualisierung}
-% TODO Websocket erwähnen
-Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer indirekten \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Hierfür wird der für chayns interne \gls{Websocket}-Service genutzt. In der folgenden Abbildung ist Funktionsweise des \gls{Websocket}-Services vereinfacht dargestellt. Aktualisiert ein Roboter seine Position, wird die entsprechende Information über \gls{MQTT} an das \ac{BCB} gesendet.
+Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer indirekten \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Hierfür wird der im Kapitel \ref{sec:Chayns} beschriebene \gls{Websocket}-Service genutzt. In der folgenden Abbildung ist der Ablauf einer Statusaktualisierung vereinfacht dargestellt. Aktualisiert ein Roboter seine Position, wird die entsprechende Information über \gls{MQTT} an das \ac{BCB} gesendet.
 % Passt das so? Funktioniert MQTT wie beschrieben?
 Das \ac{BCB} sendet daraufhin eine Nachricht an den \gls{Websocket}-Service, der diese Information wiederum an alle verbundenen Clients schickt.
 % TODO Schaubild einfügen.
 
-Die über den \gls{Websocket}-Service empfangenen aktualisierten Informationen werden zentral im Redux-Store aktualisiert, sodass dem Nutzer die aktualisierten Informationen direkt angezeigt werden können. Bei Positonsänderungen der Roboter werden mithilfe des transitions Attributs der SimpleMeshLayer und der IconLayer animiert. So entsteht der Eindruck, dass die Roboter zusammen mit den Status-Icons fahren. Wie bereits erwähnt lässt sich für die Robotermodelle allerdings nur die Position und nicht die Rotation animieren.
+Die über den \gls{Websocket}-Service empfangene Statusaktualisierung wird zentral im Redux-Store aktualisiert, sodass dem Nutzer die Aktualisierung direkt angezeigt werden kann. Bei Positonsänderungen der Roboter werden diese mithilfe des transitions Attributs der SimpleMeshLayer und der IconLayer animiert \cite{DeckglLayerClass}. So entsteht der Eindruck, dass die Roboter fahren. Wie im Kapitel \ref{sec:RobotData} erwähnt, lässt sich für die Robotermodelle allerdings nur die Position und nicht die Rotation animieren.
 
 \paragraph{Interaktion}
-Die Roboter, sowie die Standorte sind, mithilfe der onClick Property der entsprechenden Ebene, auswählbar.
-% onClick Quelle
-Ausgewählte Standorte und Roboter werden verfärbt angezeigt. Außerdem erscheint ein Button über den sich weitere Informationen wie beispielsweise die Akkuladung bei Robotern und der Name bei Standorten anzeigen lässt. Schwebt die Maus über einem Standort oder Roboter, dann wird mithilfe der getTooltip Property ein Tooltip angezeigt, in dem der Name des entsprechenen Objekts steht.
-% getTooltip Quelle
-Es gibt zudem die Möglichkeit einem Roboter zu Folgen. Die Kamera wird hierfür mithilfe des FlyToInterpolators zu dem ausgewählten Roboter bewegt. 
-% FlyToInterpolators Quelle
-Während einem Roboter gefolgt wird, wird die Kameraposition mithilfe der transitionDuration Property animiert, wenn die Roboterposition aktualisiert wird.
-% transitionDuration Quelle
-
+Die Roboter, sowie die Standorte sind, mithilfe der onClick Property der entsprechenden Ebene \cite{DeckglInteractivity}, auswählbar. Ausgewählte Standorte und Roboter werden verfärbt angezeigt. Außerdem erscheint ein Button über den sich weitere Informationen wie beispielsweise die Akkuladung bei Robotern und der Name bei Standorten anzeigen lässt. Schwebt die Maus über einem Standort oder Roboter, dann wird mithilfe der getTooltip Property \cite{DeckglDeckClass} ein Tooltip angezeigt, in dem der Name des entsprechenen Objekts steht. Es gibt zudem die Möglichkeit einem Roboter zu Folgen. Die Kamera wird hierfür mithilfe des FlyToInterpolators \cite{DeckglFlyToInterpolator} zu dem ausgewählten Roboter bewegt. Während einem Roboter gefolgt wird, wird die Kameraposition mithilfe der transitionDuration Property \cite{DeckglAnimationsAndTransitions} animiert, wenn die Roboterposition aktualisiert wird.
 
 \subsubsection{Steuerung}
 Es gibt drei verschiedene Aktionen zum Steuern der Roboter: Lieferauftrag, Laden und Abbrechen. Mit dem Laden und Abbrechen wird der aktuelle Lieferauftrag abgebrochen, worauf der Nutzer auch hingewiesen wird. Für beide Aktionen gibt es jeweils einen Button, der klickbar ist, sobald ein Roboter ausgewählt wurde. Während der Roboter durch das Laden zur Ladestation fährt, bewegt sich der Roboter durch Abbrechen nicht mehr. Für das Einstellen eines Lieferauftrags muss ein Ziel und ein Roboter, sowie optional ein Ausgabepunkt und Zwischenstationen ausgewählt werden. Hierfür gibt es zum einen Inputs, mit denen nach Standorten und Robotern gesucht werden kann. Bei den Inputs handelt es sich um die PersonFinder-Komponente der chayns-components, die eigentlich für das Suchen nach chayns Nutzern genutzt wird. Im Prototyp ist die Komponente für das Suchen nach Standorten entsprechend konfiguriert.
@@ -132,7 +105,7 @@ Die Qualität der erzeugten Modelle variiert zum einen dadurch wie gut der Scann
 \subsubsection{Benutzerfreundlichkeit}
 % TODO Analyse der nicht-funktionalen Anforderungen
 
-\paragraph{Usability Heuristics}
+\paragraph{Usability Heuristics}\label{sec:UsabilityHeuristics}
 % TODO kürzen
 % Erklären dass anhand der Usability Heuristics entwickelt wurde
 % 3-4 Regeln erwähnen und erklären wie diese erfüllt werden
@@ -177,10 +150,10 @@ Mithilfe des Pilottests konnten die Aktivitäten optimiert werden. Außerdem kon
 
 \paragraph{Erste Usability Tests Runde}
 
-In den beiden folgenden Tabellen werden die Ergebnisse des ersten Usability Test durchlaufs zusammengefasst. In der ersten Tabelle wird dargestellt, welche Probleme bei welcher Testperson aufgefallen sind. So sieht man, dass die meisten Probleme die im Pilottest aufgefallen sind, danach nicht mehr aufgetreten sind, was darauf zurückzuführen ist, dass diese vor der Durchführung der restlichen Tests behoben wurden. Man kann zudem sehen, dass den meisten Testpersonen neue Probleme aufgefallen sind, die keiner anderen Testperson aufgefallen sind. Hierdurch zeigt sich, dass durch weniger Testpersonen wahrscheinlich weniger Probleme gefunden worden wären. Bei der Korrektur der Probleme wurde die Probleme priorisiert, die besonders vielen Testpersonen aufgefallen sind. Bei den Usability Tests gab es außerdem Feedback von den Testpersonen, welches nützlich ist, aber nicht als Probleme eingestuft werden kann.
+In den beiden folgenden Tabellen werden die Ergebnisse des ersten Usability Test durchlaufs zusammengefasst. In Tabelle \ref{tbl:1stUsabilityTestsProblems} wird dargestellt, welche Probleme bei welcher Testperson aufgefallen sind. So sieht man, dass die meisten Probleme die im Pilottest aufgefallen sind, danach nicht mehr aufgetreten sind, was darauf zurückzuführen ist, dass diese vor der Durchführung der restlichen Tests behoben wurden. Man kann zudem sehen, dass den meisten Testpersonen neue Probleme aufgefallen sind, die keiner anderen Testperson aufgefallen sind. Hierdurch zeigt sich, dass durch weniger Testpersonen wahrscheinlich weniger Probleme gefunden worden wären. Bei der Korrektur der Probleme wurde die Probleme priorisiert, die besonders vielen Testpersonen aufgefallen sind. Bei den Usability Tests gab es außerdem Feedback von den Testpersonen, welches nützlich ist, aber nicht als Probleme eingestuft werden kann.
 
 \begin{table}[H]
-    \caption{Gefundene Probleme in erster Usability Test Runde}
+    \caption{Gefundene Probleme in erster Usability Test Runde}\label{tbl:1stUsabilityTestsProblems}
     \begin{tabular}{l||l|l|l|l|l|l}
                 & T0    & T1    & T2    & T3    & T4    & T5    \\ \hline
     Problem 1   & X     &       &       & X     &       &       \\
@@ -208,8 +181,9 @@ In den beiden folgenden Tabellen werden die Ergebnisse des ersten Usability Test
 
 In der zweiten Tabelle sind die Aktivitäten in verschiedene Aktionen aufgeteilt, die bei der Ausführung der Aktivität vorkommen können, aber nicht unbedingt müssen. Die Werte zeigen, wie gut eine Aktion von einer Testperson durchgeführt werden konnte. Je niedriger der Wert, desto weniger Probleme sind aufgetreten. Kein Wert bedeutet, dass die Testperson die Aktion nicht durchgeführt hat, da die Aktion nicht benötigt wurde. Man sieht, dass die meisten Aktionen nach dem Pilottest deutlich besser durchgeführt werden konnten, was auf die Anpassungen des Prototyps nach dem Pilottest zurückzuführen ist. Dass sich die Fragestellungen der Aktivitäten zwischen Pilottest und den anderen Tests unterscheiden spielt auch eine signifikante Rolle. Die Tabelle zeigt, dass die meisten Probleme durchgeführt werden können, sie zeigt aber auch, dass die Benutzerfreundlichkeit an einigen Stellen noch ausbaufähig ist. Insbesondere der Editiermodus hat Mängel, aber auch in der Übersicht und Steuerung gibt es kleinere Probleme.
 
+
 \begin{table}[H]
-    \caption{Bewertung der durchgeführten Aktionen in erster Usability Test Runde}
+    \caption{Bewertung der durchgeführten Aktionen in erster Usability Test Runde}\label{tbl:1stUsabilityTestsActions}
     \begin{tabular}{l||llllll}
         Aktion                              & T0        & T1        & T2        & T3        & T4        & T5        \\ \hline
         \textbf{Aktivität 1 (Übersicht)}    &           &           &           &           &           &           \\
@@ -241,7 +215,7 @@ In der zweiten Tabelle sind die Aktivitäten in verschiedene Aktionen aufgeteilt
 Die Ergebnisse der ersten Usability Tests Runde wurden in der darauffolgenden Implementierungsphase einbezogen. Verschiedene Probleme wurden behoben und Feedback wurde umgesetzt. Daraufhin wurde eine neue Runde an Usability Tests mit fünf neuen Testpersonen durchgeführt. Die Ergebnisse sind in den folgenden zwei Tabellen abgebildet. Die Tabellen folgen der Struktur der vorherigen Tabellen. So zeigt die erste Tabelle, welche Testperson welche Probleme hatte und die zweite Tabelle wie gut Aktionen durchgeführt werden konnten. Man sieht in der ersten Tabelle, dass deutlich weniger Probleme aufgefallen sind. Neben den Problemen gab es auch noch weiteres Feedback, dass sich aber vor allem auf Rechtschreibung, Zeichensetzung und Benennung beschränkt. Außerdem ist aus dem Feedback erkenntlich, dass das erste Auffinden von bestimmten Funktion etwas dauern kann, die Bedienung dieser Funktionen dann aber einwandfrei funktioniert. Es ist zu erwarten, dass die Bedienung des Prototyps bei einer erneuten Nutzung deutlich schneller wäre, da die Funktionen nicht mehr lange gesucht werden müssten. Auch in der zweiten Tabelle fällt auf, dass deutlich weniger Probleme aufgetreten sind. So können gab es nur bei der zweiten und fünften Testperson geringfügige bis erhebliche Probleme. Bei der zweiten Testperson wurde erst versucht den Roboter direkt über eine Auswahl auf der Karte zur Ladestation zu schicken, während die fünfte Testperson Probleme damit hatte den Editiermodus zu finden hierfür ohne Erfolg in der Verwaltungsansicht gesucht hat, bevor der Editiermodus in der Nutzeransicht gefunden wurde. Nachdem die Tests ausgewertet wurden, wurde der Prototyp angepasst, sodass die beiden genannten Probleme nicht mehr auftreten sollten. Auch die in der ersten Tabelle aufgelisteten Probleme wurden behoben.
 
 \begin{table}[H]
-    \caption{Gefundene Probleme in zweiter Usability Test Runde}
+    \caption{Gefundene Probleme in zweiter Usability Test Runde}\label{tbl:2ndUsabilityTestsProblems}
     \begin{tabular}{l||l|l|l|l|l|l}
                     & T1    & T2    & T3    & T4    & T5    \\ \hline
         % Beim entfernen der Roboter Auswahl wird fälschlicherweise in das Stockwerk des Roboters gewechselt bei dem die Auswahl entfernt wurde
@@ -262,7 +236,7 @@ Die Ergebnisse der ersten Usability Tests Runde wurden in der darauffolgenden Im
 \end{table}
 
 \begin{table}[H]
-    \caption{Bewertung der durchgeführten Aktionen in zweiter Usability Test Runde}
+    \caption{Bewertung der durchgeführten Aktionen in zweiter Usability Test Runde}\label{tbl:2ndUsabilityTestsActions}
     \begin{tabular}{l||llllll}
         Aktion                              & T1    & T2    & T3    & T4    & T5    \\ \hline
         \textbf{Aktivität 1 (Übersicht)}    &       &       &       &       &       \\
@@ -289,6 +263,13 @@ Die Ergebnisse der ersten Usability Tests Runde wurden in der darauffolgenden Im
 Da die Menge der gefundenen Probleme mit dem zweiten Durchlauf der Tests stark abgenommen hat, wurde auf einen dritten Durchlauf verzichtet. Es ist nicht zu erwarten, dass diese den Aufwand Wert sind, da aufgrund der durchgeführten Tests angenommen wird, dass nur noch wenige Probleme bestehen, die auch mit einem erneuten Durchlauf nicht unbedingt gefunden werden können. Somit ist davon auszugehen, dass das Ziel der Benutzerfreundlichkeit ausreichend erfüllt wurde. Es ist wichtig zu beachten, dass mit den Usability Tests nicht alle Funktionen des Prototyps getestet wurden. Stattdessen wurden nur die wichtigsten Funktionen getestet die mit \deckgl in Verbindung stehen und somit für die Forschungsfrage große relevanz haben. Ob die Liste der Roboter und Stockwerke in der Verwaltungsansicht besonders Benutzerfreundlich ist, ist nicht so relevant, da diese Liste sehr simpel ist und keine besonderen Technologien nutzt.
 
 \subsubsection{Performance}
+% Metriken kurz erklären
+% First Contentful Paint
+% Largest Contentfult Paint => Nicht nutzbar, da das Rendern der deck.gl Layers nicht über Events erkannt werden kann
+% First Input Delay
+% Total Blocking Time
+% Erläutern warum die Richtwerte nicht erreicht werden können, die Performance aber trotzdem in Ordnung ist
+
 % => Performance Tests (testen welche Maßnahmen welche Performance Auswirkungen haben)
 % Maßnahmen
 % Nutzung des .glb Formats statt .obj (beides mit und ohne Kompression)
