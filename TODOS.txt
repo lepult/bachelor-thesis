@@ -23,7 +23,7 @@ X prüfen ob Transformation Matrix für Rotieren der Modelle genutzt werden kann
 ✓ Dialoge mit Erklärtext um Einstellungsänderungen zu erklären
 	-> Einstellungsänderungen funktional machen
 ✓ Abbrechen Button im Editiermodus (Seite neu laden, damit Änderungen zurückgesetzt werden)
-- Undo und Redo Buttons im Editiermodus
+✓ Undo und Redo Buttons im Editiermodus
 ✓ Toast Dialog im Editiermodus in dem Hinweis steht wie man Objekte verschiebt und rotiert
 	✓ Toast schließen, wenn Nutzer Modell bewegt
 	-> Button mit dem Toast wieder geöffnet werden kann
@@ -62,19 +62,18 @@ X Kartenicons in top down Ansicht höher positionieren, damit sie immer über ge
 
 Nach Usability Tests (Runde 2)
 - Kameraposition zurücksetzen mit Animation?
-- Batterieleistung zu Batterie umbenennen
-- Bei Roboter Auswahl entfernen wird fälschlicherweise in das Stockwerk gewechselt
-- Stockwerk Buttons haben falsche Reihenfolge
-- Komma im Ladebutton Dialog entfernen
+✓ Batterieleistung zu Batterie umbenennen
+✓ Bei Roboter Auswahl entfernen wird fälschlicherweise in das Stockwerk gewechselt
+✓ Komma im Ladebutton Dialog entfernen
 - Steuerungsbuttons müssen nicht immer aktiv sein (Abbrechen, wenn kein Lieferauftrag existiert; Laden, wenn bereits geladen wird)
 - zur Ladestation auch über Karte möglich machen? (Roboter kann nur zur zugeordneten Ladestation fahren)
 - Suchfunktion von Standorten auch außerhalb der Routenfunktion?
 - Route Button nicht hervorheben, wenn Roboter zur Ladestation fährt
 - Irritierend dass Steuerung im Tooltip und nicht auf permanente angezeigter Fläche erklärt steht
-- ? fehlt bei Abbrechen Dialog
+✓ ? fehlt bei Abbrechen Dialog
 - Status und Standort Typ übersetzen
 - Stockwerk bearbeiten Button auch in Adminansicht in Vorschau anzeigen
-- Stockwerk bearbeiten Icon ändern (layer)
+✓ Stockwerk bearbeiten Icon ändern (layer)
 
 Feedback von Max (erstmal abwarten)
 - Feedback anzeigen, dass aktuell verschoben oder rotiert wird

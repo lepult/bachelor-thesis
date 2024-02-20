@@ -1,0 +1,80 @@
+TODOS
+
+- Einleitung [kontrollieren und teilweise überarbeiten]
+	- Hintergrund und Motivation
+	- Zielsetzung und Forschungsfrage
+	- Methodik
+		- Design Science Research nach Hevner
+		- Design Science Research im Rahmen der Arbeit
+			- Literaturrecherche
+			- Anforderungsanalyse
+			- Umsetzung
+- Grundlagen	
+	- Service Roboter [kontrollieren]
+		- Definition [kontrollieren]
+		- Einsatzmöglichkeiten [kontrollieren]
+		- Pudu Robotics [kontrollieren]
+		- BotControlBackend [kontrollieren & erweitern]
+	- Webanwendungen [schreiben]
+		- Technologien und Softwarebibliotheken [schreiben]
+		- chayns [schreiben]
+	- 3D Modelle [kontrollieren und teilweise ergänzen]
+		- Generierung [kontrollieren]
+			- Fotogrammetrie [kontrollieren]
+			- LiDAR Scanning [kontrollieren]
+			- KI gestützte Methoden [kontrollieren]
+		- Einbindung im Web [schreiben]
+			- WebGL [schreiben]
+			- WebGPU [schreiben]
+			- deck.gl [schreiben]
+	- Usability
+		- Usability Entscheidungsregeln [schreiben]
+		- Usability Test [kontrollieren]
+- Anforderungen an den Prototyp [kontrollieren]
+	- Abgrenzungen und Einschränkungen [kontrollieren]
+	- Funktionale Anforderungen [kontrollieren]
+		- Anforderungen an Modellerzeugung [kontrollieren]
+		- Übersicht [kontrollieren]
+		- Steuerung [kontrollieren]
+		- Verwaltung [kontrollieren]
+		- Benutzer [kontrollieren]
+	- Nicht-funktionale Anforderungen [ergänzen] (mehr zu Benutzerfreundlichkeit schreiben)
+- Technische Herausforderungen
+	- 3D Modelle von Gebäuden [schreiben] (kurzer Vergleich der zuvor erwähnten Generierungsmethoden)
+	- 3D Visualisierung im Web
+		- deck.gl [schreiben oder verwerfen] => Beschreibung warum deck.gl gewählt wurde
+		- Dateiformat der 3D-Modelle [kontrollieren]
+	- Synchronisierung des Gebäudemodells und der Roboterdaten [kontrollieren]
+- Umsetzung
+	✓ Mockup [Routenplaner Mockup digitalisieren]
+	✓ Implementierung
+		✓ Übersicht
+			✓ Gebäudemodelle
+			✓ Roboterdaten [Screenshot hinzufügen]
+			✓ Echtzeit-Aktualisierung [Schaubild hinzufügen]
+			✓ Interaktion
+		✓ Steuerung
+		✓ Verwaltungsansicht
+		✓ Editiermodus
+	✓ Deployment [kontrollieren]
+	- Evaluierung des Prototyps
+		- funktionale Anforderungen [kontrollieren]
+		- Benutzerfreundlichkeit [kontrollieren]
+			- Usability Heuristics [kontrollieren]
+			✓ Usability Tests [Verweis auf Anhang hinzufügen]
+		- Performance [schreiben]
+- Ergebnisse [schreiben]
+- Fazit [schreiben]
+
+Überarbeiten
+- Tests => Teste (richtiger Plural)
+- Quellen
+	- fehlende Quellen einfügen
+	- Literatur Liste strukturieren und vereinheitlichen
+- Erwähnung von Abbildungen, Tabellen und Kapiteln im Fließtext
+- Abbildungen ergänzen
+- Tabellen ergänzen
+- Prüfen ob irgendwo erwähnt wird, was es genau für Roboterdaten gibt die auf Karte dargestellt werden (Standorte und Pfade)
+- Übersicht, Steuerung und Verwaltung oder Übersichts-, Steuerungs- und Verwaltungsansicht? => Vereinheitlichen!
+
+
