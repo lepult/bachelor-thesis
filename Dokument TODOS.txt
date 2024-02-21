@@ -46,12 +46,12 @@ TODOS
 		- Dateiformat der 3D-Modelle [kontrollieren]
 	- Synchronisierung des Gebäudemodells und der Roboterdaten [kontrollieren]
 - Umsetzung
-	✓ Mockup [Routenplaner Mockup digitalisieren]
+	✓ Mockup
 	✓ Implementierung
 		✓ Übersicht
 			✓ Gebäudemodelle
 			✓ Roboterdaten [Screenshot hinzufügen]
-			✓ Echtzeit-Aktualisierung [Schaubild hinzufügen]
+			✓ Echtzeit-Aktualisierung [Schaubild verbessern und erklären]
 			✓ Interaktion
 		✓ Steuerung
 		✓ Verwaltungsansicht

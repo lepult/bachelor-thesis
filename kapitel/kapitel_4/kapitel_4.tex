@@ -2,15 +2,14 @@
 
 \newpage
 \section{Umsetzung}
-Im Folgenden wird die Implementierung, sowie die Evaluierung des Prototyps beschrieben. Bei der Skizzierung der Mockups und auch später während der Implementierung wurde darauf geachtet eine gute Benutzerfreundlichkeit zu bieten. Hierfür wurde sich an den 1994 von Nielsen entwickelten 10 Usability Entscheidungsregeln \cite{Nielsen.1994} orientiert. Im kommenden Kapitel \ref{sec:UsabilityHeuristics} wird genauer geprüft wie gut diese eingehalten wurden.
+Im Folgenden wird das Mockup, die Implementierung, sowie die Evaluierung des Prototyps beschrieben. Bei der Skizzierung der Mockups und auch während der Implementierung wurde auf eine gute Benutzerfreundlichkeit geachtet. Hierfür wurde sich an den 1994 von Nielsen entwickelten 10 Usability Entscheidungsregeln \cite{Nielsen.1994} orientiert. Im kommenden Kapitel \ref{sec:UsabilityHeuristics} wird genauer geprüft wie gut diese eingehalten wurden.
 
 \subsection{Mockup}
 Für den Prototyp wurden Mockups skizziert an denen sich während der Implementierung orientiert werden konnte. Diese Mockups wurden zunächst auf Papier niedergeschrieben und für die folgende Beschreibung mithilfe von Figma \cite{Figma} digitalisiert. Es gibt jeweils ein Mockup für die Übersicht, Steuerung und Verwaltung, sowie für das Routenplanungs-Popup.
 
 Abbildung \ref{fig:MockupOverview} zeigt das Mockup für die Übersicht. In der Übersicht werden die Raummodelle zusammen mit den verschiedenen Roboterdaten angezeigt. So werden die Standorte mithilfe von Icons, die Roboterpfade mithilfe von Linien und die Roboterpositionen mithilfe von 3D-Modellen der Roboter dargestellt. Es gibt außerdem Buttons mit denen zwischen den verschiedenen Stockwerken navigiert werden kann. Auch gibt es Buttons, mit denen die Roboter ausgewählt werden können. Zusätzlich gibt es einen Button, der es ermöglicht den ausgewählten Roboter automatisch zu verfolgen und einen anderen Button mit dem die Kameraposition wieder auf die Ausgangsposition zurückgesetzt werden kann. Die Buttons sind abhängig von ihren Funktionen in den vier Ecken der Anwendung gruppiert.
 
-Die Steuerung in Abbildung \ref{fig:MockupControls} erweitert die Übersicht um weitere Funktionen und sieht daher fast identisch aus. Der einzige Unterschied sind zusätzliche Buttons mit denen eine Lieferroute bestimmt, der Roboter zum Aufladen zur Ladestation geschickt, oder der aktuelle Lieferauftrag abgebrochen werden kann. Die Abbildung \ref{} zeigt das Mockup für das Routenplanungs-Popup das sich öffnet, wenn der Lieferroute-Button ausgewählt wird. In diesem muss ein Ziel und ein Roboter ausgewählt werden.
-% TODO Add Mockup for RoutePlanning
+Die Steuerung in Abbildung \ref{fig:MockupControls} erweitert die Übersicht um weitere Funktionen und sieht daher fast identisch aus. Der einzige Unterschied sind zusätzliche Buttons mit denen eine Lieferroute bestimmt, der Roboter zum Aufladen zur Ladestation geschickt, oder der aktuelle Lieferauftrag abgebrochen werden kann. Die Abbildung \ref{fig:MockupRoutePlanner} zeigt das Mockup für das Routenplanungs-Popup das sich öffnet, wenn der Lieferroute-Button ausgewählt wird. In diesem muss ein Ziel und ein Roboter ausgewählt werden.
 % TODO zusätzliche Funktionen erwähnen? => Auch können optional ein Ausgabepunkt und Zwischenstationen eingestellt werden.
 Um die Routenerstellung zu vereinfachen, sollen sowohl Roboter als auch Standorte über das Anklicken auf der Karte auswählbar sein.
 
@@ -55,7 +54,12 @@ Bei der folgenden Abbildung handelt es sich um einen Screenshot des Prototyps. M
 Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer indirekten \gls{Websocket}-Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Hierfür wird der im Kapitel \ref{sec:Chayns} beschriebene \gls{Websocket}-Service genutzt. In der folgenden Abbildung ist der Ablauf einer Statusaktualisierung vereinfacht dargestellt. Aktualisiert ein Roboter seine Position, wird die entsprechende Information über \gls{MQTT} an das \ac{BCB} gesendet.
 % Passt das so? Funktioniert MQTT wie beschrieben?
 Das \ac{BCB} sendet daraufhin eine Nachricht an den \gls{Websocket}-Service, der diese Information wiederum an alle verbundenen Clients schickt.
-% TODO Schaubild einfügen.
+
+\begin{figure}[H]
+    \centering
+    \caption[]{Test}\label{fig:RobotStatusUpdate}
+    \includegraphics[width=0.9\textwidth]{Websocket Service 2.png}
+\end{figure}
 
 Die über den \gls{Websocket}-Service empfangene Statusaktualisierung wird zentral im Redux-Store aktualisiert, sodass dem Nutzer die Aktualisierung direkt angezeigt werden kann. Bei Positonsänderungen der Roboter werden diese mithilfe des transitions Attributs der SimpleMeshLayer und der IconLayer animiert \cite{DeckglLayerClass}. So entsteht der Eindruck, dass die Roboter fahren. Wie im Kapitel \ref{sec:RobotData} erwähnt, lässt sich für die Robotermodelle allerdings nur die Position und nicht die Rotation animieren.
 
