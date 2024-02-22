@@ -84,5 +84,12 @@ TODOS
 
 Prototyp
 - Tests schreiben
+-> Unit Tests für
+	-> utils functions (insbesondere Mapping von Daten)
+	-> layer data selectors
+-> Integration Tests
+	-> Karte
+	-> Buttons
+	-> Routenplanungs-Popup
 - Steuerungsbuttons für Gäste ausblenden (Anordnung wie im Screenshot)
 
