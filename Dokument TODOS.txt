@@ -53,9 +53,9 @@ TODOS
 			✓ Roboterdaten
 			✓ Echtzeit-Aktualisierung [Schaubild verbessern]
 			✓ Interaktion
-		✓ Steuerung [Screenshot hinzufügen]
-		✓ Verwaltungsansicht [Screenshot hinzufügen]
-		✓ Editiermodus [Screenshot hinzufügen]
+		✓ Steuerung
+		✓ Verwaltungsansicht
+		✓ Editiermodus
 	✓ Deployment [kontrollieren]
 	- Evaluierung des Prototyps
 		✓ funktionale Anforderungen
@@ -84,5 +84,5 @@ TODOS
 
 Prototyp
 - Tests schreiben
-- Steuerungsbuttons für Gäste ausblenden
+- Steuerungsbuttons für Gäste ausblenden (Anordnung wie im Screenshot)
 
