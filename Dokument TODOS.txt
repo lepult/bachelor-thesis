@@ -56,12 +56,12 @@ TODOS
 		✓ Steuerung
 		✓ Verwaltungsansicht
 		✓ Editiermodus
-	✓ Deployment [kontrollieren]
+	✓ Deployment
 	- Evaluierung des Prototyps
 		✓ funktionale Anforderungen
 		✓ Benutzerfreundlichkeit
 			✓ Usability Heuristics
-			✓ Usability Tests [Anhang hinzufügen => Beschreibung der Aktivitäten; Auflistung der gefundenen Probleme]
+			✓ Usability Tests
 		- Performance [schreiben]
 - Ergebnisse [schreiben]
 - Fazit [schreiben]
