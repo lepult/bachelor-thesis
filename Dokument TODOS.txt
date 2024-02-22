@@ -58,10 +58,10 @@ TODOS
 		✓ Editiermodus
 	✓ Deployment [kontrollieren]
 	- Evaluierung des Prototyps
-		- funktionale Anforderungen [kontrollieren]
-		- Benutzerfreundlichkeit [kontrollieren]
-			- Usability Heuristics [kontrollieren]
-			✓ Usability Tests [Verweis auf Anhang hinzufügen]
+		✓ funktionale Anforderungen
+		✓ Benutzerfreundlichkeit
+			✓ Usability Heuristics
+			✓ Usability Tests [Anhang hinzufügen => Beschreibung der Aktivitäten; Auflistung der gefundenen Probleme]
 		- Performance [schreiben]
 - Ergebnisse [schreiben]
 - Fazit [schreiben]
@@ -79,7 +79,9 @@ TODOS
 - Bezeichnung der deck.gl Ebenen vereinheitlichen (z.B. ScenegraphLayer, Scenegraph-Layer etc.) => Bezeichnung in deck.gl Doku nehmen?
 - \cite hinter Anführungszeichen prüfen, da hier immer das Leerzeichen zwischen beidem entfernt wird
 - Naming der Ansichten prüfen und vereinheitlichen. Übersicht, Steuerung, Verwaltung; Übersichts-, Steuerungs- und Verwaltungsansicht; Nutzeransicht, Adminansicht ...
+- Prüfen was in Vergangenheitsform geschrieben werden sollte
 
 Prototyp
 - Tests schreiben
+- Steuerungsbuttons für Gäste ausblenden
 
