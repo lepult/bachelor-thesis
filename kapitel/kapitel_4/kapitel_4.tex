@@ -291,6 +291,18 @@ Auch in Tabelle \ref{tbl:2ndUsabilityTestsActions} fällt auf, dass deutlich wen
 Da die Menge der gefundenen Probleme mit dem zweiten Durchlauf der Tests stark abgenommen hat und da die Aktivitäten fast ohne Probleme durchgeführt wurden, wurde auf einen dritten Testdurchlauf verzichtet. Es ist nicht zu erwarten, dass ein dritter Testdurchlauf bedeutende Erkentnisse liefern würde, da aufgrund der Ergebnisse der vorherigen Tests angenommen werden kann, dass nur noch wenige Probleme bestehen, die auch mit einem erneuten Durchlauf nicht unbedingt gefunden werden können. Es ist wichtig zu beachten, dass mit den Usability Tests nicht alle Funktionen des Prototyps getestet wurden. Stattdessen wurden nur die wichtigsten Funktionen getestet die mit \deckgl{} in Verbindung stehen und somit für die Forschungsfrage dieser Arbeit große relevanz haben. Ob die Liste der Roboter und Stockwerke in der Verwaltungsansicht besonders Benutzerfreundlich ist, ist für diese Arbeit nicht besonders relevant, da diese Liste sehr simpel ist und keine besonderen Technologien nutzt. In Kombination mit der Einhaltung der Usability Entscheidungsregeln ist davon auszugehen, dass das Ziel der Benutzerfreundlichkeit ausreichend erfüllt wurde.
 
 \subsubsection{Performance}
+Unter dem Begriff Performance lassen sich sehr unterschiedliche Dinge einordnen, die mit verschiedenen Metriken gemessen werden können. Im Rahmen dieser Arbeit wurden Perceived Load Speed und Load Responsiveness gemessen und die Smoothness oberflächig überprüft.
+
+\paragraph{Metriken}
+
+Unter der Perceived load speed versteht man wie schnell alle visuellen Elemente angezeigt werden. Normalerweise wird diese mit dem \ac{LCP} gemessen, also der Zeit bis das größte oder wichtigste Element angezeigt wird. Im Fall des Prototyps ist das wichtigste Element die Karte. Allerdings bietet \deckgl{} keine Möglichkeit, um mitzubekommen, wenn eine Ebene angezeigt wird. Somit kann der \ac{LCP} nicht bestimmt werden. Aus diesem Grund wird stattdessen der \ac{FCP} gemessen, mit dem bestimmt wird, wann das erste Element angezeigt wird. Hierbei handelt es sich in der Regel um einen der verschiedenen Buttons.
+
+Unter Load Responsiveness versteht man wie schnell der Javascript Code geladen wird, damit flüssig auf Eingaben des Nutzers reagiert werden kann. Gemessen wird diese mithilfe des \ac{FID} Messwerts. Mit diesem wird die Verzögerung gemessen, die bei der ersten Eingabe des Nutzers auftritt bis diese einen Effekt hat. Auch wird die \ac{TBT} gemessen. Die \ac{TBT} bestimmt die Zeit, in der der Hauptthread so stark beschäftigt ist, dass die Eingabe-Reaktionsfähigkeit leidet.
+
+Mit der Smoothness ist die Geschmeidigkeit gemeint, also ob Übergänge und Animationen mit einer konsistenten Bildrate gerendert werden und flüssig ausehen. Die Smoothness wurde nur oberflächig ohne die Messung von Metriken auf unterschiedlich leistungsfähigen Geräten geprüft.
+
+\paragraph{Ergebnisse}
+
 % Metriken kurz erklären
 % First Contentful Paint
 % Largest Contentfult Paint => Nicht nutzbar, da das Rendern der deck.gl Layers nicht über Events erkannt werden kann
