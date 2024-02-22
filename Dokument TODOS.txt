@@ -53,9 +53,9 @@ TODOS
 			✓ Roboterdaten
 			✓ Echtzeit-Aktualisierung [Schaubild verbessern]
 			✓ Interaktion
-		✓ Steuerung
-		✓ Verwaltungsansicht
-		✓ Editiermodus
+		✓ Steuerung [Screenshot hinzufügen]
+		✓ Verwaltungsansicht [Screenshot hinzufügen]
+		✓ Editiermodus [Screenshot hinzufügen]
 	✓ Deployment [kontrollieren]
 	- Evaluierung des Prototyps
 		✓ funktionale Anforderungen
@@ -80,6 +80,7 @@ TODOS
 - \cite hinter Anführungszeichen prüfen, da hier immer das Leerzeichen zwischen beidem entfernt wird
 - Naming der Ansichten prüfen und vereinheitlichen. Übersicht, Steuerung, Verwaltung; Übersichts-, Steuerungs- und Verwaltungsansicht; Nutzeransicht, Adminansicht ...
 - Prüfen was in Vergangenheitsform geschrieben werden sollte
+- Passt "Eigene Darstellung" als Quelle?
 
 Prototyp
 - Tests schreiben
