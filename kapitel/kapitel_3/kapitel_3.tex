@@ -1,6 +1,6 @@
 \newpage
 \section{Technische Herausforderungen}
-Während der Implementierung des Prototyps sind verschiedene größere technische Herausforderungen entstanden, die gelöst werden mussten. Die Herausforderungen mit den gewählten Lösungsansätzen in diesem Kapitel gruppiert. 
+Vor und während der Implementierung des Prototyps sind verschiedene größere technische Herausforderungen aufgetreten, die gelöst werden mussten. Die Herausforderungen mit den gewählten Lösungsansätzen werden in diesem Kapitel vorgestellt. 
 
 \subsection{3D Modelle von Gebäuden}
 Fehlender-Text
@@ -16,36 +16,34 @@ Fehlender-Text
 
 \subsubsection{Dateiformat der 3D-Modelle}\label{sec:ModelFileFormat}
 
-Für die Darstellung des 3D-Modells gibt es verschiedene Möglichkeiten. Zwei dieser Möglichkeiten sind das Einbinden des \ac{OBJ} Formats in der SimpleMeshLayer 
+Für die Darstellung des 3D-Modells gibt es verschiedene Möglichkeiten. Zwei dieser Möglichkeiten sind das Einbinden des \ac{OBJ} Dateiformats in der SimpleMeshLayer 
 % SimpleMeshLayer Quelle hinzufügen
-von \deckgl{} und das Einbinden des \ac{glTF} Dateiformats in der ScenegraphLayer.
+und das Einbinden des \ac{glTF} Dateiformats in der ScenegraphLayer.
 % ScenegraphLayer Quelle hinzufügen
-Beide Dateiformate werden in der Scaniverse App als Dateiexport angeboten. Beim \ac{OBJ} Format gibt es das Problem, dass das 3D-Modell mit \deckgl{} nur ohne Textur dargestellt werden kann. Das \ac{OBJ} Format besteht aus einer Datei mit der Endung \obj{} in der die dereidimensionalen geometrischen Formen kodiert sind und einer Datei mit der Endung \mtl{} in der die optische Materialeigenschaften und Texturierung kodiert sind. 
+Beide Dateiformate werden in der Scaniverse App als Dateiexport angeboten. Das \ac{OBJ} Format besteht aus einer Datei mit der Endung \obj{} in der die dereidimensionalen geometrischen Formen kodiert sind und einer Datei mit der Endung \mtl{} in der die optischen Materialeigenschaften und Texturierung kodiert sind. 
 % Quelle für OBJ hinzufügen
-Die Materialdatei lässt sich nicht in \deckgl{} einbinden, da die \loadersgl{} Programmbibliothek nur das Parsen der \obj{} Datei ermöglicht. 
+Die Materialdatei lässt sich nicht in \deckgl{} einbinden, da die \loadersgl{} Programmbibliothek nur das Parsen der \obj{} Datei ermöglicht.
 % Quelle für LoadersGL hinzufügen
-Das \ac{glTF} Format bietet zwei verschiedene Dateiformate, wobei hier nur die Binary Variation relevant ist. Diese hat die Endung \glb{} und besteht nur aus einer Datei, die auch die Materialeigenschaften und Texturierung enthält.
+So können die 3D-Modelle in der SimpleMeshLayer nur ohne Textur angezeigt werden. Das \ac{glTF} Format bietet zwei verschiedene Dateiformate, wobei hier nur die Binary Variation relevant ist. Diese hat die Endung \glb{} und besteht nur aus einer Datei, die auch die Materialeigenschaften und Texturierung enthält.
 % Quelle für GLTF hinzufügen
-Die Ersteller des Dateiformats \ac{glTF} beschreiben es als "JPEG of 3D", da es eine geringere Dateigröße, als vergleichbare Dateiformate bietet.
+Die Ersteller des Formats beschreiben es als "JPEG of 3D", da es eine geringere Dateigröße, als vergleichbare Dateiformate bietet.
 % Quelle für Zitat hinzufügen
-Mithilfe der \loadersgl{} Programmbibliothek lassen sich 3D-Modelle des Dateiformats ohne großen Aufwand in der ScenegraphLayer von \deckgl{} einbinden. 
+Mithilfe der \loadersgl{} Programmbibliothek lassen sich 3D-Modelle des Formats ohne großen Aufwand in der ScenegraphLayer von \deckgl{} einbinden. 
 % Quelle für LoadersGL hinzufügen
-Da ein 3D-Modell mit einer passenden Texturierung eine bessere Übersichtlichkeit bietet und da \ac{glTF} Dateien eine geringe Dateigröße haben, wird im Rahmen des Prototyps weiter mit diesem Dateityp und der ScenegraphLayer gearbeitet.
+Da ein 3D-Modell mit einer passenden Texturierung eine bessere Übersichtlichkeit bietet und da \ac{glTF} Dateien eine geringe Dateigröße haben, wird im Prototyp mit diesem Format mit ScenegraphLayer gearbeitet.
 
 Die \ac{glTF} Dateien, die für den Prototyp aus Scaniverse exportiert wurden, sind für den Einsatz in der Webanwendung zu groß. So sind die Dateien zwischen 14 und 21 \ac{mB} groß. 
 % Genauer auf Dateigröße eingehen.
-Diese Dateigröße beeinflusst die Ladezeit beim Herunterladen der Daten vom Webserver und auch beim Rendern der 3D-Modelle negativ. Aus diesem Grund müssen die Dateien komprimiert werden. In Kontext dieser Arbeit wird hierfür OptimizeGLB eingesetzt. Das Werkzeug basiert auf gltf-transform. Insbesondere durch den Einsatz des \ac{WebP} Bildformats für Texturen werden Dateien effektiv komprimiert. 
+Diese Dateigröße beeinflusst die Ladezeit beim Herunterladen der Daten vom Webserver und auch beim Rendern der 3D-Modelle negativ. Aus diesem Grund müssen die Dateien komprimiert werden. Hierfür wird der Online Konverter OptimizeGLB eingesetzt, welcher gltf-transform für die Konvertierung nutzt. Insbesondere durch den Einsatz des \ac{WebP} Bildformats für Texturen werden Dateien effektiv komprimiert. 
 % gltf-transform Quelle
 % OptimizeGLB Quelle
-So sind die komprimierten Dateien 330 und 550 \ac{kB} groß was einer Kompression von über 90\% entspricht.
+So sind die komprimierten Dateien zwischen 330 und 550 \ac{kB} groß was einer Kompression von über 90\% entspricht.
 % Genauer auf die genaue Kompression eingehen. Vllt Tabelle und/oder Schaubild erstellen.
-Die Qualität der komprimierten 3D-Modelle ist erkennbar geringer, reicht für den Zweck des Prototyp aber trotzdem aus, da größere Merkmale weiter erkennbar sind und somit die Übersichtlichkeit weiter garantiert wird. Die Einbindung des \ac{WebP} Bildformats wird im Webbrowser Safari noch nicht unterstützt. 
-% Quelle für Support
-Für den Prototyp ist das nebensächlich. Da die unkomprimierten 3D-Modelle für Mobilgeräte durch die großen Texturen zu komplex sind, wäre ein möglicher Workaround das anzeigen der untexturierten \ac{OBJ} Modelle.
+Die Qualität der komprimierten 3D-Modelle ist erkennbar geringer, reicht für den Zweck des Prototyp aber trotzdem aus, da größere Merkmale weiter gut erkennbar sind und somit die Übersichtlichkeit weiter garantiert wird.
 
 \subsection{Synchronisierung des Gebäudemodells und der Roboterdaten}
 Im Prototyp sollen die Roboterdaten in den 3D-Modellen integriert dargestellt werden. Die Roboterdaten und 3D-Modelle haben den gleichen Maßstab, die Positionen und Rotationen der Datensätze stimmen allerdings nicht miteinander überein. Der Grund hierfür ist, dass zur Generierung der Datensätze unterschiedliche Scanning-Methoden eingesetzt werden. Auch die Positionen der 3D-Modelle stimmen nicht miteinander überein, da beim Scannen an verschiedenen Ausganspunkten angefangen wurde.
 
-Aus diesem Grund müssen die Positionen der Roboterdaten mit den 3D-Modellen synchronisiert werden. Auch müssen die Positionen der 3D-Modelle unterienander synchronisiert werden. Eine automatische Synchronisierung ist aus verschiedene Gründen zu komplex. Zum einen sind die Formate der Daten zu verschieden, denn während die 3D-Modelle aus komplexen dreidimensonalen Formen bestehen, setzen sich die Roboterdaten aus zweidimensonalen Linien und Punkten zusammen. Zum anderen gibt es in beiden Datensätzen unterschiedliche Ungenaugkeiten in Bezug auf die Realität. Sowohl \ac{VSLAM}, mit dem die Roboterdaten untereinander positioniert werden, \ac{LiDAR}-Scanning, mit dem die 3D-Modelle für den Prototyp generiert wurden, sind fehlerbehaftet. Da sich diese Scanning-Methoden unterscheiden und somit verschiedene Stärken und Schwächen beim Scannen haben, sind die Ungenauigkeiten zwischen den Roboterdaten und 3D-Modellen größer, während die Ungenauigkeiten zwischen den verschiedenen 3D-Modellen geringer sind.
+Aus diesem Grund müssen die Positionen der Roboterdaten mit den 3D-Modellen synchronisiert werden. Auch müssen die Positionen der 3D-Modelle unterienander synchronisiert werden. Eine automatische Synchronisierung ist aus verschiedene Gründen zu komplex. Zum einen sind die Formate der Daten zu verschieden, denn während die 3D-Modelle aus komplexen dreidimensonalen Formen bestehen, setzen sich die Roboterdaten aus zweidimensonalen Linien und Punkten zusammen. Zum anderen gibt es in beiden Datensätzen unterschiedliche Ungenaugkeiten in Bezug auf die Realität. Sowohl \ac{VSLAM}, mit dem die Roboterdaten untereinander positioniert werden als auch das \ac{LiDAR}-Scanning, mit dem die 3D-Modelle für den Prototyp generiert wurden, sind fehlerbehaftet. Da sich diese Scanning-Methoden unterscheiden und somit verschiedene Stärken und Schwächen beim Scannen haben, sind die Ungenauigkeiten zwischen den Roboterdaten und 3D-Modellen größer, während die Ungenauigkeiten zwischen den verschiedenen 3D-Modellen geringer sind.
 
-Da eine automatische Synchronisierung der Datensätze ausgeschlossen ist, muss diese manuell vorgenommen werden. Hierfür wurde ein Editor implementiert, mit dem der Administrator die 3D-Modelle und Roboterdaten durch Verschieben und Rotieren der 3D-Modelle synchronisieren kann. Die Implementierung dieses Editors wird im folgenden Kapitel beschrieben.
+Da eine automatische Synchronisierung der Datensätze ausgeschlossen ist, muss diese manuell vorgenommen werden. Hierfür wurde ein Editiermodus im Prototyp implementiert, mit dem der Administrator die 3D-Modelle und Roboterdaten durch Verschieben und Rotieren der 3D-Modelle synchronisieren kann. Die Implementierung wird im Kapitel \ref{sec:EditMode} genauer beschrieben.
