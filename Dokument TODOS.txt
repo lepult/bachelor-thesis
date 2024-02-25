@@ -30,21 +30,20 @@ TODOS
 	- Usability
 		- Usability Entscheidungsregeln [schreiben]
 		- Usability Test [kontrollieren]
-- Anforderungen an den Prototyp [kontrollieren]
-	- Abgrenzungen und Einschränkungen [kontrollieren]
-	- Funktionale Anforderungen [kontrollieren]
-		- Anforderungen an Modellerzeugung [kontrollieren]
-		- Übersicht [kontrollieren]
-		- Steuerung [kontrollieren]
-		- Verwaltung [kontrollieren]
-		- Benutzer [kontrollieren]
-	- Nicht-funktionale Anforderungen [ergänzen] (mehr zu Benutzerfreundlichkeit schreiben)
+✓ Anforderungen an den Prototyp [kontrollieren]
+	✓ Anforderungen an Modellerzeugung
+	✓ Funktionale Anforderungen
+		✓ Übersicht
+		✓ Steuerung
+		✓ Verwaltung
+		✓ Benutzer
+	✓ Nicht-funktionale Anforderungen
 - Technische Herausforderungen
 	- 3D Modelle von Gebäuden [schreiben] (kurzer Vergleich der zuvor erwähnten Generierungsmethoden)
 	- 3D Visualisierung im Web
 		- deck.gl [schreiben oder verwerfen] => Beschreibung warum deck.gl gewählt wurde
-		- Dateiformat der 3D-Modelle [kontrollieren]
-	- Synchronisierung des Gebäudemodells und der Roboterdaten [kontrollieren]
+		✓ Dateiformat der 3D-Modelle [Quellen hinzufügen; kontrollieren]
+	✓ Synchronisierung des Gebäudemodells und der Roboterdaten [kontrollieren]
 - Umsetzung
 	✓ Mockup
 	✓ Implementierung
@@ -67,7 +66,7 @@ TODOS
 - Fazit [schreiben]
 
 Überarbeiten
-- Tests => Teste (richtiger Plural)
+- Tests und Teste vereinheitlichen => immer Tests nutzen
 - Quellen
 	- fehlende Quellen einfügen
 	- Literatur Liste strukturieren und vereinheitlichen
@@ -81,6 +80,7 @@ TODOS
 - Naming der Ansichten prüfen und vereinheitlichen. Übersicht, Steuerung, Verwaltung; Übersichts-, Steuerungs- und Verwaltungsansicht; Nutzeransicht, Adminansicht ...
 - Prüfen was in Vergangenheitsform geschrieben werden sollte
 - Passt "Eigene Darstellung" als Quelle?
+- Gebäudemodell oder Raummodell => Raummodell
 
 Prototyp
 - Tests schreiben
