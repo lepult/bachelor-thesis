@@ -66,7 +66,10 @@ Fehlender-Text
 \subsection{3D Modelle}
 In diesem Abschnitt wird eine kurze Einführung zu 3D-Modellen gegeben. Danach werden verschiedene Methoden vorgestellt, die sich zum Erzeugen von 3D-Gebäudemodellen eignen. Zuletzt wird erklärt wie 3D-Modelle im Web eingebunden werden können. Ein direkter Vergleich der Methoden folgt in einem späteren Kapitel.
 
-Unter 3D-Modellen fällt ein breites Spektrum von Methoden zur dreidimensonalen Modellierung. So gibt es unter anderem polygonale 3D-Modelle und Punktwolken. Polygonale 3D-Modelle stellen die Fläche von Objekten mithilfe von Konten und Kanten dar. Punktwolken haben keine Kanten, sondern nur eine Vielzahl an Farbpunkten, die das Modell in ihrer Menge ohne Flächen bilden. Punktwolken haben in der Regel eine höhere Genauigkeit und mehr Details. Dafür haben Punktwolken aber auch einen höheren Speicherverbrauch. Im folgenden Kapitel werden kurze Ladezeiten und geringer Speicherverbrauch als nicht-funktionale Anforderung genannt. Aus diesem Grund sind Punktwolken nicht weiter relevant für diese Arbeit. Es gibt insbesondere Fotogrammetriemethoden die Punktwolken erzeugen. Diese sind im folgenden auch nicht weiter relevant. Polygonale 3D-Modelle - im folgenden einfach zu 3D-Modellen abgekürzt - haben einen geringeren Speicherverbrauch, sind dafür aber auch nicht so präzise. Für die Zwecke dieser Arbeit ist die Präzision aber mehr als ausreichend.
+% TODO Nur polygonale Modelle erklären (Quelle % Parisi S 8-16)
+Unter 3D-Modellen fällt ein breites Spektrum an Methoden zur dreidimensonalen Modellierung. So gibt es unter anderem polygonale 3D-Modelle und Punktwolken. Polygonale 3D-Modelle stellen die Fläche von Objekten mithilfe von Konten und Kanten dar. 
+
+Punktwolken haben keine Kanten, sondern nur eine Vielzahl an Farbpunkten, die das Modell in ihrer Menge ohne Flächen bilden. Punktwolken haben in der Regel eine höhere Genauigkeit und mehr Details. Dafür haben Punktwolken aber auch einen höheren Speicherverbrauch. Im folgenden Kapitel werden kurze Ladezeiten und geringer Speicherverbrauch als nicht-funktionale Anforderung genannt. Aus diesem Grund sind Punktwolken nicht weiter relevant für diese Arbeit. Es gibt insbesondere Fotogrammetriemethoden die Punktwolken erzeugen. Diese sind im folgenden auch nicht weiter relevant. Polygonale 3D-Modelle - im folgenden einfach zu 3D-Modellen abgekürzt - haben einen geringeren Speicherverbrauch, sind dafür aber auch nicht so präzise. Für die Zwecke dieser Arbeit ist die Präzision aber mehr als ausreichend.
 
 \subsubsection{Generierung}
 Es gibt verschiedene Methoden, mit denen 3D Gebäudemodelle erzeugt werden können.
@@ -82,23 +85,49 @@ Im Gegensatz zur Fotogrammetrie wird bei \ac{LiDAR} ein aktiver Sensor genutzt. 
 Es gibt verschiedene KI-Modelle, die darauf trainiert sind mithilfe von wenigen Bildern ein 3D-Gebäudemodell zu generieren. Eines dieser Modelle ist Plan2Scene. Als Eingabe braucht es einen Raumplan eines Gebäudes und Bilder der einzelnen Räume die den Räumen im Raumplan zugeordnet sind. Mithilfe des Raumplans wird dann ein 3D Modell mit 3D-Objekten für bestimmte Möbel generiert. Aus den Bildern werden monotone Texturen für Wänden, Böden und Zimmerdecken der einzelnen Räume generiert.\cite[S.~10733]{Plan2Scene2021} Das Rent3D Modell funktioniert ähnlich, statt generierten Texturen bekommen Wände und Böden aber stattdessen einfach die Bildaufnahmen als Textur \cite[S.~3413]{Rent3D2015}.
 
 \subsubsection{Einbindung im Web}
-Fehlender-Text
+Die Einbindung von 3D-Modellen wird im Web durch \ac{WebGL} und WebGPU ermöglicht. Während \ac{WebGL} für lange Zeit der etablierte Standard war, gewinnt WebGPU seit der Veröffentlichung im Jahr 2021 an Popularität.
 
 \paragraph{WebGL}
-Fehlender-Text
+\ac{WebGL} wurde 2011 durch die Khronos Group entwickelt und ist eine Javascript-API mit der 3D-Grafiken im Webbrowser ohne zusätzliche Plugins dargestellt werden können. Die 3D-Grafiken können hierbei hardwarebeschleunigt, also über den Einsatz spezialisierter Hardware wie einer \ac{GPU} angezeigt werden. Hierdurch wird eine hohe Leistungsfähigkeit ermöglicht, solange ein Gerät hardwarebeschleunigung unterstützt. Durch die Integration mit HTML und Javascript können 3D-Grafiken dynamisch in Webseiten eingebettet werden. Da \ac{WebGL} auf offenen Webstandards basiert, ist es in allen Browsern plattformunabhängig sowohl an Desktop- als auch an Mobilgeräten nutzbar.\cite[S.~17-19]{Parisi2014} WebGPU bietet wie WebGL das hardwarebeschleunigte Anzeigen von 3D-Grafiken. Zusätzlich bietet WebGPU aber auch eine bessere Leistung und erweiterte Funktionen.\cite{WebGPU} Entwicklern steht eine Vielzahl an Frameworks zur Verfügung die auf \ac{WebGL} oder \ac{WebGPU} basieren, die die Entwicklung vereinfachen und beschleunigen.\cite{Seguin2024}
 
-\paragraph{WebGPU}
+\paragraph{\deckgl{}}
+Das Framework \deckgl{} wurde 2015 von Uber als Open Source Projekt entwickelt. Die erste Version wurde 2016 veröffentlicht.\cite{Visgl} Das Framework basiert auf \ac{WebGL}, wobei ab der kommenden Version 9.0.0 WebGPU genutzt werden soll.\cite{Green2022} Mit \deckgl lassen sich hochperformante interaktive Karten und Geovisualisierungen mit tausenden bis millionen Datenpunkten im Web einbinden. Da das Framework auf React ähnlichen Programmierparadigmen basiert eignet es sich besonders für die Einbindung in React Anwendungen.\cite{Deckgl} Das Framework ist modular aufgebaut und bietet vorgefertigte konfigurierbare Ebenen mit denen Daten auf verschiedene Weisen dargestellt werden können.\cite{DeckglLayer} Beispielsweise gibt es die IconLayer \cite{DeckglIconLayer}, die eine Liste an standortbezogenen Daten verarbeitet, sodass für jeden Datenpunkt ein Icon an der entsprechenden Koordinate angezeigt werden kann. Abbildung \ref{fig:IconLayerExample} zeigt ein Beispiel für die IconLayer. In diesem werden die Positionen aller bekannten Positionen von Meteoritenlandungen durch Icons dargestellt.
 
-\paragraph{deck.gl}
+\begin{figure}[H]
+    \caption{IconLayer Beispiel}\label{fig:IconLayerExample}
+    \includegraphics[width=0.9\textwidth]{IconLayer Example.png}
+    \\
+    Quelle: OpenJS Foundation \cite{DeckGlMeteorites}
+\end{figure}
 
-\subsection{Usability}
+Weitere wichtige Ebenen sind die SimpleMeshLayer \cite{DeckglSimpleMeshLayer} und ScenegraphLayer \cite{DeckglScenegraphLayer} für die Anzeige von 3D-Modellen und die PathLayer für das Anzeigen von Pfaden. Weitere wichtige Elemente die \deckgl{} bietet sind die Controller Klasse \cite{DeckglController}, mit der die Navigation auf der Karte konfiguriert werden kann und die Viewport Klasse \cite{DeckglViewport} mit der die Navigation gesteuert werden kann.
 
-\subsubsection{Usability Entscheidungsregeln}
+\subsection{Softwarequalität}
+"Unter Softwarequalität versteht man die Gesamtheit der Merkmale und Merkmalswerte eines Softwareprodukts, die sich auf dessen Eignung beziehen, festgelegte oder vorausgesetzte Erfordernisse zu erfüllen" \cite[S.~257]{Balzert1998}. So ergibt sich die Softwarequalität aus der Erfüllung der definierten Anforderungen und Erwartungen und zielt darauf ab den Bedürfnissen der Benutzer gerecht zu werden. Für die Bestimmung der Softwarequalität gibt es verschiedene Merkmale die ausgewertet werden können. Nach dem ISO-Standard ISO/IEC 25010 gibt es acht Produktqualitätsmerkmale \cite{ISO25010}, die auch in der Abbildung \ref{fig:SoftwareQuality} aufgelistet sind. Die Merkmale Effizienz und Benutzbarkeit haben Relevanz für diese Arbeit, da diese direkt durch die Forschungsfrage gefordert werden und auch die funktionale Eignung ist relevant, da diese die Erfüllung der funktionalen Anforderungen abdeckt, die in Kapitel \ref{sec:FunctionalRequirements} definiert werden. Währenddessen haben die restlichen Mekrmale weniger Releavanz, da im Rahmen dieser Arbeit nur ein Prototyp entwickelt wird, der nicht die Ansprüche an ein Produktivsystem erfüllen muss. Im Folgenden werden die drei relevanten Merkmale genauer erläutert.
+% TODO Quelle ISO 25010
 
-\subsubsection{Usability Test}
-Usability Tests sind ein wichtiger Bestandteil des Entwicklungsprozesses von Benutzeroberflächen. Da im Rahmen dieser Arbeit ein Web-Frontend implementiert wird, dass benutzerfreundlich sein soll, haben Usability Tests eine erhebliche Relevanz für diese Arbeit.
-Mit Usability Tests lässt sich die Benutzerfreundlichkeit eines Produkts bewerten, indem Benutzer dieses unter beobachtung nutzen. So können Probleme und Schwachstellen identifiziert und anschließend behoben werden. Hierfür werden Anwendungsszenarien entwickelt, die die Testperson dann durchspielen. Bei den Testpersonen handelt es sich um potenzielle Benutzer des Produkts. Die Durchführung des Tests durch die Testperson wird beobachtet und aufgezeichnet, woraufhin die gesammelten Daten mit dem Ziel ausgewertet werden, dass Verbesserungsvorschläge entwickelt werden.\cite[S.~22]{Dumas.1999}
-Usability Tests können entweder qualitativ oder quantitativ durchgeführt werden. Bei qualitativen Usability Tests werden Testpersonen bei der Interaktion mit dem Produkt beobachtet, wodurch sich Designmerkmale identifizieren lassen, die einfach oder schwer zu verwenden sind. Bei quantitativen werden verschiedene Metriken gesammelt, wie die Durchführungszeit oder die Rate der erfolgreichen Durchführung von Aufgaben, die im Vergleich mit früheren oder zukünftigen quantitativen Usability Tests zeigen, wie sich die Benutzerfreundlichkeit mit der Zeit entwickelt hat.\cite{Budiu.2017}
-Für diese Arbeit wurden qualitative Usability Tests durchgeführt, weshalb die quantitative variante keine weitere Releavanz hat.
-Im Rahmen von Usability Tests gibt es einen Moderator, der die Testperson durch den Testprozess leitet, die Aufgaben, die realistische Anwendungsszenarien widerspielgen und die Testperson, bei der es sich um einen potenziellen Benutzer des Produkts handelt.\cite{Moran.2019}
-Bei qualitativen Usability Tests reicht eine Auswahl von fünf Testpersonen aus, um einen Großteil der Probleme zu finden. Mit einer zunehmenden Menge an Testpersonen sinkt das Return of Investment maßgeblich.\cite{Nielsen.2012} % TODO Durch wissenschaftlichen Artikel austauschen
+\begin{figure}[H]
+    \caption{Qualitätsmerkmale}\label{fig:SoftwareQuality}
+    \includegraphics[width=0.9\textwidth]{Qualitaetsmerkmale.png}
+    \\
+    Quelle: TODO
+\end{figure}
+% TODO Quelle hinzufügen
+
+\subsubsection{Benutzbarkeit}
+Die Benutzbarkeit wird nach ISO 25010 in sechs Kriterien aufgeteilt: angemessene Erkennbarkeit, Erlernbarkeit, Bedienbarkeit, Toleranz gegenüber Anwenderfehlern, Ästhetik der Benutzeroberfläche und Barrierefreiheit.
+% TODO Quelle ISO 25010
+Mithilfe dieser Merkmale soll bewertet werden können wie einfach und angenehm ein Produkt für einen Nutzer zu bedienen ist.
+
+\paragraph{Usability Heuristics}
+Die zehn Usability Heuristics von Nielsen sind grundlegende Richtlinien zur Bewertung der Benutzerfreundlichkeit von Softwareprodukten und Websites. Während der Entwicklung können diesen Richtlinien berücksichtigt werden, um die Benutzerfreundlichkeit zu verbessern. Bis auf die Barrierefreiheit decken die Usability Heuristics alle Kriterien der Benutzbarkeit nach ISO 25010 ab. Zwei der Usability Heuristics sind die Übereinstimmung zwischen dem System und der realen Welt, um die Lernkurve zu reduzieren und die Einhaltung von Konsistenz und Standards, damit Elemente möglichst selbsterklärend sind.
+% TODO Quelle Usability Heuristics
+Eine subjektive Bewertung der Einhaltung dieser Richtlinien durch die Entwickler ist unzureichend um die Benutzerfreundlichkeit zu bewerten. Stattdessen eignet sich hier ein Expertenreview oder Usability Tests besser.
+
+\paragraph{Usability Tests}
+Usability Tests werden durchgeführt, damit die Benutzerfreundlichkeit eines Produkts bewertet werden kann. Hierfür werden Testpersonen bei der Nutzung des Produkts beobachtet. Die Testpersonen spielen hierbei zuvor entwickelte Anwendungsszenarien durch. Bei den Testpersonen sollte es sich um potenzielle Benutzer des Produkts handeln.\cite[S.~22]{Dumas.1999}. Nach der Durchführung der Tests werden die gesammelten Beobachtungen auf Probleme und Schwachstellen im Produkt ausgewertet. Die Tests können entweder quanitativ oder qualitativ durchgeführt werden. Bei quantitativen Usability Tests werden verschiedene Metriken, wie die Durchführungszeit oder die Rate der erfolgreichen Durchführung von Aufgaben gesammelt.
+Mit Usability Tests lässt sich die Benutzerfreundlichkeit eines Produkts bewerten, indem Benutzer bei der Nutzung beobachtet werden und diese Beobachtungen. Diese Metriken zeigen im Vergleich zu den Ergebnissen früherer oder zukünftiger Tests, wie sich die Benutzerfreundlichkeit mit der Zeit entwickelt hat. Bei qualitativen Usability Tests werden Testpersonen bei der Interaktion mit dem Produkt beobachtet, wodurch sich Designmerkmale identifizieren lassen, die gut oder schlecht zu bedienen sind.\cite{Budiu.2017}. Qualitative Tests brauen einen Moderator, der die Testpersonen durch den Testprozess leitet. Gegebenenfalls gibt es auch weitere Beobachter, die nicht mit den Testpersonen interagieren.\cite{Moran.2019} Für qualitative Tests reicht eine Auswahl von fünf Testpersonen aus, um einen Großteil der Probleme zu finden. Mit einer zunehmenden Menge an Testpersonen sinkt das Return of Investment maßgeblich dadurch, dass immer weniger neue Fehler pro Testperson entdeckt werden.\cite{Nielsen.2012}
+
+\subsubsection{Performance}
+
+\subsubsection{Softwaretest}

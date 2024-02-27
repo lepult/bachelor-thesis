@@ -18,17 +18,16 @@ TODOS
 	- Webanwendungen [schreiben]
 		- Technologien und Softwarebibliotheken [schreiben]
 		- chayns [schreiben]
-	- 3D Modelle [kontrollieren und teilweise ergänzen]
+	- 3D Modelle [überarbeiten]
 		- Generierung [kontrollieren]
 			- Fotogrammetrie [kontrollieren]
 			- LiDAR Scanning [kontrollieren]
 			- KI gestützte Methoden [kontrollieren]
-		- Einbindung im Web [schreiben]
-			- WebGL [schreiben]
-			- WebGPU [schreiben]
-			- deck.gl [schreiben]
-	- Usability
-		- Usability Entscheidungsregeln [schreiben]
+		- Einbindung im Web [kontrollieren]
+			- WebGL [kontrollieren]
+			- deck.gl [kontrollieren]
+	- Softwarequalität
+		- Usability Entscheidungsregeln [kontrollieren]
 		- Usability Test [kontrollieren]
 ✓ Anforderungen an den Prototyp [kontrollieren]
 	✓ Anforderungen an Modellerzeugung
@@ -41,8 +40,8 @@ TODOS
 - Technische Herausforderungen
 	- 3D Modelle von Gebäuden [schreiben] (kurzer Vergleich der zuvor erwähnten Generierungsmethoden)
 	- 3D Visualisierung im Web
-		- deck.gl [schreiben oder verwerfen] => Beschreibung warum deck.gl gewählt wurde
-		✓ Dateiformat der 3D-Modelle [Quellen hinzufügen; kontrollieren]
+		- deck.gl [kontrollieren]
+		- Dateiformat der 3D-Modelle [Quellen hinzufügen; kontrollieren]
 	✓ Synchronisierung des Gebäudemodells und der Roboterdaten [kontrollieren]
 - Umsetzung
 	✓ Mockup
@@ -64,6 +63,7 @@ TODOS
 		- Performance [schreiben]
 - Ergebnisse [schreiben]
 - Fazit [schreiben]
+- Unterschrift hinzufügen
 
 Überarbeiten
 - Tests und Teste vereinheitlichen => immer Tests nutzen
@@ -81,6 +81,7 @@ TODOS
 - Prüfen was in Vergangenheitsform geschrieben werden sollte
 - Passt "Eigene Darstellung" als Quelle?
 - Gebäudemodell oder Raummodell => Raummodell
+- prüfen das custom textcommands mit {} abgeschlossen werden, damit keine Leerzeichen verschwinden
 
 Prototyp
 - Tests schreiben

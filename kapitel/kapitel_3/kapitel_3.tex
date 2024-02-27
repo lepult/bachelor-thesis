@@ -6,13 +6,10 @@ Vor und während der Implementierung des Prototyps sind verschiedene größere t
 Fehlender-Text
 
 \subsection{3D Visualisierung im Web}
-Für die dreidimensonale Darstellung im Prototyp wurde \deckgl{} gewählt.
-% TODO Weiter erläutern warum deck.gl
-% deck.gl kurz vorstellen (inklusive Layers)
-% TODO Auch erklären wie deck.gl die Layers updateded (shallow comparisson)
+Für die Einbindung von 3D-Visualisierungen im Web gibt es verschiedene Ansätze und Technologien. In diesem Abschnitt wird die Auswahl von \deckgl{} als Framework für die Umsetzung des Prototyps, sowie die Wahl des Dateiformats für die 3D-Modelle erläutert.
 
 \subsubsection{deck.gl}
-Fehlender-Text
+Für die Umsetzung des Prototyps wurde \deckgl{} statt ein Framework mit allgemeinerer 3D-Programmierung wie three.js gewählt. Grund hierfür ist, dass die Anwendung als Karte genutzt werden soll und \deckgl{} für das Entwickeln von Karten ausgelegt ist. So ist bereits die Navigation und das Verhalten der Kamera passend konfiguriert, sodass sich bei der Entwicklung nur auf die Darstellung der Karte fokusiert werden muss. Mit dem Einsatz von three.js würde deutlich mehr Aufwand für die Implementierung gebraucht, da die Navigation und das Verhalten der Kamera für Karten implementiert werden müsste. Vor der Implementierung wurde geprüft, dass die Anforderungen an die Anwendung mithilfe von \deckgl{} überhaupt erfüllt werden können.
 
 \subsubsection{Dateiformat der 3D-Modelle}\label{sec:ModelFileFormat}
 
