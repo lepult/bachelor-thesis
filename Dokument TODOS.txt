@@ -14,7 +14,7 @@ TODOS
 		- Definition [kontrollieren]
 		- Einsatzmöglichkeiten [kontrollieren]
 		- Pudu Robotics [kontrollieren]
-		- BotControlBackend [kontrollieren & erweitern]
+		- BotControlBackend [kontrollieren]
 	- Webanwendungen [schreiben]
 		- Technologien und Softwarebibliotheken [schreiben]
 		- chayns [schreiben]
@@ -27,8 +27,11 @@ TODOS
 			- WebGL [kontrollieren]
 			- deck.gl [kontrollieren]
 	- Softwarequalität
-		- Usability Entscheidungsregeln [kontrollieren]
-		- Usability Test [kontrollieren]
+		- Usability
+			- Usability Entscheidungsregeln [kontrollieren]
+			- Usability Test [kontrollieren]
+		- Performance [schreiben]
+		- Softwaretests [schreiben]
 ✓ Anforderungen an den Prototyp [kontrollieren]
 	✓ Anforderungen an Modellerzeugung
 	✓ Funktionale Anforderungen
@@ -41,7 +44,7 @@ TODOS
 	- 3D Modelle von Gebäuden [schreiben] (kurzer Vergleich der zuvor erwähnten Generierungsmethoden)
 	- 3D Visualisierung im Web
 		- deck.gl [kontrollieren]
-		- Dateiformat der 3D-Modelle [Quellen hinzufügen; kontrollieren]
+		- Dateiformat der 3D-Modelle [kontrollieren]
 	✓ Synchronisierung des Gebäudemodells und der Roboterdaten [kontrollieren]
 - Umsetzung
 	✓ Mockup
@@ -61,7 +64,7 @@ TODOS
 			✓ Usability Heuristics
 			✓ Usability Tests
 		- Performance [schreiben]
-- Ergebnisse [schreiben]
+- Ergebnisse [schreiben oder verwerfen]
 - Fazit [schreiben]
 - Unterschrift hinzufügen
 
@@ -82,6 +85,7 @@ TODOS
 - Passt "Eigene Darstellung" als Quelle?
 - Gebäudemodell oder Raummodell => Raummodell
 - prüfen das custom textcommands mit {} abgeschlossen werden, damit keine Leerzeichen verschwinden
+- prüfen dass ac und glossar einheitlich genutzt wird (dass z.B. nirgendwo "Bot Control Backend" geschrieben wird)
 
 Prototyp
 - Tests schreiben
