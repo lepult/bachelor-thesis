@@ -69,7 +69,7 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 \DeclareBibliographyDriver{book}{%
   \printnames{author}%
   \newunit\addcolon\space
-  \printfield{title}%
+  \printfield[noformat]{title}%
   \setunit*{,\space}%
   \printfield{edition}%
   \setunit*{\addcomma\space}%
@@ -86,11 +86,11 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 \DeclareBibliographyDriver{online}{%
   \printnames{author}%
   \newunit\addcolon\space
-  \printfield{title}%
+  \printfield[noformat]{title}%
   \setunit*{,\space}%
   %\newunit\newblock
   \printfield{url}%
-  \setunit{,\space Erscheinungsjahr:\space}%
+  \setunit{,\space}%
   \printfield{year}%
   \setunit{,\space Zugriff am:\space}%
   \printfield{note}%
@@ -100,7 +100,7 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 \DeclareBibliographyDriver{software}{%
   \printnames{author}%
   \newunit\addcolon\space
-  \printfield{title}%
+  \printfield[noformat]{title}%
   \setunit*{,\space}%
   %\newunit\newblock
   \setunit*{,\space Verfügbar unter:\space}%
@@ -114,29 +114,38 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 %% Definiert @Article Eintrag
 \DeclareBibliographyDriver{article}{%
   \printnames{author}%
-  \newunit\newblockpunct
-  \printfield{title}%
-  \setunit*{.\space In:\space}%
+  \newunit\addcolon\space
+  \printfield[noformat]{title}%
   %\newunit\newblock
-  \usebibmacro{journal}%
-  \setunit*{\space (}%
-  \printfield{year}\newunit{)}%
+  \setunit{,\space}%
+  \printfield{year}%
   \finentry}
 
 %% Definiert @InProceedings Eintrag
 \DeclareBibliographyDriver{inproceedings}{%
 	\printnames{author}%
-	\setunit*{,\space (}%
-	\printfield{year}\newunit{)}%
-	\newunit\newblockpunct
-	\printfield{title}%
-	\setunit*{\space}%
-	\usebibmacro{booktitle}%
-	\setunit*{,\space}%
-	\printfield{isbn}%
-	\setunit*{,\space}%
-	\printfield{doi}%
+  \newunit\addcolon\space
+  \printfield[noformat]{title}%
+  \setunit{,\space In:\space}%
+  \printfield{booktitle}%
+  \setunit{,\space}%
+  \printfield{year}%
+  \setunit*{,\space}%
+  \printfield{isbn}%
 	\finentry}
+
+  %% Definiert @InProceedings Eintrag
+\DeclareBibliographyDriver{incollection}{%
+\printnames{author}%
+\newunit\addcolon\space
+\printfield[noformat]{title}%
+\setunit{,\space In:\space}%
+\printfield{booktitle}%
+\setunit{,\space}%
+\printfield{year}%
+\setunit*{,\space}%
+\printfield{isbn}%
+\finentry}
 
 %Doppelpunkt nach dem letzten Autor
 \renewcommand*{\labelnamepunct}{\addcolon\addspace }
@@ -153,4 +162,4 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
 }
 
 %Titel nicht kursiv anzeigen
-\DeclareFieldFormat{title}{#1\isdot}
+%\DeclareFieldFormat{title}{#1\isdot}
