@@ -86,6 +86,7 @@ TODOS
 - Gebäudemodell oder Raummodell => Raummodell
 - prüfen das custom textcommands mit {} abgeschlossen werden, damit keine Leerzeichen verschwinden
 - prüfen dass ac und glossar einheitlich genutzt wird (dass z.B. nirgendwo "Bot Control Backend" geschrieben wird)
+- Literaturverzeichnis Nummern in PDF Dateinamen ergänzen
 
 Prototyp
 - Tests schreiben
