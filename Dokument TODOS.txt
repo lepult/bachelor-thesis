@@ -72,7 +72,7 @@ TODOS
 - Tests und Teste vereinheitlichen => immer Tests nutzen
 - Quellen
 	- fehlende Quellen einfügen
-	- Literatur Liste strukturieren und vereinheitlichen
+	✓ Literatur Liste strukturieren und vereinheitlichen
 - Erwähnung von Abbildungen, Tabellen und Kapiteln im Fließtext
 - Abbildungen ergänzen
 - Tabellen ergänzen
