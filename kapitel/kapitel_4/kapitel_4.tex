@@ -16,8 +16,8 @@ Um die Routenerstellung zu vereinfachen, sollen sowohl Roboter als auch Standort
 Die Abbildung \ref{fig:MockupAdministration} zeigt das Mockup für die Verwaltung. Hier gibt es jeweils eine Liste für die Roboter und die Stockwerke. In der Liste der Roboter können verschiedene Informationen der einzelnen Roboter, wie beispielsweise die systeminterne \ac{ID} und die Neustartzeit ausgelesen werden. Auch können Einstellungen der Roboter, wie Name und Ausgabepunkt geändert werden. Zudem gibt es für jeden Roboter eine Vorschau der Übersicht, in der die Position des Roboters gezeigt wird. Sowohl in der Liste der Roboter als auch in der Liste der Stockwerke gibt es für jedes Stockwerk eine Auflistung der Standorte. In der Liste der Stockwerke gibt es außerdem eine Vorschau der Übersicht und zusätzlich ein Kontextmenü, über das in den Editiermodus des Stockwerks gewechselt werden kann. In diesem sollen die Roboterdaten und Stockwerke manuell synchronisiert werden können. Für den Editiermodus wurde kein Mockup entworfen, da das Aussehen zu stark von den Möglichkeiten in \deckgl{} abhängt, die noch nicht vollständig bekannt waren, als die Mockups entworfen wurden. Stattdessen wurde bestimmt, dass das Aussehen des Editiermodus während der Implementierung festgelegt werden muss.
 
 \subsection{Implementierung}
-Es wurde ein Frontend entwickelt, dass auf das \ac{BCB} zugreift, um die Roboterdaten anzufragen. Wie das \ac{BCB} hierbei mit den Robotern kommuniziert, wird im Kapitel \ref{sec:BotControlBackend} erklärt. Das Frontend nutzt das Web-Framework React mit \ac{HTML}, \ac{SCSS} und Typescript. Die Vorteile von Typescript und \ac{SCSS} gegenüber Javascript und \ac{CSS}, wie auch das Web-Framework React werden im Kapitel \ref{sec:WebTechnologies} genauer erläutert.
-% Typscript wurde aufgrund der statischen Typisierung, frühzeitigen Fehlererkennung und besseren Wartbarkeit gegenüber Javascript. Da SCSS eine bessere Übersichtlichkeit der Stylesheets ermöglicht, wurde es statt CSS eingesetzt.
+Es wurde ein Frontend entwickelt, dass auf das \ac{BCB} zugreift, um die Roboterdaten anzufragen. Wie das \ac{BCB} hierbei mit den Robotern kommuniziert, wird im Kapitel \ref{sec:BotControlBackend} erklärt. Das Frontend nutzt das Web-Framework React mit \ac{HTML}, \ac{Sass} und Typescript. Die Vorteile von Typescript und \ac{Sass} gegenüber Javascript und \ac{CSS}, wie auch das Web-Framework React werden im Kapitel \ref{sec:WebTechnologies} genauer erläutert.
+% Typscript wurde aufgrund der statischen Typisierung, frühzeitigen Fehlererkennung und besseren Wartbarkeit gegenüber Javascript. Da Sass eine bessere Übersichtlichkeit der Stylesheets ermöglicht, wurde es statt CSS eingesetzt.
 Zustandsinformationen die Komponentenübergreifend abgerufen werden, werden zentral mithilfe von React-Redux gespeichert. Die Grundstruktur des Frontend-Projekts wurde mihilfe des Shell Befehls npx create-chayns-app \cite{CreateChaynsApp} aufgesetzt. Die Kompilierung ist mithile des \ac{npm}-Pakets chayns-toolkit \cite{ChaynsToolkit} konfiguriert. \ac{GUI}-Elemente wie Buttons und Aufklapper werden durch die Komponentenbibliothek chayns-components \cite{ChaynsComponents} bereitgestellt. Außerdem werden die \ac{npm}-Pakete clsx \cite{clsx} und fortawesome \cite{fontawesome} eingesetzt. Mithilfe von clsx lassen sich HTML Klassennamen dynamisch anwenden. Das fortawesome \ac{npm}-Paket wird genutzt, um \ac{SVG} Icons als Zeichenkette zu importieren.
 
 \subsubsection{Übersicht}
@@ -32,8 +32,6 @@ Für den Prototyp sind die \ac{URL}-Verweise der 3D-Modelle hartkodiert, oder in
     \\
     Quelle: Eigene Darstellung
 \end{figure}
-% TODO Ist "Quelle: Eigene Darstellung" richtig?
-% TODO Erwähnen falls 3D-Modelle gecached werden
 
 \paragraph{Roboterdaten}\label{sec:RobotData}
 Die Roboterdaten werden über verschiedene Endpunkte des \ac{BCB}s abgerufen. So gibt es einen Endpunkt für die Bezeichnungen der verschiedenen Standorte und einen Endpunkt für den Roboterstatus, Lieferautrag und die Roboterposition \cite{BCBSwagger}. Für die Positionen aller Standorte und der Roboterpfade gibt es keinen Endpunkt. Stattdessen können die Standorte und Pfade nur von Stockwerken angefragt werden, in denen sich Roboter zu dem Zeitpunkt befinden, da diese Daten direkt von den Robotern angefragt werden. Damit immer alle Daten aus allen Stockwerken abgerufen werden können, sind diese Daten im Prototyp für alle Stockwerke hartkodiert. Für ein potenzielles Produktivsystem müssten diese Daten in der Datenbank des \ac{BCB}s gespeichert und regelmäßig mit den Robotern synchronisiert werden.
@@ -113,9 +111,7 @@ Der Boden der 3D-Modelle liegt relativ konstant auf der z-Koordinate - der verti
 \subsection{Softwaretests}
 
 \subsection{Deployment}
-Für das Veröffentlichen des Prototyps wird GitHub Actions in Kombination mit GitHub Pages genutzt. Mit GitHub Actions lassen sich die Build-, Test- und Deploymentpipeline eines Projekts automatisieren \cite{GitHubActions}. So wird mithilfe der actions-gh-pages Github Action 
-% TODO Quelle actions-gh-pages
-bei der Aktualisierung des main Branches automatisch ein Build erstellt. Das GitHub Repository ist so konfiguriert, dass der erstellte Build automatisch mit GitHub Pages veröffentlicht wird. Bei GitHub Pages handelt es sich um einen Hosting-Dienst, der in GitHub integriert ist und aus Repositories statische Websites erstellen kann \cite{GitHubPages}.
+Für das Veröffentlichen des Prototyps wird GitHub Actions in Kombination mit GitHub Pages genutzt. Mit GitHub Actions lassen sich die Build-, Test- und Deploymentpipeline eines Projekts automatisieren \cite{GitHubActions}. So wird mithilfe der actions-gh-pages Github Action \cite{ActionsGhPages} bei der Aktualisierung des main Branches automatisch ein Build erstellt. Das GitHub Repository ist so konfiguriert, dass der erstellte Build automatisch mit GitHub Pages veröffentlicht wird. Bei GitHub Pages handelt es sich um einen Hosting-Dienst, der in GitHub integriert ist und aus Repositories statische Websites erstellen kann \cite{GitHubPages}.
 
 Die Anwendung verwendet verschiedene Funktionen der chayns-api \cite{ChaynsApi}, wie beispielsweise das Anfordern eines Zugangstokens, ohne den bestimmte Funktionen des Backends nicht aufgerufen werden können.
 Aus diesem Grund funktioniert die Anwendung nur, wenn sie - wie in der Dokumentation des create-chayns-app Befehls beschrieben \cite{CreateChaynsApp} - als Custom Page auf einer chayns Seite eingebunden ist. Der Zugriff auf die meisten Funktionen des \ac{BCB}s ist so eingeschränkt, dass diese nur auf bestimmten chayns Seiten aufgerufen werden können, sodass die Steuerungs- und Verwaltungsfunktionen nur auf bestimmten chayns Seiten genutzt werden können.
@@ -147,24 +143,10 @@ Da Benutzer oft versehentlich Aktionen ausführen, gibt es die dritte Regel, die
     Quelle: Eigene Darstellung
 \end{figure}
 
-% Die vierte Regel sagt aus, dass die UI den Konventionen der Plattform folgen soll und die UI innerhalb der gesamten Anwendung einheitlich ist, damit die Funktion aller Elemente leicht verständlich ist. Diese Regel wird durch den Einsatz der chayns-components für alle GUI Elemente garantiert. So ist die Anwendung sowohl innerlich, als auch unter chayns-Anwendungen einheitlich. 
-% TODO ggf. Schaubild in dem Einheitlichkeit zwischen Nutzerkarte und Editiermodus gezeigt wird.
-% Die Navigation innerhalb der Karte ist nicht einheitlich mit anderen Kartenanwendungen im Web. So lässt sich die Karte in der Google Maps App mit zwei Fingern vertikal rotieren. Im Prototyp werden stattdessen drei Finger gebraucht. Dieser Umstand ist dem eingesetzten Framework \deckgl{} geschuldet \cite{DeckglController}.
-
 In der fünften Regel geht es darum, dass Probleme, die Fehler auslösen verhindert werden sollten. In der Steuerung ist es zum Beispiel nicht möglich ungültige Standorte in der Routenplanung einzugeben. Währenddessen wird diese Regel in der Verwaltung durch die bereits erwähnten Bestätigungsdialoge erfüllt. Im Editiermodus gibt es die bereits erwähnte Rückgängigmachen und Wiederhohlen Funktion.
-
-% Mit der sechsten Regel wird gefordert, dass sich der Nutzer Informationen zwischen verschiedenen Teilen der Benutzeroberfläche nicht merken muss. Die Anwendung ist so aufgeteilt, dass jeder Nutzer basierend auf seinen Berechtigungen Zugriff auf alle nötigen Informationen hat. In allen Ansichten sind die nötigen Informationen sichtbar, sodass sich Nutzer diese nicht zwischen verschiedenen Ansichten merken müssen.
 
 In der siebten Regel geht darum, dass besimmte häufig genutzte Aktionen mit Shortcuts schneller ausführbar sein sollten. So können Lieferstandort und Roboter für einen Lieferauftrag in der Steuerung sowohl über die Inputs als auch über die Karte ausgewählt werden. Im Editiermodus gibt es außerdem Tastenkombinationen für das Rückgängigmachen und Wiederhohlen.
 Diese Regel wird in der Steuerung durch die Möglichkeit ermöglicht, den Lieferstandort und Roboter sowohl über die Karte als auch über den Input auswählbar zu machen. Im Editiermodus gibt es die Shortcuts zum rückgängig machen und wiederhohlen.
-
-% Die achte Regel, die eine minimalistische Benutzeroberfläche erwartet, ist nur subjektiv bewertbar. Mithilfe der Usability Tests kann gut bewertet werden, welche Informationen und Elemente irrelevant sind oder selten gebraucht werden und dadurch überflüssig sind.
-
-% Laut der neunten Regel sollten Fehlermeldungen in einfacher Sparche formuliert sei, das Problem präzise beschreiben und konstruktiv eine Lösung vorschlagen. Hierfür gibt es verschiedene Dialoge die bei Fehlermeldungen angezeigt werden.
-
-% Die zehnte Regel sagt aus, dass es, wenn nötig eine Dokumentation geben sollte, mithilfe welcher die Benutzer ihre Aufgaben verstehen und Abschließen können. Die Anwendung wurde mit dem Ziel entwickelt selbsterklärend zu sein. 
-% Dieses Ziel noch irgendwo zu Beginn erwähnen
-% Außerdem gibt es Tooltips für bestimmte Statusinformationen und beim Ändern von Einstellungen gibt es Bestätigungsdialoge mit Erklärungen. Mithilfe der Usability Tests kann geprüft werden, ob das Ziel erfüllt werden konnte oder ob weitere Erklärungen nötig sind.
 
 Auch die anderen Usability Entscheidungsregeln wurden während der Entwicklung beachtet und weitestgehend erfüllt, was aber nicht automatisch bedeutet, dass der Prototyp auch wirklich benutzerfreundlich ist. Um das zu bewerten, folgen die Usability Tests.
 
