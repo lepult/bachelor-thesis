@@ -30,8 +30,7 @@ TODOS
 		- Usability
 			- Usability Entscheidungsregeln [kontrollieren]
 			- Usability Test [kontrollieren]
-		- Performance [schreiben]
-		- Softwaretests [schreiben]
+		- Performance [kontrollieren; Quellen ergänzen]
 ✓ Anforderungen an den Prototyp [kontrollieren]
 	✓ Anforderungen an Modellerzeugung
 	✓ Funktionale Anforderungen
@@ -69,25 +68,19 @@ TODOS
 - Unterschrift hinzufügen
 
 Überarbeiten
-- Tests und Teste vereinheitlichen => immer Tests nutzen
 - Quellen
 	- fehlende Quellen einfügen
 	✓ Literatur Liste strukturieren und vereinheitlichen
-- Erwähnung von Abbildungen, Tabellen und Kapiteln im Fließtext
-- Abbildungen ergänzen
-- Tabellen ergänzen
-- Prüfen ob irgendwo erwähnt wird, was es genau für Roboterdaten gibt die auf Karte dargestellt werden (Standorte und Pfade)
-- Übersicht, Steuerung und Verwaltung oder Übersichts-, Steuerungs- und Verwaltungsansicht? => Vereinheitlichen!
 - Bezeichnung der deck.gl Ebenen vereinheitlichen (z.B. ScenegraphLayer, Scenegraph-Layer etc.) => Bezeichnung in deck.gl Doku nehmen?
-- \cite hinter Anführungszeichen prüfen, da hier immer das Leerzeichen zwischen beidem entfernt wird
-- Naming der Ansichten prüfen und vereinheitlichen. Übersicht, Steuerung, Verwaltung; Übersichts-, Steuerungs- und Verwaltungsansicht; Nutzeransicht, Adminansicht ...
-- Prüfen was in Vergangenheitsform geschrieben werden sollte
-- Passt "Eigene Darstellung" als Quelle?
+- Naming der Ansichten prüfen und vereinheitlichen: Nutzeransicht, Adminansicht
 - Gebäudemodell oder Raummodell => Raummodell
-- prüfen das custom textcommands mit {} abgeschlossen werden, damit keine Leerzeichen verschwinden
 - prüfen dass ac und glossar einheitlich genutzt wird (dass z.B. nirgendwo "Bot Control Backend" geschrieben wird)
 - Literaturverzeichnis Nummern in PDF Dateinamen ergänzen
-- Serviceroboter Schreibweise (Service Roboter oder Serviceroboter)
+- Abbildungen
+	- DSR an neues Verständnis anpassen
+	- BCB Qualität verbessern; PUDU Cloud als MQTT Broker darstellen
+	- Qualitätsmerkmale verschönern => Einheitliches Padding zwischen Text und Kasten; Usability zu Benutzerfreundlichkeit
+	- WebsocketService Qualität verbessern
 
 Prototyp
 - Tests schreiben
