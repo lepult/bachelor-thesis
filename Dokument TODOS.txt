@@ -78,9 +78,7 @@ TODOS
 - Literaturverzeichnis Nummern in PDF Dateinamen ergänzen
 - Abbildungen
 	- DSR an neues Verständnis anpassen
-	- BCB Qualität verbessern; PUDU Cloud als MQTT Broker darstellen
 	- Qualitätsmerkmale verschönern => Einheitliches Padding zwischen Text und Kasten; Usability zu Benutzerfreundlichkeit
-	- WebsocketService Qualität verbessern; "1. Statusaktualisierung" Statt "1. NAchricht über MQTT"
 - TODOs im Dokument abschließen
 
 Prototyp

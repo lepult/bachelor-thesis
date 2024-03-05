@@ -1,20 +1,41 @@
 \newpage
 \section{Fazit}
-Fehlender-Text
+Im Rahmen der Arbeit wurde die Forschungsfrage, wie eine effiziente und benutzerfreundliche Steuerung und Verwaltung von Servicerobotern implementiert werden kann, beantwortet. Hierfür wurde erfolgreich ein Prototyp implementiert, der iterativ entwickelt und auf die verschiedenen Anforderungen geprüft wurde. Die aus der Zielsetzung, Forschungsfrage und Umgebung herausgearbeiteten Anforderungen wurden weitestgehend erfüllt. So handelt es sich bei dem Prototyp um eine benutzerfreundliche und effiziente Webanwendung.
 
+Der lauffähige Prototyp ist mithilfe der Anleitung ``Prototyp.txt'', die in den Zusatzdokumenten zu finden ist, erreichbar und zumindest eingeschränkt nutzbar. So können Verwaltungs- und Steuerungsfunktionen aus Sicherheitsgründen nicht genutzt werden.
+
+\subsection{Aufgetretene Probleme}
+Während der Entwicklung des Prototyps wurden verschiedene Probleme identifiziert, die mit \deckgl{} oder dem Einbinden von 3D-Modellen im Web in Verbindung stehen. So ist die SimpleMeshLayer des Frameworks dadurch beschränkt das \ac{OBJ} Dateien nur ohne die \mtl{} Datei, also ohne Textur eingebunden werden können. Dadurch musste bei der Anzeige der Gebäudemodelle auf die ScenegraphLayer zurückgegriffen werden und die Robotermodelle konnten nur einfarbig ohne Textur dargestellt werden. Insgesamt gibt es beim Animieren von 3D-Modellen verschiedene Probleme: In der ScenegraphLayer funktioniert das Animieren über die transition Property gar nicht, während in der SimpleMeshLayer nur das Animieren der Rotation nicht funktioniert. Da \deckgl{} \ac{WebGL} für die Darstellung nutzt, können automatisierte Tests nur über den Vergleich von Screenshots durchgeführt werden. Hierfür existiert zwar der SnapshotTestRunner der diesen Prozess automatisieren kann, die Klasse ist allerdings nicht ausreichend dokumentiert, weshalb \deckgl{} Funktionen im Prototyp nicht automatisch getestet werden können. Da das Framework ein Open-Source-Projekt ist und aktiv aktualisiert wird, können diese Probleme behoben werden, nachdem diese gemeldet wurden.
+
+Beim Einbinden von 3D-Modellen gibt es weitere Probleme, die unabhängig von \deckgl{} auftreten. So können die verwendeten \ac{glTF} Modelle mit \ac{WebP} Texturen nicht im Safari Browser genutzt werden. Auch gibt es an Mobilgeräten Probleme bei der Darstellung großer und somit rechenaufwändiger 3D-Modelle.
+
+\subsection{Ausblick}
+Da die Anforderungen an den Prototyp erfüllt werden konnten ist der nächste logische Schritt die Implementierung als Produktivsystem. Wie bereits erwähnt sind hierfür verschiedene Anpassungen im Prototyp und \ac{BCB} nötig, die allerdings nicht sonderlich groß ausfallen. Im Backend müssen vor allem neue Endpunkte hinzugefügt und die Datenbank erweitert werden, damit die 3D-Modelle gespeichert, verändert und abgerufen werden können. Auch müssen die Standorte und Roboterpfade permanent im \ac{BCB} abgespeichert werden, damit nicht nur Daten von Stockwerken angefragt werden können, in denen sich Roboter befinden. Zusätzlich müssen die Produktqualitätsmerkmale untersucht werden, die im Rahmen dieser Arbeit vernachlässigt wurden. Hierbei handelt es sich um: Portabilität, Wartbarkeit, Sicherheit, Verlässlichkeit und Kompatibilität. Zuletzt sollte ein Produktivsystem auch den Import von 3D-Modellen aus anderen Quellen ermöglichen. Im gleichen Schritt könnte auch eine automatische Kompression der importierten Modelle eingebaut werden.
+
+Zusätzlich können auch weitere Aspekte erforscht werden, die im Rahmen dieser Arbeit nur oberflächlich betrachtet wurden. Wie bereits demonstriert wird kann \deckgl{} für mehr als nur für Geodatenvisualisierungen eingesetzt werden. So könnte genauer erforscht werden für welche weiteren Anwendungsszenarien sich das Framework noch eignet. Wie bereits erwähnt, sollen die Roboter auf ihre Zuverlässigkeit und Navigationsfähigkeit geprüft werden. Hierfür eignet sich eine wissenschaftliche Untersuchung anhand ausgewählter Aspekte. Zuletzt könnte noch untersucht werden, wie der konzipierte Editiermodus zum Verschieben und Rotieren auch für die Nutzung an Smartphones implementiert werden könnte. So ist der Editiermodus im Prototyp nur an Desktop Computern nutzbar, da die Steuerungs- und Umschalttasten benötigt werden.
 % Forschungsfrage konnte beantwortet werden
-% Prototyp ist benutzerfreundlich und ausreichend effizient
-% Gutes Feedback von Testpersonen
-% Verschiedene Bugs in deck.gl => Bugs können wegen OpenSource behoben werden
-% Unzureichende Dokumentation der Snapshot Tests erwähnen => Geringe Code Coverage der Tests
-% Anpassungen für ein Potenzielles Produktivsystem zusammenfassen
+% Modell Generierungsmethode ausreichend gut => kurz zeigen wo die LiDAR Gebäudescans Schwächen haben (Transparenz und Relektierende Objekte; bewegende Objekte => Gebäude muss leer sein, also nach Arbeitszeit)
+% Prototyp ist benutzerfreundlich und zumindest ausreichend effizient (trotz Webanwendung und 3D-Darstellung)
+% Gutes Feedback von Testpersonen; Zum Teil auch leichte Begeisterung über 3D-Darstellung
+% Karten Handling sehr zielführend => Google Maps bereits vertraut
+% deck.gl kann für mehr als für Geodatenvisualisierungen genutzt werden
+
 % Zeigen wo die Steuerung erreichbar ist
+
+% Verschiedene Probleme mit 3D-Darstellung in deck.gl
+% deck.gl hat leider mehrere kleinere Bugs => Die aber wegen Open Source schnell gelöst werden können
+% Unzureichende Dokumentation der Snapshot Tests in deck.gl => Geringe Code Coverage der Tests
+% Auch Webbrowser noch nicht vollständig auf 3D-Darstellung ausgelegt => glTF mit WebP funktioniert nicht an Safari Geräten
+% Mobilgeräte haben Probleme mit besonders großen 3D-Modellen
+
+% Anpassungen für ein Potenzielles Produktivsystem zusammenfassen
+% Vom Prototyp zum Produktivsystem fehlt nicht viel => verschiedene Backend und Datenbank Anpassungen; Anpassungen im Frontend (importierte 3D-Modelle im chayns.space abspeichern; erweiterte Routenplanung)
+% Anpassungen wären nötig damit nicht nur 3D-Modelle aus Scaniverse App akzepziert werden können
+
 
 % Ausblick
 % Genauerer Vergleich zwischen LiDAR Scanning, Fotogrammetrie und KI
 % Vergleich zwischen deckgl und three.js oder anderen Frameworks
-
-
-% Zeigen wo die LiDAR Gebäudescans ihre Schwächen haben
-% Ausblick auf Editiermodus an Smartphones (ist im Prototyp nicht implementiert)
-% Datenbankänderungen für ein Produktivsystem zeigen
+% Falls ein Produktivsystem umgesetzt, dieses untersuchen => besonders auch auf den Einsatz bei Kellnern
+% Eignung der Service Roboter untersuchen (Zuverlässigkeit, Navigationsfähigkeit)
+% Editiermodus für Smartphones => verschieben und rotieren von 3D-Modellen über Touch
