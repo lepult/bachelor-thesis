@@ -10,7 +10,7 @@ Die Anforderungen an die Methode zur Gebäudemodell-Generierung konnten mit dem 
 \subsection{Benutzerfreundlichkeit}
 Die Benutzerfreundlichkeit wird durch die Einhaltung der Usability Entscheidungsregeln gefördert und durch die Auswertung der Usability Tests bewertet. Beides wird im Folgenden genauer erörtert.
 
-\subsubsection{Usability Heuristics}\label{sec:UsabilityHeuristics}
+\subsubsection{Usability Entscheidungsregeln}\label{sec:UsabilityHeuristics}
 Die Usability Entscheidungsregeln konnten weitestgehend eingehalten werden. Im Folgenden wird aufgezeigt wie ein paar Entscheidungsregeln konkret eingehalten werden.
 
 Die erste Regel besagt, dass der Nutzer immer innerhalb einer angemessenen Zeitspanne durch geeignete Rückmeldungen mitbekommen sollte, was gerade passiert \cite[Regel 1]{Nielsen.1994}. Diese Regel wird durch verschiedene Features in der Übersicht und Steuerung erfüllt. Zum einen gibt es die Echtzeit-Aktualisierungen des Roboterstandorts und -Status über die \gls{Websocket}-Verbindung mit dem \ac{BCB}. Zum anderen werden Statusänderungen auch über die Farben der Buttons signalisiert. Außerdem gibt es einen Wait-Cursor, um Ladevorgänge anzuzeigen.
@@ -26,9 +26,9 @@ Da Benutzer oft versehentlich Aktionen ausführen, gibt es die dritte Regel, die
     Quelle: Eigene Darstellung
 \end{figure}
 
-In der fünften Regel geht es darum, dass Aktionen, die Fehler auslösen, verhindert werden sollten \cite[Regel 5]{Nielsen.1994}. In der Steuerung ist es zum Beispiel nicht möglich ungültige Standorte in der Routenplanung einzugeben. Währenddessen wird diese Regel in der Verwaltung durch die bereits erwähnten Bestätigungsdialoge erfüllt. Im Editiermodus gibt es währenddessen die bereits erwähnte Rückgängigmachen und Wiederhohlen Funktion.
+In der fünften Regel geht es darum, dass Aktionen, die Fehler auslösen, verhindert werden sollten \cite[Regel 5]{Nielsen.1994}. In der Steuerung ist es zum Beispiel nicht möglich ungültige Standorte in der Routenplanung einzugeben. Währenddessen wird diese Regel in der Verwaltung durch die bereits erwähnten Bestätigungsdialoge erfüllt. Im Editiermodus gibt es die bereits erwähnte Rückgängigmachen und Wiederhohlen Funktion.
 
-In der siebten Regel geht darum, dass bestimmte, häufig genutzte Aktionen mit Shortcuts schneller ausführbar sein sollten \cite[Regel 7]{Nielsen.1994}. So können Zielstandort und Roboter für einen Lieferauftrag in der Steuerung sowohl über die Inputs als auch über die Karte ausgewählt werden. Im Editiermodus gibt es außerdem Tastenkombinationen für das Rückgängigmachen und Wiederhohlen.
+In der siebten Regel geht darum, dass bestimmte, häufig genutzte Aktionen durch Shortcuts schneller ausführbar sein sollten \cite[Regel 7]{Nielsen.1994}. So können Zielstandort und Roboter für einen Lieferauftrag in der Steuerung sowohl über die Inputs als auch über die Karte ausgewählt werden. Im Editiermodus gibt es außerdem Tastenkombinationen für das Rückgängigmachen und Wiederhohlen.
 
 Auch die anderen Usability Entscheidungsregeln wurden während der Entwicklung beachtet und weitestgehend erfüllt, was aber nicht automatisch bedeutet, dass der Prototyp auch wirklich benutzerfreundlich ist. Um das zu bewerten, folgen die Usability Tests.
 
@@ -41,7 +41,7 @@ Um die geplanten Aktivitäten zu prüfen, wurde zunächst ein Pilottest durchgef
 
 \paragraph{Erste Usability Test Runde}
 
-In den beiden folgenden Tabellen werden die Ergebnisse des ersten Usability Testdurchlaufs zusammengefasst. Der Pilottest wird zu dieser Runde dazugezählt und ist in den Tabellen als T0 gekennzeichnet. In Tabelle \ref{tbl:1stUsabilityTestsProblems} wird dargestellt, welche Probleme bei welcher Testperson aufgefallen sind. So sieht man, dass die meisten Probleme die im Pilottest aufgefallen sind, danach nicht mehr aufgetreten sind, was darauf zurückzuführen ist, dass diese vor der Durchführung der restlichen Tests behoben wurden. Man kann zudem sehen, dass den meisten Testpersonen mindestens ein Problem aufgefallen ist, das keiner anderen Testperson aufgefallen ist. Hierdurch zeigt sich, dass durch weniger Testpersonen weniger Probleme gefunden worden wären. In Tabelle \ref{tbl:1stUsabilityTestsProblemsDesc} im Anhang werden die gefundenen Probleme genauer beschrieben. Bei der Korrektur der Probleme wurden die Probleme priorisiert, die besonders vielen Testpersonen aufgefallen sind. Durch die Usability Tests gab es außerdem zusätzlich Feedback der Testpersonen, das in der folgenden Implementierungsphase berücksichtigt wurde.
+In den beiden folgenden Tabellen werden die Ergebnisse des ersten Usability Testdurchlaufs zusammengefasst. Der Pilottest wird zu dieser Runde dazugezählt und ist in den Tabellen als T0 gekennzeichnet. In Tabelle \ref{tbl:1stUsabilityTestsProblems} wird dargestellt, welche Probleme bei welcher Testperson aufgefallen sind. So sieht man, dass die meisten Probleme die im Pilottest aufgefallen sind, danach nicht mehr aufgetreten sind, was darauf zurückzuführen ist, dass diese vor der Durchführung der restlichen Tests behoben wurden. Man kann zudem sehen, dass den meisten Testpersonen mindestens ein Problem aufgefallen ist, das keiner anderen Testperson aufgefallen ist. Hierdurch zeigt sich, dass durch weniger Testpersonen weniger Probleme gefunden worden wären. In Tabelle \ref{tbl:1stUsabilityTestsProblemsDesc} im Anhang werden die gefundenen Probleme genauer beschrieben. Bei der Korrektur der Probleme wurden die Probleme priorisiert, die besonders vielen Testpersonen aufgefallen sind. Im Rahmen der Usability Tests gab es außerdem zusätzlich Feedback der Testpersonen, das in der folgenden Implementierungsphase berücksichtigt wurde.
 
 \begin{table}[H]
     \caption{Gefundene Probleme in erster Usability Test Runde}\label{tbl:1stUsabilityTestsProblems}
