@@ -71,15 +71,19 @@ TODOS
 - Quellen
 	- fehlende Quellen einfügen
 	✓ Literatur Liste strukturieren und vereinheitlichen
-- Bezeichnung der deck.gl Ebenen vereinheitlichen (z.B. ScenegraphLayer, Scenegraph-Layer etc.) => Bezeichnung in deck.gl Doku nehmen?
 - Naming der Ansichten prüfen und vereinheitlichen: Nutzeransicht, Adminansicht
 - Gebäudemodell oder Raummodell => Raummodell
-- prüfen dass ac und glossar einheitlich genutzt wird (dass z.B. nirgendwo "Bot Control Backend" geschrieben wird)
 - Literaturverzeichnis Nummern in PDF Dateinamen ergänzen
 - Abbildungen
 	- DSR an neues Verständnis anpassen
 	- Qualitätsmerkmale verschönern => Einheitliches Padding zwischen Text und Kasten; Usability zu Benutzerfreundlichkeit
 - TODOs im Dokument abschließen
+- Unterschrift hinzufügen
+- Abgabedatum ändern
+- ggf. Zweitgutachter hinzufügen
+- Prototyp.txt erstellen mit Erklärung wie Prototyp erreicht und genutzt werden kann
+- Gedankenstriche statt Bindestriche
+- Performance (und performant) oder Effizienz
 
 Prototyp
 - Tests schreiben
