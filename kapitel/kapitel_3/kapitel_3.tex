@@ -2,9 +2,8 @@
 \section{Technische Herausforderungen}
 Vor und während der Implementierung des Prototyps sind verschiedene größere technische Herausforderungen aufgetreten, die gelöst werden mussten. Die Herausforderungen werden in diesem Kapitel mit den gewählten Lösungsansätzen vorgestellt. 
 
-\subsection{Modellerzeugungsmethode}
-TODO: Erklären warum \ac{LiDAR} Scanning genutzt wird; Erklären warum die Scaniverse App genutzt wird.
-% KI gestützt erscheint noch sehr unausgereift, weil noch nicht viele Publikationen existieren.
+\subsection{Methode zur Modellgenerierung}
+Die 3D-Modelle der Stockwerke wurden mithilfe des LiDAR-Scannens erstellt. Hierfür wurde die Scaniverse App an einem iPhone 14 Pro verwendet. Da das Gerät zur Verfügung stand und die Scaniverse App kostenlos nutzbar ist, war das Scannen mit keinen Kosten verbunden. Aufgrund des höheren Aufwands bei der Aufnahme und Verarbeitung von Bildern wurde die Fotogrammetrie als Methode verworfen. Zwar würde sich das iPhone auch für Aufnahmen eignen die per Fotogrammetrie verarbeitet werden, diese Verarbeitung erfordert allerdings ein weiteres Gerät mit einer leistungsstarken Grafikkarte. Außerdem ist das Verarbeiten der Bilder bei der Fotogrammetrie mit mehr Aufwand verbunden als beim \ac{LiDAR}-Scannen. Die KI-gestützten Methoden wurden nicht eingesetzt, da sie aufgrund der wenigen existierenden Publikationen noch als unausgereift erscheinen.
 
 \subsection{3D Visualisierung im Web}
 Für das Einbinden von 3D-Visualisierungen im Web gibt es verschiedene Ansätze und Technologien. In diesem Abschnitt wird die Auswahl von \deckgl{} als Framework für die Umsetzung des Prototyps, sowie die Wahl des Dateiformats für die 3D-Modelle erläutert.
