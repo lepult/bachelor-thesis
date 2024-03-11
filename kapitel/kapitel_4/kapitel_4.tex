@@ -39,6 +39,15 @@ Im Gegensatz zu den Gebäuademodellen werden die Robotermodelle im \ac{OBJ}-Form
 
 Die verschiedenen Standorte werden über eine weitere IconLayer-Instanz angezeigt. Wie bei den Roboter-Zuständen werden hierfür verschiedene Fontawesome-Icons genutzt. Wurde ein Roboter ausgewählt und hat dieser einen Lieferauftrag, dann wird der Zielstandort farbig markiert. Die Pfade und virtuellen Wände werden über eine Instanz der PathLayer \cite{DeckglPathLayer} dargestellt. Die virtuellen Wände werden gestrichelt und in einer anderen Farbe angezeigt, damit diese von den Roboterpfaden unterschieden werden können. Für die gestrichelte Darstellung wird die PathStyleExtension \cite{DeckglPathStyleExtension} genutzt. Der Boden der 3D-Modelle liegt relativ konstant auf der z-Koordinate – der vertikalen Position – 0. Aufgrund der Ungenauigkeiten die durch den \ac{LiDAR}-Scan entstehen ist der Boden der 3D-Modelle nicht vollständig eben. Da die Positionen der Roboterdaten zweidimensional sind, und somit keine vertikale Position haben, besteht die Gefahr, dass diese an manchen Stellen unter dem Boden der 3D-Modelle verschwinden, wenn sie auf der z-Koordinate 0 angezeigt werden. Aus diesem Grund werden die Icons und Pfade an einer leicht erhöhten z-Koordinate positioniert.
 
+Zusammenfassend wird für die Kartendarstellung die ScenegraphLayer, PathLayer, IconLayer und SimpleMeshLayer genutzt. In Abbildung \ref{fig:MapSchematic} wird dargestellt wie sich die Kartendarstellung aus den einzelnen Ebenen zusammensetzt. Bei der ScenegraphLayer muss beachtet werden, dass für jedes 3D-Modell eine eigene Instanz erstellt wird. Ansonsten stimmt die Menge der Ebenen-Instanzen mit denen im Schaubild überein.
+
+\begin{figure}[H]
+    \caption{Kartendarstellung}\label{fig:MapSchematic}
+    \includegraphics[width=0.9\textwidth]{Layers Schaubild.png}
+    \\
+    Quelle: In Anlehnung an OpenJS Foundation \cite{DeckglBaseMaps}
+\end{figure}
+
 Bei der Abbildung \ref{fig:OverviewScreenshot} handelt es sich um einen Screenshot aus der Übersicht im Prototyp. Man sieht alle erwähnten Ebenen, sowie die verschiedenen Buttons. Basierend auf dem Feedback aus den Usability Tests, die im Abschnitt \ref{sec:UsabilityTests} genauer beschrieben werden, wurden Buttons ergänzt, die es nicht im \gls{Mockup} gibt.
 
 \begin{figure}[H]

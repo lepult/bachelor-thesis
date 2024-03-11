@@ -159,17 +159,50 @@ Da die Menge der gefundenen Probleme mit dem zweiten Durchlauf der Tests stark a
 
 \subsection{Effizienz}
 % TODO An Anforderungen Kapitel orientieren!
-Wie im Abschnitt \ref{sec:PerformanceBasics} beschrieben werden \ac{PLS}, \ac{LR} und Smoothness gemessen. Für die Bestimmung des \ac{PLS} wird der \ac{FCP} gemessen. Normalerweise wird zur Bestimmung des \ac{PLS} der \ac{LCP} gemessen, was aber nicht möglich ist, da die Ladezeit des wichtigsten Elements – der \deckgl{} Karte – nicht gemessen werden kann. Die \ac{LR} wird über den \ac{FID} und die \ac{TBT} gemessen. Die Smoothness wird nur öberflächig ohne Messwert überprüft.
+Wie im Abschnitt \ref{sec:PerformanceBasics} beschrieben werden \ac{PLS}, \ac{LR} und Smoothness bewertet. Für die Bestimmung des \ac{PLS} wird der \ac{FCP} gemessen. Normalerweise wird zur Bestimmung des \ac{PLS} der \ac{LCP} gemessen, was aber nicht möglich ist, da die Ladezeit des wichtigsten Elements – der \deckgl{} Karte – nicht gemessen werden kann. Die \ac{LR} wird über den \ac{FID} und die \ac{TBT} gemessen. Die Smoothness wird auf Basis von Beobachtungen während der Usability Tests bestimmt, da die \ac{INP} durch den Einsatz von \deckgl nicht gemessen werden kann. Die Messwerte wurden über die in Webbrowser integrierte PerformanceObserver-\ac{API} \cite{PerformanceObserver} gemessen. Die gemessenen Werte Stammen von einer Auswahl von Personen die mit dem Prototyp interagieren sollten.
 
-TODO: Ergebnisse erläutern.
+% FCP 24 Werte
+% Mittelwert: 760 ms
+% Median: 743 ms
+% Min: 430 ms
+% Max: 1806 ms
+% < 1800 gut; > 3000 poor
 
-% Metriken kurz erklären
-% First Contentful Paint
-% Largest Contentfult Paint => Nicht nutzbar, da das Rendern der deck.gl Ebenen nicht über Events erkannt werden kann
-% First Input Delay
-% Total Blocking Time
-% Erläutern warum die Richtwerte nicht erreicht werden können, die Performance aber trotzdem in Ordnung ist
+% FID 13 Werte (weniger weil Wert nicht in allen Browsern gemessen wird)
+% Mittelwert: 138 ms
+% Median: 3 ms
+% Min: 1 ms
+% Max: 1751 ms
+% < 100 gut; > 300 poor
 
+% TBT 23 Werte
+% Mittelwert: 860 ms
+% Median: 605 ms
+% Min: 25 ms
+% Max: 2678 ms
+% < 200 gut; > 600 poor
+
+% TODO 
+\subsubsection{Effizienz Messwerte}
+
+In Abbildung \ref{fig:EfficiencyBoxplot} werden die Ergebnisse in mehreren Boxplot-Diagrammen dargestellt. Es wurden insgesamt 24 \ac{FCP}-, 13 \ac{FID}- und 23 \ac{TBT}-Werte gemessen. Die Differenz in der Menge ist darauf zurückzuführen, dass der \ac{FID} nicht in allen Webbrowsern gemessen werden kann und dass die Anwendung wieder geschlossen werden kann, nachdem der \ac{FCP} gemessen wurde, aber bevor die \ac{TBT} gemessen wurde. Wie an sieht, liegt der Mittelwert beim \ac{FCP} bei 760 ms und der Median bei 743 ms. Außerdem gibts einen Ausreißer der bei 1806 ms liegt. Beim \ac{FID} liegen alle Werte bis auf einen Ausreißer – der bei 1751 ms liegt – bei unter 10 ms. Durch den Ausreißer gibt es eine große Differenz zwischen Mittelwert und Median. So ist der Mittelwert 138 ms während der Median 3 ms ist. Die \ac{TBT} Werte liegen breit verteilt zwischen 25 ms und 2678 ms. Der Mittelwert ist 860 ms und der Median ist 605 ms.
+
+\begin{figure}[H]
+    \caption{Effizienzmetriken}\label{fig:EfficiencyBoxplot}
+    \includegraphics[width=0.9\textwidth]{Boxplot.pdf}
+    \\
+    Quelle: Eigene Darstellung
+\end{figure}
+
+
+\subsubsection{Effizienz Bewertung}
+Solange der \ac{FCP} unter 1800 ms liegt, kann dieser als gut bewertet werden \cite{FCP}. Die gemessenen \ac{FCP} Werte liegt bis auf den Ausreißer unter diesem Richtwert. Für eine gründliche Bewertung des \ac{PLS} reicht dieser Messwert nicht aus, da die Ladezeit der Kartenansicht nicht gemessen wird. Trotzdem kann zumindest der \ac{PLS} der \ac{GUI}-Elemente als gut bewertet werden.
+
+Bis auf einen Ausreißer liegen alle gemessenen \ac{FID}-Werte unter dem Richtwert von 100 ms \cite{FID}, was bedeutet, dass die erste Interaktion in der Regel eine geringe Latenz hat. Gleichzeitig liegt die \ac{TBT} über dem Mindestwert von 600 ms \cite{TBT}, was bedeutet, dass der Hauptthread lange blockiert wird, sodass Interaktionen während des Ladens der Kartenansicht eine hohe Latenz haben. Diese Messwerte erscheinen auf den ersten Blick widersprüchlich, lassen sich aber dadurch erklären, dass die Karte während des Ladevorgangs keine Daten anzeigt, wodurch es keinen Anreiz gibt mit der Anwendung zu interagieren. Erst wenn die Kartenansicht vollständig geladen wurde und der Hauptthread nicht mehr blockiert wird, wird der Inhalt angezeigt. So interagieren die meisten Nutzer erst mit der Anwendung, wenn der Hauptthread nicht mehr blockiert wird, wodurch die Latenz der Interaktionen gering ist. Die \ac{LR} ist somit schlecht, was sich allerdings nicht negativ für den Nutzer auswirkt, da dieser sowieso erst mit der Anwendung interagiert, nachdem die Kartenansicht vollständig geladen wurde.
+
+Während der Usability Tests konnten keine Ruckler beobachtet werden und auch außerhalb der Usability Tests sind bei der Nutzung des Prototyps keine Ruckler aufgefallen. Insgesamt erscheint die Bedienung der Kartenansicht sowohl am Desktop als auch an Mobilgeräten flüssig. Daher kann die Smoothness als gut bewertet werden. Es gilt natürlich zu beachten, dass diese Bewertung nicht auf objektiven Messwerten, sondern nur auf subjektiven Beobachtungen basiert.
+
+Zusammenfassend lässt sich die Effizenz der Anwendung als ausreichend bewerten.
 
 
 % => Performance Tests (testen welche Maßnahmen welche Performance Auswirkungen haben)
