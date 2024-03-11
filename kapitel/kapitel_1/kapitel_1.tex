@@ -20,10 +20,10 @@ Im Rahmen dieser Arbeit wird das bereits existierende \ac{BCB} als Schnittstelle
 Die Abbildung \ref{fig:BotControlBackendCommunication} veranschaulicht die Kommunikation zwischen dem \ac{BCB} und den Robotern. Wie man in der Abbildung sieht hat das \ac{BCB} eine direkte Verbindung zum \gls{Microservice}, der wiederum über die PUDU Cloud – die als \gls{MQTT-Broker} agiert – mit den Robotern kommuniziert. Über \gls{HTTP}-Anfragen an den \gls{Microservice} können Daten abgefragt und Befehle gegeben werden. Bei der Anfrage von Daten fragt der \gls{Microservice} die entsprechenden \gls{MQTT}-Topics an. Wie die Kommunikation zwischen \gls{Microservice} und Robotern funktioniert, wenn das \ac{BCB} Befehle an die Roboter verschickt, ist aus dem Dokument nicht ersichtlich. Die Roboter können zusätzlich auch unaufgefordert Ereignisse an das \ac{BCB} kommunizieren. Hierfür muss das \ac{BCB} eine Adresse für einzelne Ereignistypen im \gls{Microservice} als \gls{Webhook} registrieren. Der \gls{Microservice} abonniert daraufhin die entsprechende \gls{MQTT-Topic}. So schicken die Roboter auftretende Ereignisse – wie eine Positionsaktualisierung – an die PUDU Cloud, die diese an den \gls{Microservice} weiterleitet, da dieser die \gls{MQTT-Topic} abonniert hat. Der \gls{Microservice} schickt das Ereignis daraufhin als \gls{HTTP}-Nachricht an die als \gls{Webhook} registrierte Adresse im \ac{BCB}.
 
 \begin{figure}[H]
-\caption{Kommunikation zwischen Bot Control Backend und Robotern}\label{fig:BotControlBackendCommunication}
-\includegraphics[width=0.9\textwidth]{BotControlBackend Diagramm}
-\\
-Quelle: In Anlehnung an Pudu \cite[S.~4]{PuduSDK}
+    \caption{Kommunikation zwischen Bot Control Backend und Robotern}\label{fig:BotControlBackendCommunication}
+    \includegraphics[width=0.9\textwidth]{BotControlBackend Diagramm}
+    \\
+    Quelle: In Anlehnung an Pudu \cite[S.~4]{PuduSDK}
 \end{figure}
 
 Das \ac{BCB} fungiert nicht nur als Kommunikationsschnittstelle zu den Robotern, sondern abstrahiert auch neue Funktionen. So können Roboter mithilfe des \ac{BCB}s Fahrstuhl fahren und somit Lieferpunkte in anderen Stockwerken erreichen. Ebenso können sie durch das \ac{BCB} an geschlossenen Tür halten, diese öffnen und anschließend weiterfahren.
