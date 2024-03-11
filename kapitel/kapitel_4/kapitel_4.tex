@@ -1,5 +1,3 @@
-% TODO textcommand für Scenegraph-Ebene, SimpleMesh-Ebene, Icon-Ebene
-
 \newpage
 \section{Umsetzung des Prototyps}\label{sec:RealizationOfPrototype}
 Im Folgenden wird das \gls{Mockup}, die Implementierung und das Deployment des Prototyps beschrieben. Während der Skizzierung der \gls{Mockup}s und der Implementierung wurde auf eine gute Benutzerfreundlichkeit geachtet. Hierfür wurde sich unter anderem an Nielsens Usability Heuristics \cite{Nielsen.1994} orientiert. Im Abschnitt \ref{sec:UsabilityHeuristics} wird genauer geprüft, wie gut diese eingehalten wurden.
@@ -57,9 +55,7 @@ Bei der Abbildung \ref{fig:OverviewScreenshot} handelt es sich um einen Screensh
 \end{figure}
 
 \paragraph{Echtzeit-Aktualisierung}
-Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer indirekten Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Hierfür wird der im Abschnitt \ref{sec:Chayns} erwähnte \gls{Websocket}-Service genutzt. In der Abbildung \ref{fig:RobotStatusUpdate} ist der Ablauf einer Statusaktualisierung vereinfacht dargestellt. Aktualisiert ein Roboter seine Position, wird die entsprechende Information an das \ac{BCB} gesendet. Wie die Kommunikation zwischen Robotern und \ac{BCB} funktioniert wird im Abschnitt \ref{sec:BotControlBackend} erklärt.
-% Passt das so? Funktioniert MQTT wie beschrieben?
-Das \ac{BCB} sendet daraufhin eine Nachricht an den \gls{Websocket}-Service, der diese Information wiederum an alle verbundenen Clients schickt, die Nachrichten des \ac{BCB}s erwarten. So sieht man in der Abbildung auch, dass der dritte Client keine Nachricht empfängt, da er Nachrichten eines anderen Systems erwartet.
+Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise der aktuelle Auftrag und Akkuladung, werden mithilfe einer indirekten Verbindung zwischen der Webanwendung und dem \ac{BCB} regelmäßig aktualisiert. Hierfür wird der im Abschnitt \ref{sec:Chayns} erwähnte \gls{Websocket}-Service genutzt. In der Abbildung \ref{fig:RobotStatusUpdate} ist der Ablauf einer Statusaktualisierung vereinfacht dargestellt. Aktualisiert ein Roboter seine Position, wird die entsprechende Information an das \ac{BCB} gesendet. Wie die Kommunikation zwischen Robotern und \ac{BCB} funktioniert wird im Abschnitt \ref{sec:BotControlBackend} erklärt. Das \ac{BCB} sendet daraufhin eine Nachricht an den \gls{Websocket}-Service, der diese Information wiederum an alle verbundenen Clients schickt, die Nachrichten des \ac{BCB}s erwarten. So sieht man in der Abbildung auch, dass der dritte Client keine Nachricht empfängt, da er Nachrichten eines anderen Systems erwartet.
 
 \begin{figure}[H]
     \centering
