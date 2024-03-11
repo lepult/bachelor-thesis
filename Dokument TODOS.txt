@@ -15,10 +15,10 @@ TODOS
 		- Einsatzmöglichkeiten [kontrollieren]
 		- Pudu Robotics [kontrollieren]
 		- BotControlBackend [kontrollieren]
-	- Webanwendungen [schreiben]
-		- Technologien und Softwarebibliotheken [schreiben]
-		- chayns [schreiben]
-	- 3D Modelle [überarbeiten]
+	- Webanwendungen [kontrollieren]
+		- Technologien und Softwarebibliotheken [kontrollieren]
+		- chayns [kontrollieren]
+	- 3D Modelle [kontrollieren]
 		- Generierung [kontrollieren]
 			- Fotogrammetrie [kontrollieren]
 			- LiDAR Scanning [kontrollieren]
@@ -40,7 +40,7 @@ TODOS
 		✓ Benutzer
 	✓ Nicht-funktionale Anforderungen
 - Technische Herausforderungen
-	- 3D Modelle von Gebäuden [schreiben] (kurzer Vergleich der zuvor erwähnten Generierungsmethoden)
+	- 3D Modelle von Gebäuden [kontrollieren]
 	- 3D Visualisierung im Web
 		- deck.gl [kontrollieren]
 		- Dateiformat der 3D-Modelle [kontrollieren]
@@ -62,15 +62,14 @@ TODOS
 		✓ Benutzerfreundlichkeit
 			✓ Usability Heuristics
 			✓ Usability Tests
-		- Performance [schreiben]
-- Ergebnisse [schreiben oder verwerfen]
-- Fazit [schreiben]
+		- Performance [kontrollieren]
+- Diskussion [kontrollieren]
+- Fazit [kontrollieren]
 - Unterschrift hinzufügen
 
 Überarbeiten
 - Quellen
 	- fehlende Quellen einfügen
-	✓ Literatur Liste strukturieren und vereinheitlichen
 - Naming der Ansichten prüfen und vereinheitlichen: Nutzeransicht, Adminansicht
 - Gebäudemodell oder Raummodell => Raummodell
 - Literaturverzeichnis Nummern in PDF Dateinamen ergänzen
@@ -80,10 +79,7 @@ TODOS
 - TODOs im Dokument abschließen
 - Unterschrift hinzufügen
 - Abgabedatum ändern
-- ggf. Zweitgutachter hinzufügen
 - Prototyp.txt erstellen mit Erklärung wie Prototyp erreicht und genutzt werden kann
-- Gedankenstriche statt Bindestriche
-- Performance (und performant) oder Effizienz
 
 Prototyp
 - Tests schreiben
