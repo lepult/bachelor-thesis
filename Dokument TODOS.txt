@@ -76,10 +76,12 @@ TODOS
 - Abbildungen
 	- DSR an neues Verständnis anpassen
 	- Qualitätsmerkmale verschönern => Einheitliches Padding zwischen Text und Kasten; Usability zu Benutzerfreundlichkeit
+	- Backface Culling Modelle untereinander damit sie größer angezeigt werden können
 - TODOs im Dokument abschließen
 - Unterschrift hinzufügen
 - Abgabedatum ändern
 - Prototyp.txt erstellen mit Erklärung wie Prototyp erreicht und genutzt werden kann
+- Links prüfen
 
 Prototyp
 - Tests schreiben
