@@ -85,9 +85,6 @@ TODOS
 
 Prototyp
 - Tests schreiben
--> Unit Tests für
-	-> utils functions (insbesondere Mapping von Daten)
-	-> layer data selectors
 -> Integration Tests
 	-> Karte
 	-> Buttons
