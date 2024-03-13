@@ -1,0 +1,5 @@
+Der Prototyp kann auf https://lptest.chayns.site/bot-control-3d aufgerufen werden. Man muss sich mit einem chayns Account anmelden. Daraufhin kann die Übersicht des Prototyps genutzt werden.
+
+Die Menge der verfügbaren Roboter kann variieren, da sie oft gewartet werden müssen und auf verschiedenen Messen eingesetzt werden.
+
+Es gilt zu beachten, dass die 3D-Modelle nicht alle Stockwerke abdecken. Nur die Stockwerke 'T2 1.OG' und 'T2 2.OG' sind vollständig durch 3D-Modelle abgebildet. Das Stockwerk 'T1 2.OG' hat keine 3D-Modelle. Außerdem können die 3D-Modelle nicht im Safari Browser angezeigt werden.
