@@ -71,13 +71,13 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \newunit\addcolon\space
   \printfield[noformat]{title}%
   \setunit*{,\space}%
+  \printfield{year}%
+  \setunit*{,\space}%
   \printfield{edition}%
   \setunit*{\addcomma\space}%
   \printlist{publisher}%
   \newunit\newblockpunct
   \printlist{location}%
-  \setunit*{\space}%
-  \printfield{year}%
   \setunit*{,\space}%
   \printfield{isbn}%
   \finentry}
@@ -87,11 +87,11 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \printnames{author}%
   \newunit\addcolon\space
   \printfield[noformat]{title}%
+  \setunit{,\space}%
+  \printfield{year}%
   \setunit*{,\space}%
   %\newunit\newblock
   \printfield{url}%
-  \setunit{,\space}%
-  \printfield{year}%
   \setunit{,\space Zugriff am:\space}%
   \printfield{note}%
   \finentry}
@@ -101,12 +101,11 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \printnames{author}%
   \newunit\addcolon\space
   \printfield[noformat]{title}%
-  \setunit*{,\space}%
+  \setunit*{,\space Version:\space}%
+  \printfield[noformat]{version}%
   %\newunit\newblock
   \setunit*{,\space Verfügbar unter:\space}%
   \printfield[noformat]{url}%
-  \setunit*{,\space Version:\space}%
-  \printfield[noformat]{version}%
   \setunit*{,\space Zugriff am:\space}%
   \printfield{note}%
   \finentry}
@@ -134,7 +133,7 @@ bibwarn=true, % Warnung bei fehlerhafter bib-Datei
   \printfield{isbn}%
 	\finentry}
 
-  %% Definiert @InProceedings Eintrag
+  %% Definiert @InCollection Eintrag
 \DeclareBibliographyDriver{incollection}{%
 \printnames{author}%
 \newunit\addcolon\space
