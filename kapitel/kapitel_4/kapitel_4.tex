@@ -23,8 +23,6 @@ Für den Prototyp sind die \ac{URL}-Verweise der 3D-Modelle hartkodiert, oder in
 \begin{figure}[H]
     \caption{Raummodell ohne und mit Backface Culling}\label{fig:BackfaceCulling}
     \includegraphics[width=0.6\textwidth]{Backface Culling Vergleich2.png}
-    \\
-    Quelle: Eigene Darstellung
 \end{figure}
 
 \paragraph{Roboterdaten}\label{sec:RobotData}
@@ -50,8 +48,6 @@ Bei der Abbildung \ref{fig:OverviewScreenshot} handelt es sich um einen Screensh
 \begin{figure}[H]
     \caption{Übersicht}\label{fig:OverviewScreenshot}
     \includegraphics[width=0.9\textwidth]{Screenshot Uebersicht.png}
-    \\
-    Quelle: Eigene Darstellung
 \end{figure}
 
 \paragraph{Echtzeit-Aktualisierung}
@@ -61,8 +57,6 @@ Die Positionen sowie weitere Statusinformationen der Roboter, wie beispielsweise
     \centering
     \caption{Kommunikationsweg von Statusaktualisierungen der Roboter}\label{fig:RobotStatusUpdate}
     \includegraphics[width=0.9\textwidth]{Websocket Service.png}
-    \\
-    Quelle: Eigene Darstellung
 \end{figure}
 
 Die über den \gls{Websocket}-Service empfangene Statusaktualisierung wird zentral im Redux-Store gespeichert, sodass dem Nutzer direkt die aktualisierten Informationen angezeigt werden können.
@@ -76,8 +70,6 @@ Wie im Abschnitt \ref{sec:Mockup} beschrieben, gibt es drei Aktionen die zum Ste
 \begin{figure}[H]
     \caption{Steuerung und Routenplanung}\label{fig:ControlsScreenshot}
     \includegraphics[width=0.9\textwidth]{Screenshot Steuerung.png}
-    \\
-    Quelle: Eigene Darstellung
 \end{figure}
 
 \subsubsection{Verwaltung}
@@ -88,8 +80,6 @@ In der Roboterliste werden im Gegensatz zum \gls{Mockup} mehr Statusinformatione
 \begin{figure}[H]
     \caption{Verwaltung}\label{fig:RobotlistScreenshot}
     \includegraphics[width=0.6\textwidth]{Screenshot Verwaltung.png}
-    \\
-    Quelle: Eigene Darstellung
 \end{figure}
 
 Die Stockwerkliste unterscheidet sich nur geringfügig vom \gls{Mockup}. So werden die Standorte im Gegensatz zum \gls{Mockup} gruppiert nach der Art des Standorts aufgelistet. Diese Gruppierung ist hilfreich, da die Art des Standortes nicht unbedingt aus dem Namen ersichtlich ist.
@@ -102,8 +92,6 @@ In der Verwaltung, sowie in der Nutzeransicht gibt es die Möglichkeit in den Ed
 \begin{figure}[H]
     \caption{Editiermodus}\label{fig:EditmodeScreenshot}
     \includegraphics[width=0.9\textwidth]{Screenshot Editiermodus.png}
-    \\
-    Quelle: Eigene Darstellung
 \end{figure}
 
 Da der Boden bei allen 3D-Modellen ungefähr auf derselben z-Koordinate positioniert ist, müssen diese durch den Nutzer nicht weiter an der z-Achse verschoben werden. Im Vergleich zu den Roboterdaten sind die 3D-Modelle immer um 90° an der z-Achse und einen beliebigen Wert an der y-Achse rotiert, während die Rotation der x-Achse zwischen 3D-Modellen und Roboterdaten bereits übereinstimmt. Die 3D-Modelle werden im Editiermodus automatisch um -90° an der z-Achse rotiert und müssen vom Nutzer somit nur nach an der y-Achse rotiert werden. Die Roboterdaten und 3D-Modelle teilen sich bereits denselben Maßstab, weshalb der Nutzer nicht die Möglichkeit braucht, die Modelle zu skalieren. Es gilt zu beachten, dass im Prototyp 3D-Modelle erwartet werden, die mit der Scaniverse App erzeugt wurden. In einem Produktivsystem sollten auch andere Quellen genutzt werden können. Die genannten Annahmen, dass die Modelle nicht um die z-Koordinate verschoben, nicht um die x- und z-Achse rotiert und nicht skaliert werden müssen, gelten dann nicht mehr. Somit bräuchte der Nutzer in einem Produktivsystem die Möglichkeit Modelle an allen Achsen zu verschieben und um alle Achsen zu rotieren. Auch müsste der Nutzer die Modelle skalieren können.

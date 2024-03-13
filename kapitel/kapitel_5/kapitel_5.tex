@@ -22,8 +22,6 @@ Da Benutzer oft versehentlich Aktionen ausführen, gibt es die dritte Regel, die
 \begin{figure}[H]
     \caption{Bestätigungsdialog}\label{fig:DialogScreenshot}
     \includegraphics[width=0.9\textwidth]{Screenshot Dialog.png}
-    \\
-    Quelle: Eigene Darstellung
 \end{figure}
 
 In der fünften Regel geht es darum, dass Aktionen, die Fehler auslösen, verhindert werden sollten \cite[Regel 5]{Nielsen.1994}. In der Steuerung ist es zum Beispiel nicht möglich, ungültige Standorte in der Routenplanung einzugeben. Währenddessen wird diese Regel in der Verwaltung durch die bereits erwähnten Bestätigungsdialoge erfüllt. Im Editiermodus gibt es die bereits erwähnte Rückgängigmachen- und Wiederholen-Funktion.
@@ -46,27 +44,27 @@ In den beiden folgenden Tabellen werden die Ergebnisse des ersten Usability Test
 \begin{table}[H]
     \caption{Gefundene Probleme in erster Usability Testrunde}\label{tbl:1stUsabilityTestsProblems}
     \begin{tabular}{l|l|l|l|l|l|l}
-                & T0    & T1    & T2    & T3    & T4    & T5    \\ \hline
-    Problem 1   & X     &       &       & X     &       &       \\
-    Problem 2   & X     &       &       &       &       &       \\
-    Problem 3   & X     &       &       &       &       &       \\
-    Problem 4   & X     &       &       &       &       &       \\
-    Problem 5   & X     &       &       &       &       &       \\
-    Problem 6   & X     &       & X     &       &       &       \\
-    Problem 7   & X     &       &       &       &       &       \\
-    Problem 8   & X     &       &       &       & X     &       \\
-    Problem 9   &       & X     &       &       &       &       \\
-    Problem 10  &       & X     &       &       &       &       \\
-    Problem 11  &       & X     & X     & X     & X     &       \\
-    Problem 12  & X     & X     & X     &       &       &       \\
-    Problem 13  &       &       & X     &       &       &       \\
-    Problem 14  &       &       & X     & X     &       &       \\
-    Problem 15  & X     &       & X     &       &       &       \\
-    Problem 16  &       &       &       & X     &       &       \\
-    Problem 17  &       &       &       & X     &       &       \\
-    Problem 18  &       &       &       &       &       & X     \\
-    Problem 19  &       &       &       &       &       & X     \\
-    Problem 20  &       &       &       &       &       & X     \\
+    Problem Nr. & T0    & T1    & T2    & T3    & T4    & T5    \\ \hline
+    1           & X     &       &       & X     &       &       \\
+    2           & X     &       &       &       &       &       \\
+    3           & X     &       &       &       &       &       \\
+    4           & X     &       &       &       &       &       \\
+    5           & X     &       &       &       &       &       \\
+    6           & X     &       & X     &       &       &       \\
+    7           & X     &       &       &       &       &       \\
+    8           & X     &       &       &       & X     &       \\
+    9           &       & X     &       &       &       &       \\
+    10          &       & X     &       &       &       &       \\
+    11          &       & X     & X     & X     & X     &       \\
+    12          & X     & X     & X     &       &       &       \\
+    13          &       &       & X     &       &       &       \\
+    14          &       &       & X     & X     &       &       \\
+    15          & X     &       & X     &       &       &       \\
+    16          &       &       &       & X     &       &       \\
+    17          &       &       &       & X     &       &       \\
+    18          &       &       &       &       &       & X     \\
+    19          &       &       &       &       &       & X     \\
+    20          &       &       &       &       &       & X     \\
     \end{tabular}    
 \end{table}
 
@@ -110,21 +108,21 @@ Man sieht in Tabelle \ref{tbl:2ndUsabilityTestsProblems}, dass deutlich weniger 
 \begin{table}[H]
     \caption{Gefundene Probleme in zweiter Usability Testrunde}\label{tbl:2ndUsabilityTestsProblems}
     \begin{tabular}{l|l|l|l|l|l}
-                    & T1    & T2    & T3    & T4    & T5    \\ \hline
+        Problem Nr. & T1    & T2    & T3    & T4    & T5    \\ \hline
         % Beim entfernen der Roboter Auswahl wird fälschlicherweise in das Stockwerk des Roboters gewechselt bei dem die Auswahl entfernt wurde
-        Problem 1   & X     &       &       &       &       \\
+        1           & X     &       &       &       &       \\
         % Steuerungsbuttons müssen nicht immer aktiv sein (Abbrechen, wenn kein Lieferauftrag existiert; Laden, wenn bereits geladen wird)
-        Problem 2   & X     &       &       &       &       \\
+        2           & X     &       &       &       &       \\
         % Roboter kann nicht über die Karte (ohne den "zur Ladestation" Button) zur Ladestation geschickt werden
-        Problem 3   &       & X     &       &       &       \\
+        3           &       & X     &       &       &       \\
         % Suchfunktion von Standorten wurde nicht gefunden, weil diese im Lieferauftrag versteckt ist
-        Problem 4   &       &       & X     &       &       \\
+        4           &       &       & X     &       &       \\
         % Irritation, dass Erklärung der Steuerung im Tooltip steht und nicht einfach permanent angezeigt an einer anderen Position angezeigt wird
-        Problem 5   &       &       &       & X     &       \\
+        5           &       &       &       & X     &       \\
         % Editiermodus im Admin-Modus nicht gefunden
-        Problem 6   &       &       &       &       & X     \\
+        6           &       &       &       &       & X     \\
         % Editiermodus im Nutzermodus nicht gefunden
-        Problem 7   &       &       &       &       & X     \\
+        7           &       &       &       &       & X     \\
     \end{tabular}    
 \end{table}
 
@@ -188,8 +186,6 @@ Wie im Abschnitt \ref{sec:PerformanceBasics} beschrieben, werden \ac{PLS}, \ac{L
 \begin{figure}[H]
     \caption{Effizienzmesswerte}\label{fig:EfficiencyBoxplot}
     \includegraphics[width=0.9\textwidth]{Boxplot2.pdf}
-    \\
-    Quelle: Eigene Darstellung
 \end{figure}
 
 
