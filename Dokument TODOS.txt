@@ -6,6 +6,7 @@
 - Sourcecode in Zusatzdokumenten hinzufügen
 - Quellen in Zusatzdokumenten hinzufügen
 - Links prüfen
+- Schreiben, dass nur Unit Tests und keine Integration Tests implementiert wurden (begründen)
 
 Prototyp
 - Tests schreiben
