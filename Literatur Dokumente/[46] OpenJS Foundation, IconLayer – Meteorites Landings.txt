@@ -1,1 +1,0 @@
-Auf deck.gl verfügbar: https://deck.gl/examples/icon-layer
