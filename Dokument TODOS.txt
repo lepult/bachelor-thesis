@@ -1,18 +1,7 @@
 Überarbeiten
-- Naming der Ansichten prüfen und vereinheitlichen: Nutzeransicht, Adminansicht
-- Gebäudemodell oder Raummodell => Raummodell
 - Unterschrift hinzufügen
 - Prototyp.txt in Zusatzdokumenten hinzufügen
 - Sourcecode in Zusatzdokumenten hinzufügen
 - Quellen in Zusatzdokumenten hinzufügen
 - Links prüfen
-- Schreiben, dass nur Unit Tests und keine Integration Tests implementiert wurden (begründen)
-
-Prototyp
-- Tests schreiben
--> Integration Tests
-	-> Karte
-	-> Buttons
-	-> Routenplanungs-Popup
-- Steuerungsbuttons für Gäste ausblenden (Anordnung wie im Screenshot)
 
